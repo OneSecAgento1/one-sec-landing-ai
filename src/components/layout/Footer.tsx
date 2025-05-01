@@ -15,7 +15,7 @@ const Footer = () => {
               OneSecAgent<span className="text-onesec-accent">.</span>
             </Link>
             <p className="text-gray-400 mt-4">
-              Trasformiamo le tue idee in soluzioni intelligenti con AI e automazione.
+              We transform your ideas into intelligent solutions with AI and automation.
             </p>
             <div className="mt-6 flex space-x-4">
               <SocialIcon icon={<Facebook size={18} />} />
@@ -28,27 +28,27 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <FooterLink href="#services">Servizi</FooterLink>
-              <FooterLink href="#cases">Casi di studio</FooterLink>
-              <FooterLink href="#about">Chi siamo</FooterLink>
-              <FooterLink href="#contact">Contatti</FooterLink>
+              <FooterLink href="#services">Services</FooterLink>
+              <FooterLink href="#cases">Case Studies</FooterLink>
+              <FooterLink href="#about">About Us</FooterLink>
+              <FooterLink href="#contact">Contact</FooterLink>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Servizi</h3>
+            <h3 className="font-bold text-lg mb-4">Services</h3>
             <ul className="space-y-2">
               <FooterLink href="#ai-solutions">AI Solutions</FooterLink>
-              <FooterLink href="#process-automation">Automazione dei Processi</FooterLink>
+              <FooterLink href="#process-automation">Process Automation</FooterLink>
               <FooterLink href="#data-analysis">Data Analysis</FooterLink>
-              <FooterLink href="#chatbot">Chatbot Intelligenti</FooterLink>
+              <FooterLink href="#chatbot">Intelligent Chatbots</FooterLink>
             </ul>
           </div>
 
           {/* Contact info */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Contattaci</h3>
+            <h3 className="font-bold text-lg mb-4">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Mail size={20} className="mr-2 text-onesec-accent shrink-0 mt-1" />
@@ -59,7 +59,7 @@ const Footer = () => {
                 <span>+39 123 456 7890</span>
               </li>
               <li>
-                Milano, Italia
+                Milan, Italy
               </li>
             </ul>
           </div>
@@ -69,11 +69,11 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
-            © {currentYear} OneSecAgent. Tutti i diritti riservati.
+            © {currentYear} OneSecAgent. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/privacy" className="text-gray-500 text-sm hover:text-white">Privacy Policy</Link>
-            <Link to="/terms" className="text-gray-500 text-sm hover:text-white">Termini di servizio</Link>
+            <Link to="/terms" className="text-gray-500 text-sm hover:text-white">Terms of Service</Link>
           </div>
         </div>
       </div>

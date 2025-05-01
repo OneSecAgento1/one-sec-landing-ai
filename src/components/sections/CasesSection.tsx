@@ -8,19 +8,19 @@ const CasesSection = () => {
   const cases = [
     {
       id: 1,
-      title: "Ottimizzazione Supply Chain",
+      title: "Supply Chain Optimization",
       category: "ai",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60",
       client: "LogiTech Industries",
-      description: "Implementazione di un sistema predittivo per ottimizzare la catena di approvvigionamento, riducendo i costi operativi del 30%."
+      description: "Implementation of a predictive system to optimize the supply chain, reducing operational costs by 30%."
     },
     {
       id: 2,
-      title: "Chatbot Assistenza Clienti",
+      title: "Customer Support Chatbot",
       category: "chatbot",
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60",
       client: "TelCare Services",
-      description: "Sviluppo di un assistente virtuale capace di gestire il 70% delle richieste clienti, migliorando la soddisfazione e riducendo i tempi di risposta."
+      description: "Development of a virtual assistant capable of handling 70% of customer requests, improving satisfaction and reducing response times."
     },
     {
       id: 3,
@@ -28,15 +28,15 @@ const CasesSection = () => {
       category: "automation",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60",
       client: "FinBiz Solutions",
-      description: "Creazione di una piattaforma per l'automazione di processi aziendali, con un incremento della produttività del 45%."
+      description: "Creation of a platform for automating business processes, with a 45% increase in productivity."
     },
     {
       id: 4,
-      title: "Analisi Predittiva Vendite",
+      title: "Predictive Sales Analysis",
       category: "data",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&auto=format&fit=crop&q=60",
       client: "RetailPro Corp",
-      description: "Implementazione di modelli di analisi predittiva per ottimizzare le strategie di vendita, con un aumento del 25% dei ricavi."
+      description: "Implementation of predictive analytics models to optimize sales strategies, resulting in a 25% increase in revenue."
     }
   ];
   
@@ -48,13 +48,13 @@ const CasesSection = () => {
     <section id="cases" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">CASI DI STUDIO</p>
+          <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">CASE STUDIES</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
-            Risultati che parlano da soli
+            Results that speak for themselves
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto opacity-0 animate-fade-in delay-2">
-            Esplora come abbiamo aiutato aziende di diversi settori a trasformare 
-            le loro operazioni con soluzioni AI e automazione personalizzate.
+            Explore how we've helped companies across industries transform 
+            their operations with customized AI and automation solutions.
           </p>
         </div>
         
@@ -64,7 +64,7 @@ const CasesSection = () => {
             active={activeTab === 'all'} 
             onClick={() => setActiveTab('all')}
           >
-            Tutti
+            All
           </TabButton>
           <TabButton 
             active={activeTab === 'ai'} 
@@ -76,7 +76,7 @@ const CasesSection = () => {
             active={activeTab === 'automation'} 
             onClick={() => setActiveTab('automation')}
           >
-            Automazione
+            Automation
           </TabButton>
           <TabButton 
             active={activeTab === 'chatbot'} 
@@ -116,7 +116,7 @@ const CasesSection = () => {
                   {caseStudy.description}
                 </p>
                 <Button variant="link" className="px-0 text-onesec-primary hover:text-onesec-secondary">
-                  Leggi di più →
+                  Read more →
                 </Button>
               </div>
             </div>

@@ -36,12 +36,12 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <NavLink href="#services">Servizi</NavLink>
-          <NavLink href="#cases">Casi di studio</NavLink>
-          <NavLink href="#about">Chi siamo</NavLink>
-          <NavLink href="#contact">Contatti</NavLink>
+          <NavLink href="#services">Services</NavLink>
+          <NavLink href="#cases">Case Studies</NavLink>
+          <NavLink href="#about">About Us</NavLink>
+          <NavLink href="#contact">Contact</NavLink>
           <Button className="bg-onesec-primary hover:bg-onesec-primary/90 text-white">
-            Inizia ora
+            Get Started
           </Button>
         </nav>
 
@@ -59,19 +59,19 @@ const Header = () => {
         <div className="md:hidden absolute top-full left-0 right-0 bg-onesec-dark/95 backdrop-blur-md p-4 shadow-lg">
           <nav className="flex flex-col space-y-4">
             <MobileNavLink href="#services" onClick={() => setMobileMenuOpen(false)}>
-              Servizi
+              Services
             </MobileNavLink>
             <MobileNavLink href="#cases" onClick={() => setMobileMenuOpen(false)}>
-              Casi di studio
+              Case Studies
             </MobileNavLink>
             <MobileNavLink href="#about" onClick={() => setMobileMenuOpen(false)}>
-              Chi siamo
+              About Us
             </MobileNavLink>
             <MobileNavLink href="#contact" onClick={() => setMobileMenuOpen(false)}>
-              Contatti
+              Contact
             </MobileNavLink>
             <Button className="bg-onesec-primary hover:bg-onesec-primary/90 text-white w-full">
-              Inizia ora
+              Get Started
             </Button>
           </nav>
         </div>

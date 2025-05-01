@@ -40,8 +40,8 @@ const ContactSection = () => {
       }));
       
       toast({
-        title: "Messaggio inviato",
-        description: "Ti risponderemo il prima possibile!",
+        title: "Message sent",
+        description: "We'll get back to you as soon as possible!",
       });
     }, 1500);
   };
@@ -50,13 +50,13 @@ const ContactSection = () => {
     <section id="contact" className="py-20 bg-gray-100 dark:bg-gray-800">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">CONTATTACI</p>
+          <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">CONTACT US</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
-            Iniziamo a costruire insieme
+            Let's build together
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto opacity-0 animate-fade-in delay-2">
-            Hai un progetto in mente? Contattaci per una consulenza gratuita e scopri
-            come possiamo aiutarti a raggiungere i tuoi obiettivi con AI e automazione.
+            Have a project in mind? Contact us for a free consultation and discover
+            how we can help you achieve your goals with AI and automation.
           </p>
         </div>
         
@@ -64,7 +64,7 @@ const ContactSection = () => {
           {/* Contact info */}
           <div className="lg:col-span-2 opacity-0 animate-fade-in delay-2">
             <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg h-full">
-              <h3 className="text-2xl font-bold mb-6">Informazioni di contatto</h3>
+              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start">
@@ -84,7 +84,7 @@ const ContactSection = () => {
                     <Phone size={20} className="text-onesec-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium mb-1">Telefono</h4>
+                    <h4 className="font-medium mb-1">Phone</h4>
                     <a href="tel:+391234567890" className="text-onesec-primary hover:text-onesec-secondary">
                       +39 123 456 7890
                     </a>
@@ -95,17 +95,17 @@ const ContactSection = () => {
               <div className="mt-10">
                 <h4 className="font-medium mb-4">Headquarters</h4>
                 <address className="not-italic text-gray-600 dark:text-gray-300">
-                  Via dell'Innovazione, 42<br />
-                  20100 Milano<br />
-                  Italia
+                  Innovation Street, 42<br />
+                  20100 Milan<br />
+                  Italy
                 </address>
               </div>
               
               <div className="mt-10">
-                <h4 className="font-medium mb-4">Orari</h4>
+                <h4 className="font-medium mb-4">Hours</h4>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Lunedì - Venerdì: 9:00 - 18:00<br />
-                  Sabato - Domenica: Chiuso
+                  Monday - Friday: 9:00 - 18:00<br />
+                  Saturday - Sunday: Closed
                 </p>
               </div>
             </div>
@@ -114,23 +114,23 @@ const ContactSection = () => {
           {/* Contact form */}
           <div className="lg:col-span-3 opacity-0 animate-fade-in delay-3">
             <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg">
-              <h3 className="text-2xl font-bold mb-6">Inviaci un messaggio</h3>
+              <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
               
               {formState.isSubmitted ? (
                 <div className="flex flex-col items-center justify-center py-12">
                   <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-4">
                     <Check size={32} className="text-green-500" />
                   </div>
-                  <h4 className="text-xl font-bold mb-2">Messaggio inviato!</h4>
+                  <h4 className="text-xl font-bold mb-2">Message sent!</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-center max-w-md">
-                    Grazie per averci contattato. Un membro del nostro team ti risponderà
-                    il prima possibile.
+                    Thank you for contacting us. A member of our team will respond
+                    as soon as possible.
                   </p>
                   <Button 
                     className="mt-6"
                     onClick={() => setFormState(prev => ({ ...prev, isSubmitted: false }))}
                   >
-                    Invia un altro messaggio
+                    Send another message
                   </Button>
                 </div>
               ) : (
@@ -138,14 +138,14 @@ const ContactSection = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-1">
-                        Nome completo
+                        Full name
                       </label>
                       <Input
                         id="name"
                         name="name"
                         value={formState.name}
                         onChange={handleChange}
-                        placeholder="Il tuo nome"
+                        placeholder="Your name"
                         required
                       />
                     </div>
@@ -159,7 +159,7 @@ const ContactSection = () => {
                         type="email"
                         value={formState.email}
                         onChange={handleChange}
-                        placeholder="La tua email"
+                        placeholder="Your email"
                         required
                       />
                     </div>
@@ -167,27 +167,27 @@ const ContactSection = () => {
                   
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium mb-1">
-                      Azienda
+                      Company
                     </label>
                     <Input
                       id="company"
                       name="company"
                       value={formState.company}
                       onChange={handleChange}
-                      placeholder="Nome azienda"
+                      placeholder="Company name"
                     />
                   </div>
                   
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium mb-1">
-                      Messaggio
+                      Message
                     </label>
                     <Textarea
                       id="message"
                       name="message"
                       value={formState.message}
                       onChange={handleChange}
-                      placeholder="Raccontaci del tuo progetto..."
+                      placeholder="Tell us about your project..."
                       rows={5}
                       required
                     />
@@ -198,7 +198,7 @@ const ContactSection = () => {
                     className="w-full bg-onesec-primary hover:bg-onesec-primary/90"
                     disabled={formState.isSubmitting}
                   >
-                    {formState.isSubmitting ? "Invio in corso..." : "Invia messaggio"}
+                    {formState.isSubmitting ? "Sending..." : "Send message"}
                   </Button>
                 </form>
               )}

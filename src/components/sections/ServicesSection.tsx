@@ -7,25 +7,25 @@ const ServicesSection = () => {
       id: 1,
       icon: <Zap className="w-6 h-6 text-onesec-accent" />,
       title: "AI Solutions",
-      description: "Sviluppiamo soluzioni di intelligenza artificiale su misura per le esigenze della tua azienda, ottimizzando processi decisionali e operativi."
+      description: "We develop custom AI solutions tailored to your business needs, optimizing decision-making and operational processes."
     },
     {
       id: 2,
       icon: <Cog className="w-6 h-6 text-onesec-accent" />,
-      title: "Automazione dei Processi",
-      description: "Automatizziamo i flussi di lavoro ripetitivi, liberando il tuo team per attività a maggior valore aggiunto e riducendo gli errori."
+      title: "Process Automation",
+      description: "We automate repetitive workflows, freeing your team for higher value tasks and reducing errors."
     },
     {
       id: 3,
       icon: <Code className="w-6 h-6 text-onesec-accent" />,
-      title: "Chatbot Intelligenti",
-      description: "Creiamo assistenti virtuali basati su AI avanzata per supportare clienti e dipendenti, disponibili 24/7 su tutti i canali."
+      title: "Intelligent Chatbots",
+      description: "We create advanced AI-based virtual assistants to support customers and employees, available 24/7 across all channels."
     },
     {
       id: 4,
       icon: <Check className="w-6 h-6 text-onesec-accent" />,
       title: "Data Analysis",
-      description: "Analizziamo i tuoi dati per estrarre insights preziosi e supportare decisioni strategiche basate su evidenze concrete."
+      description: "We analyze your data to extract valuable insights and support strategic decisions based on concrete evidence."
     }
   ];
 
@@ -33,13 +33,13 @@ const ServicesSection = () => {
     <section id="services" className="py-20 bg-gradient-to-b from-onesec-dark to-onesec-dark/95">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">I NOSTRI SERVIZI</p>
+          <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">OUR SERVICES</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 opacity-0 animate-fade-in delay-1">
-            Soluzioni intelligenti per sfide complesse
+            Intelligent solutions for complex challenges
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto opacity-0 animate-fade-in delay-2">
-            Offriamo un ecosistema completo di servizi basati su intelligenza artificiale e automazione
-            per aiutarti a navigare la trasformazione digitale.
+            We offer a complete ecosystem of AI and automation services
+            to help you navigate digital transformation.
           </p>
         </div>
 

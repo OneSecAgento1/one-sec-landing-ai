@@ -3,22 +3,22 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       id: 1,
-      quote: "OneSecAgent ha trasformato completamente i nostri processi interni. L'automazione che hanno implementato ha ridotto i tempi operativi dell'80% e migliorato la precisione nei risultati.",
-      author: "Marco Bianchi",
+      quote: "OneSecAgent has completely transformed our internal processes. The automation they implemented has reduced operational times by 80% and improved accuracy in results.",
+      author: "Mark Johnson",
       title: "CTO, Tech Dynamics",
       image: "https://randomuser.me/api/portraits/men/32.jpg"
     },
     {
       id: 2,
-      quote: "Il chatbot sviluppato per il nostro customer service ha superato ogni aspettativa. Gestisce il 75% delle richieste senza intervento umano, con un tasso di soddisfazione cliente del 92%.",
-      author: "Laura Ferrari",
+      quote: "The chatbot developed for our customer service has exceeded all expectations. It handles 75% of requests without human intervention, with a 92% customer satisfaction rate.",
+      author: "Laura Smith",
       title: "Head of Customer Service, RetailPro",
       image: "https://randomuser.me/api/portraits/women/44.jpg"
     },
     {
       id: 3,
-      quote: "La soluzione di analisi predittiva implementata da OneSecAgent ci ha permesso di anticipare le tendenze di mercato con una precisione mai vista prima. Un game-changer per la nostra strategia.",
-      author: "Giovanni Romano",
+      quote: "The predictive analysis solution implemented by OneSecAgent has allowed us to anticipate market trends with unprecedented precision. A game-changer for our strategy.",
+      author: "John Richards",
       title: "CEO, Finance Insight Group",
       image: "https://randomuser.me/api/portraits/men/67.jpg"
     }
@@ -34,9 +34,9 @@ const TestimonialsSection = () => {
       
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
-          <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">TESTIMONIANZE</p>
+          <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">TESTIMONIALS</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
-            Cosa dicono i nostri clienti
+            What our clients say
           </h2>
         </div>
         

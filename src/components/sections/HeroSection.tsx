@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen pt-24 flex items-center bg-onesec-dark overflow-hidden">
-      {/* Sfondo animato */}
+      {/* Animated background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-onesec-dark via-onesec-dark to-onesec-primary/20 bg-gradient-animation"></div>
-        {/* Pattern di sfondo */}
+        {/* Background pattern */}
         <div className="absolute inset-0 opacity-5">
           {[...Array(20)].map((_, i) => (
             <div 
@@ -26,28 +26,28 @@ const HeroSection = () => {
       
       <div className="container mx-auto relative z-10 px-4">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
-          {/* Testo hero */}
+          {/* Hero text */}
           <div className="lg:col-span-3 text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 opacity-0 animate-fade-in">
-              <span className="text-white">Ai & Automazione per </span>
-              <span className="gradient-text">accelerare il tuo business</span>
+              <span className="text-white">AI & Automation to </span>
+              <span className="gradient-text">accelerate your business</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 opacity-0 animate-fade-in delay-1">
-              OneSecAgent trasforma il tuo business con soluzioni intelligenti. 
-              Dalla progettazione all'implementazione, ti accompagniamo nel viaggio verso 
-              l'innovazione digitale.
+              OneSecAgent transforms your business with intelligent solutions. 
+              From design to implementation, we accompany you on the journey towards 
+              digital innovation.
             </p>
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 opacity-0 animate-fade-in delay-2">
               <Button size="lg" className="bg-onesec-primary hover:bg-onesec-primary/90 text-white">
-                Scopri i nostri servizi
+                Discover our services
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                Contattaci
+                Contact us
               </Button>
             </div>
           </div>
           
-          {/* Immagine/animazione hero */}
+          {/* Hero image/animation */}
           <div className="lg:col-span-2 opacity-0 animate-fade-in delay-3">
             <div className="glassmorphism rounded-2xl p-4 relative">
               <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full gradient-bg"></div>

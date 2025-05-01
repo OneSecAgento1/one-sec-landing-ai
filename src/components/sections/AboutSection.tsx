@@ -3,30 +3,30 @@ import { Users, Briefcase, Zap } from "lucide-react";
 
 const AboutSection = () => {
   const stats = [
-    { id: 1, value: "50+", label: "Clienti soddisfatti" },
-    { id: 2, value: "100+", label: "Progetti completati" },
-    { id: 3, value: "5+ anni", label: "Di esperienza" },
-    { id: 4, value: "24/7", label: "Supporto tecnico" },
+    { id: 1, value: "50+", label: "Satisfied clients" },
+    { id: 2, value: "100+", label: "Completed projects" },
+    { id: 3, value: "5+ years", label: "Of experience" },
+    { id: 4, value: "24/7", label: "Technical support" },
   ];
 
   const values = [
     {
       id: 1,
       icon: <Zap className="w-6 h-6 text-onesec-primary" />,
-      title: "Innovazione",
-      description: "Spingiamo costantemente i confini di ciò che è possibile con AI e automazione."
+      title: "Innovation",
+      description: "We constantly push the boundaries of what's possible with AI and automation."
     },
     {
       id: 2,
       icon: <Users className="w-6 h-6 text-onesec-primary" />,
-      title: "Centralità del cliente",
-      description: "Costruiamo soluzioni che risolvono realmente le sfide specifiche dei nostri clienti."
+      title: "Client-centricity",
+      description: "We build solutions that truly solve our clients' specific challenges."
     },
     {
       id: 3,
       icon: <Briefcase className="w-6 h-6 text-onesec-primary" />,
-      title: "Eccellenza",
-      description: "Manteniamo i più alti standard di qualità in ogni soluzione che sviluppiamo."
+      title: "Excellence",
+      description: "We maintain the highest standards of quality in every solution we develop."
     }
   ];
 
@@ -36,19 +36,19 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* About content */}
           <div>
-            <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">CHI SIAMO</p>
+            <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">ABOUT US</p>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
-              Trasformiamo il futuro <span className="gradient-text">con intelligenza artificiale</span>
+              Transforming the future <span className="gradient-text">with artificial intelligence</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6 opacity-0 animate-fade-in delay-2">
-              OneSecAgent è un'agenzia specializzata in soluzioni di intelligenza artificiale
-              e automazione. Il nostro team di esperti combina profonda conoscenza tecnologica e visione
-              strategica per aiutare le aziende a sfruttare appieno il potenziale della trasformazione digitale.
+              OneSecAgent is an agency specializing in artificial intelligence
+              and automation solutions. Our team of experts combines deep technological knowledge and strategic
+              vision to help companies fully leverage the potential of digital transformation.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-8 opacity-0 animate-fade-in delay-3">
-              Che tu stia cercando di ottimizzare i processi, migliorare l'esperienza cliente o estrarre
-              valore dai tuoi dati, lavoriamo a stretto contatto con te per sviluppare soluzioni
-              personalizzate che ti danno un vantaggio competitivo sostanziale.
+              Whether you're looking to optimize processes, improve customer experience, or extract
+              value from your data, we work closely with you to develop
+              customized solutions that give you a substantial competitive advantage.
             </p>
             
             {/* Values */}
