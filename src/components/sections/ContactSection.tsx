@@ -4,13 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, Calendar, MapPin, Send, Check } from "lucide-react";
+import { Send, Check } from "lucide-react";
 
 const ContactSection = () => {
   const { toast } = useToast();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
+    subject: '',
     company: '',
     message: '',
     isSubmitting: false,
@@ -35,6 +36,7 @@ const ContactSection = () => {
         isSubmitted: true,
         name: '',
         email: '',
+        subject: '',
         company: '',
         message: ''
       }));
@@ -59,73 +61,9 @@ const ContactSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-          {/* Contact info */}
-          <div className="lg:col-span-2 opacity-0 animate-fade-in delay-2">
-            <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg h-full">
-              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mr-4">
-                    <Mail size={20} className="text-onesec-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-1">Email</h4>
-                    <a href="mailto:info@onesecagent.com" className="text-onesec-primary hover:text-onesec-secondary">
-                      info@onesecagent.com
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mr-4">
-                    <Phone size={20} className="text-onesec-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-1">Phone</h4>
-                    <a href="tel:+391234567890" className="text-onesec-primary hover:text-onesec-secondary">
-                      +39 123 456 7890
-                    </a>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-10">
-                <div className="flex items-start mb-6">
-                  <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mr-4">
-                    <MapPin size={20} className="text-onesec-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-1">Headquarters</h4>
-                    <address className="not-italic text-gray-600 dark:text-gray-300">
-                      Innovation Street, 42<br />
-                      20100 Milan<br />
-                      Italy
-                    </address>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-6">
-                <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mr-4">
-                    <Calendar size={20} className="text-onesec-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-1">Availability</h4>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Available Mon–Fri, 9:00–18:00 CET<br />
-                      Send us a message anytime — we'll get back to you ASAP.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Contact form */}
-          <div className="lg:col-span-3 opacity-0 animate-fade-in delay-3">
+        <div className="flex justify-center opacity-0 animate-fade-in delay-3">
+          {/* Centered Contact form */}
+          <div className="w-full max-w-2xl">
             <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg">
               <h3 className="text-2xl font-bold mb-4">Fill out the form</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-8">
@@ -180,6 +118,20 @@ const ContactSection = () => {
                         required
                       />
                     </div>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium mb-1">
+                      Subject
+                    </label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      value={formState.subject}
+                      onChange={handleChange}
+                      placeholder="Briefly describe the topic"
+                      required
+                    />
                   </div>
                   
                   <div>
