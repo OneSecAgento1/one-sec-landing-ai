@@ -47,12 +47,31 @@ const Header = () => {
     }
   };
   
+  // Function to scroll to top when logo is clicked
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    
+    // Close mobile menu if open
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+  };
+  
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-3 md:py-4 bg-onesec-dark/95 backdrop-blur-md shadow-md' : 'py-3 md:py-6 bg-onesec-dark'}`}>
       {/* Add a max-width container to match the main content width */}
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-screen-xl">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-2 cursor-pointer select-none">
+          <div 
+            onClick={scrollToTop} 
+            className="flex items-center gap-2 cursor-pointer select-none"
+            role="button"
+            tabIndex={0}
+            aria-label="Scroll to top"
+          >
             <img src="/lovable-uploads/ccada2de-dd07-40b0-818b-5f6b70f048b0.png" alt="OneSecAgent Logo" className="h-14 md:h-18 w-auto" onError={e => {
               console.error("Logo failed to load");
               const target = e.target as HTMLImageElement;
@@ -62,7 +81,7 @@ const Header = () => {
             <span className="text-lg md:text-xl font-bold text-white hidden sm:inline-block">
               OneSecAgent<span className="text-onesec-accent">.</span>
             </span>
-          </Link>
+          </div>
 
           {/* Desktop Navigation */}
           {isHomePage ? (
