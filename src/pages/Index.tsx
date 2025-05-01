@@ -1,5 +1,5 @@
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/sections/HeroSection";
@@ -9,28 +9,39 @@ import AboutSection from "@/components/sections/AboutSection";
 import ContactSection from "@/components/sections/ContactSection";
 
 const Index = () => {
+  // Riferimento per memorizzare gli elementi da animare
+  const parallaxElements = useRef<NodeListOf<Element> | null>(null);
+  const fadeElements = useRef<NodeListOf<Element> | null>(null);
+
   // Set up scroll-based parallax effects and improved smooth scrolling
   useEffect(() => {
+    // Ottieni gli elementi solo una volta all'avvio
+    parallaxElements.current = document.querySelectorAll(".parallax-bg-item");
+    fadeElements.current = document.querySelectorAll(".fade-on-scroll");
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       
       // Apply parallax effect to various decorative elements, but with reduced impact
-      document.querySelectorAll(".parallax-bg-item").forEach((el) => {
-        const speed = Number(el.getAttribute("data-speed") || 0.02); // Reduced speed
-        const yPos = -scrollPosition * speed;
-        el.setAttribute("style", `transform: translateY(${yPos}px)`);
-      });
+      if (parallaxElements.current) {
+        parallaxElements.current.forEach((el) => {
+          const speed = Number(el.getAttribute("data-speed") || 0.02);
+          const yPos = -scrollPosition * speed;
+          el.setAttribute("style", `transform: translateY(${yPos}px)`);
+        });
+      }
 
       // Fade in elements as they come into view
-      const fadeElements = document.querySelectorAll(".fade-on-scroll");
-      fadeElements.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        
-        if (rect.top <= windowHeight * 0.9) {
-          el.classList.add("faded-in");
-        }
-      });
+      if (fadeElements.current) {
+        fadeElements.current.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          
+          if (rect.top <= windowHeight * 0.9) {
+            el.classList.add("faded-in");
+          }
+        });
+      }
     };
 
     // Set up improved smooth scroll for anchor links
@@ -38,7 +49,7 @@ const Index = () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
-          e.stopPropagation(); // Stop event propagation
+          e.stopPropagation();
           
           const targetId = this.getAttribute('href');
           if (!targetId || targetId === '#') return;
@@ -68,7 +79,6 @@ const Index = () => {
     
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      // We don't need to remove the click listeners as they'll be garbage collected
     };
   }, []);
 
