@@ -1,26 +1,27 @@
 
-import { Zap, Settings, Check, TrendingUp, Clock, Users, Award } from "lucide-react";
+import { Zap, Settings, Clock, TrendingUp, Users, Award, Gauge } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const AboutSection = () => {
   const pillars = [
     {
       id: 1,
       icon: <Zap className="w-6 h-6 text-onesec-primary" />,
-      title: "Real AI, Real ROI",
-      description: "We deploy AI where it makes you money, not where it looks fancy."
+      title: "Real Systems, Real ROI",
+      description: "We build AI and automation systems that drive revenue — not just look impressive."
     },
     {
       id: 2,
       icon: <Settings className="w-6 h-6 text-onesec-primary" />,
-      title: "Built For Your Bottlenecks",
-      description: "Your sales process, your data, your goals — not cookie-cutter setups."
+      title: "Built for Your Bottlenecks",
+      description: "We design around your data, your workflows, and your sales goals — not generic templates."
     },
     {
       id: 3,
-      icon: <Check className="w-6 h-6 text-onesec-primary" />,
-      title: "Done Fast, Done Right",
-      description: "We move fast without breaking things. Results in weeks, not quarters."
+      icon: <Gauge className="w-6 h-6 text-onesec-primary" />,
+      title: "Fast Execution, High Impact",
+      description: "We deliver results in days, not quarters — with a clear focus on what moves the needle."
     }
   ];
 
@@ -29,25 +30,25 @@ const AboutSection = () => {
       id: 1,
       icon: <TrendingUp className="w-6 h-6 text-white" />,
       title: "Built Around Revenue, Not Code",
-      description: "We don't sell tech — we sell outcomes. Every automation, every system is tied to your revenue goals."
+      description: "We don't sell tech — we sell outcomes. Every system is tied to measurable business results."
     },
     {
       id: 2,
       icon: <Clock className="w-6 h-6 text-white" />,
-      title: "Speed Over Bureaucracy",
-      description: "No bloated timelines, no meetings that should've been emails. We deliver in weeks, not months."
+      title: "Speed Over Process",
+      description: "No delays, no unnecessary meetings. You get fast execution where it matters."
     },
     {
       id: 3,
       icon: <Users className="w-6 h-6 text-white" />,
       title: "Small, Focused, Brutally Effective",
-      description: "You're not dealing with a big agency machine. Just operators who care about results."
+      description: "No big teams. Just operators who do the work and take responsibility for results."
     },
     {
       id: 4,
       icon: <Award className="w-6 h-6 text-white" />,
-      title: "Obsessed With Your Results",
-      description: "We only win if you win. That's why everything we build is tied to measurable impact — not guesswork."
+      title: "Obsessed With Your ROI",
+      description: "You don't pay for effort. You pay for results — and that's what we deliver."
     }
   ];
 
@@ -57,15 +58,15 @@ const AboutSection = () => {
         <div className="text-center mb-16">
           <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">ABOUT US</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 opacity-0 animate-fade-in delay-1">
-            We use AI to cut costs, close more deals, and eliminate manual work.
+            We use AI and automations to cut costs, close more deals, and eliminate manual work.
           </h2>
           <p className="text-gray-300 max-w-3xl mx-auto opacity-0 animate-fade-in delay-2">
-            Most companies are leaking time, money, and deals because they run on inefficient systems.
-            We build custom AI and automation solutions that plug those leaks — so you scale without hiring more people.
+            Most companies lose time, money, and sales because their systems are inefficient.
+            We build custom AI and automation solutions that remove inefficiencies and unlock growth — so you scale without hiring more people.
           </p>
         </div>
         
-        {/* Three key pillars */}
+        {/* Three value cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {pillars.map((pillar, index) => (
             <div 
@@ -105,6 +106,19 @@ const AboutSection = () => {
               </Card>
             ))}
           </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-24 bg-gray-800/30 rounded-2xl p-10 max-w-4xl mx-auto text-center border border-gray-700 opacity-0 animate-fade-in" style={{ animationDelay: "0.7s" }}>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            Ready to fix what's slowing you down and scale with AI + Automations?
+          </h2>
+          <p className="text-gray-300 mb-8">
+            Let's talk. 15 minutes to see if we're a fit — no fluff, just value.
+          </p>
+          <Button size="lg" className="bg-onesec-primary hover:bg-onesec-primary/90 text-white px-8 py-6 text-lg">
+            Book Your Free Strategy Call
+          </Button>
         </div>
       </div>
     </section>
