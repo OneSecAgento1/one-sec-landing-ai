@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowDown, MousePointer } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -23,8 +23,8 @@ const HeroSection = () => {
         <div className="lg:max-w-4xl mx-auto text-center mb-12">
           {/* Hero text */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 opacity-0 animate-fade-in">
-            <span className="text-white">Scale your B2B business </span>
-            <span className="gradient-text">without scaling your team.</span>
+            <span className="text-white">Grow your B2B business </span>
+            <span className="gradient-text">without growing your team.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-gray-300 mb-8 mx-auto opacity-0 animate-fade-in delay-1">
@@ -32,26 +32,23 @@ const HeroSection = () => {
           </p>
           
           <p className="text-sm text-gray-400 mb-8 opacity-0 animate-fade-in delay-2">
-            Trusted by forward-thinking B2B teams scaling smarter with automation
+            Trusted by agencies, SaaS, and consultants automating smarter to grow faster.
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in delay-3">
             <Button size="lg" className="bg-onesec-accent hover:bg-onesec-accent/90 text-white font-medium text-base px-8 py-6">
               Book Your Free Strategy Call
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 font-medium">
+            <Button size="lg" className="bg-[#2c2c3a] border border-onesec-primary text-white hover:bg-[#2c2c3a]/90 hover:border-onesec-primary/90 font-medium">
               See What We Automate
             </Button>
           </div>
         </div>
         
-        {/* Scroll indicator */}
+        {/* Simple down arrow (minimalist) */}
         <div className="absolute bottom-8 left-0 right-0 flex justify-center opacity-0 animate-fade-in delay-4">
-          <a href="#services" className="flex flex-col items-center text-white/50 hover:text-white transition-colors mx-0 py-0">
-            <span className="mb-2 text-sm">Scroll down</span>
-            <div className="w-6 h-10 rounded-full border-2 border-white/50 flex justify-center pt-2 hover:border-white transition-all">
-              <div className="w-1 h-2 bg-white/50 rounded-full animate-bounce"></div>
-            </div>
+          <a href="#services" className="text-white/40 hover:text-white/70 transition-colors">
+            <ArrowDown className="animate-bounce" />
           </a>
         </div>
       </div>
