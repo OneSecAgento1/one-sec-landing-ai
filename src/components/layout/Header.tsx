@@ -61,6 +61,12 @@ const Header = () => {
             src="/lovable-uploads/6acbd359-b91f-4f2f-a435-f335f1ea3ad8.png" 
             alt="OneSecAgent Logo" 
             className="h-10 w-auto"
+            onError={(e) => {
+              console.error("Logo failed to load");
+              const target = e.target as HTMLImageElement;
+              target.onerror = null;
+              target.style.display = 'none';
+            }}
           />
           <span className="text-xl font-bold text-white hidden sm:inline-block">
             OneSecAgent<span className="text-onesec-accent">.</span>
