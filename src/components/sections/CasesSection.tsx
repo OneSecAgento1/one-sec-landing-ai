@@ -45,11 +45,11 @@ const CasesSection = () => {
     cases.filter(c => c.category === activeTab);
   
   return (
-    <section id="cases" className="py-24 bg-gray-50 dark:bg-gray-900">
+    <section id="cases" className="py-32 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">CASE STUDIES</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
+          <h2 className="font-display text-3xl md:text-5xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
             Results that speak for themselves
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto opacity-0 animate-fade-in delay-2">
@@ -97,14 +97,17 @@ const CasesSection = () => {
           {filteredCases.map((caseStudy, index) => (
             <div 
               key={caseStudy.id}
-              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 opacity-0 animate-fade-in"
+              className="gradient-border card-hover bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 opacity-0 animate-fade-in"
               style={{ animationDelay: `${0.1 + index * 0.1}s` }}
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-48 overflow-hidden relative">
+                {/* Clip path mask for images */}
+                <div className="absolute inset-0 bg-gradient-to-br from-onesec-primary/20 to-transparent mix-blend-overlay z-10"></div>
                 <img 
                   src={caseStudy.image} 
                   alt={caseStudy.title} 
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)" }}
                 />
               </div>
               <div className="p-6">

@@ -2,8 +2,32 @@
 import { Zap, Settings, Clock, TrendingUp, Users, Award, Gauge } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useEffect, useRef } from "react";
 
 const AboutSection = () => {
+  const parallaxRef = useRef<HTMLDivElement>(null);
+  const elementsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!parallaxRef.current) return;
+      
+      const scrollTop = window.scrollY;
+      
+      elementsRef.current.forEach((element, index) => {
+        if (!element) return;
+        const speed = 0.05 * (index + 1);
+        const yOffset = scrollTop * speed;
+        element.style.transform = `translateY(-${yOffset}px)`;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const pillars = [
     {
       id: 1,
@@ -53,11 +77,29 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-onesec-dark/90 to-onesec-dark">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-32 bg-gradient-to-b from-onesec-dark/90 to-onesec-dark relative overflow-hidden" ref={parallaxRef}>
+      {/* Background parallax elements */}
+      <div className="absolute inset-0 opacity-10 overflow-hidden">
+        {[...Array(6)].map((_, i) => (
+          <div 
+            key={`bg-${i}`} 
+            className="absolute rounded-full"
+            style={{
+              width: `${100 + (i * 50)}px`,
+              height: `${100 + (i * 50)}px`,
+              background: `radial-gradient(circle, rgba(84, 169, 255, 0.3) 0%, rgba(84, 169, 255, 0.1) 70%, transparent 100%)`,
+              left: `${(i * 15) + 5}%`,
+              top: `${(i * 12) + 10}%`,
+            }}
+            ref={el => elementsRef.current[i] = el}
+          />
+        ))}
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">ABOUT US</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 opacity-0 animate-fade-in delay-1">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-6 opacity-0 animate-fade-in delay-1">
             We use AI and automations to cut costs, close more deals, and eliminate manual work.
           </h2>
           <p className="text-gray-300 max-w-3xl mx-auto opacity-0 animate-fade-in delay-2">
@@ -71,7 +113,7 @@ const AboutSection = () => {
           {pillars.map((pillar, index) => (
             <div 
               key={pillar.id} 
-              className="bg-gray-800/50 p-8 rounded-xl border border-gray-700 hover:border-onesec-primary/50 transition-all text-center opacity-0 animate-fade-in"
+              className="gradient-border card-hover bg-gray-800/50 p-8 rounded-xl border border-gray-700 hover:border-onesec-primary/50 transition-all text-center opacity-0 animate-fade-in"
               style={{ animationDelay: `${0.3 + index * 0.1}s` }}
             >
               <div className="w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6 mx-auto">
@@ -86,14 +128,14 @@ const AboutSection = () => {
         {/* Our Edge section */}
         <div className="mt-24">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-6 opacity-0 animate-fade-in">Our Edge</h2>
+            <h2 className="font-display text-3xl font-bold text-white mb-6 opacity-0 animate-fade-in">Our Edge</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {edges.map((edge, index) => (
               <Card 
                 key={edge.id} 
-                className="bg-gradient-to-br from-gray-800/70 to-gray-900/90 border-gray-700 hover:border-onesec-accent/50 transition-all duration-300 opacity-0 animate-fade-in"
+                className="gradient-border card-hover bg-gradient-to-br from-gray-800/70 to-gray-900/90 border-gray-700 hover:border-onesec-accent/50 transition-all duration-300 opacity-0 animate-fade-in"
                 style={{ animationDelay: `${0.5 + index * 0.1}s` }}
               >
                 <CardContent className="p-6 text-center">
@@ -110,7 +152,7 @@ const AboutSection = () => {
 
         {/* CTA Section */}
         <div className="mt-24 bg-gray-800/30 rounded-2xl p-10 max-w-4xl mx-auto text-center border border-gray-700 opacity-0 animate-fade-in" style={{ animationDelay: "0.7s" }}>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
             Ready to fix what's slowing you down and scale with AI + Automations?
           </h2>
           <p className="text-gray-300 mb-8">
