@@ -1,5 +1,7 @@
+
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <footer className="bg-onesec-dark text-white relative overflow-hidden">
@@ -70,7 +72,23 @@ const Footer = () => {
           </div>
 
           {/* Contact info */}
-          
+          <div>
+            <h3 className="font-bold text-lg mb-4">Contact Us</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center gap-2">
+                <span className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-onesec-accent">
+                  <Mail size={16} />
+                </span>
+                <span className="text-gray-400">info@onesecagent.com</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-onesec-accent">
+                  <Phone size={16} />
+                </span>
+                <span className="text-gray-400">+1 (555) 123-4567</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <hr className="my-8 border-gray-800" />
@@ -87,6 +105,7 @@ const Footer = () => {
       </div>
     </footer>;
 };
+
 const FooterLink = ({
   href,
   children
@@ -98,6 +117,7 @@ const FooterLink = ({
       {children}
     </a>
   </li>;
+
 const SocialIcon = ({
   icon
 }: {
@@ -105,4 +125,5 @@ const SocialIcon = ({
 }) => <a href="#" className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-onesec-primary transition-colors">
     {icon}
   </a>;
+
 export default Footer;
