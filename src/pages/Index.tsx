@@ -6,6 +6,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import CasesSection from "@/components/sections/CasesSection";
 import AboutSection from "@/components/sections/AboutSection";
+import ContactSection from "@/components/sections/ContactSection";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
@@ -103,6 +104,7 @@ const Index = () => {
         <ServicesSection />
         <CasesSection />
         <AboutSection />
+        <ContactSection />
       </main>
       <Footer />
     </div>
