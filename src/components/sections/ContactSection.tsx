@@ -151,7 +151,7 @@ const ContactSection = () => {
               <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <h3 className="text-2xl font-bold mb-4 text-left">Let's get started</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-8 text-left">
-                  We typically reply within a few hours on business days.<br />
+                  We typically reply within a few minutes on business days.<br />
                   You'll get next steps, clearly explained.
                 </p>
                 
