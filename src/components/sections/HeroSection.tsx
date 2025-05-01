@@ -56,13 +56,13 @@ const HeroSection = () => {
             </Button>
           </div>
         </div>
-        
-        {/* Connecting line */}
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 w-1 h-24">
-          <svg width="2" height="96" className="mx-auto">
-            <line x1="1" y1="0" x2="1" y2="96" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeDasharray="4,4" className="animate-draw" style={{ animationDelay: '1s' }} />
-          </svg>
-        </div>
+      </div>
+      
+      {/* Moved the connecting line outside the container div and positioned it at the bottom of the section */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-1 h-24">
+        <svg width="2" height="96" className="mx-auto">
+          <line x1="1" y1="0" x2="1" y2="96" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeDasharray="4,4" className="animate-draw" style={{ animationDelay: '1s' }} />
+        </svg>
       </div>
     </section>
   );
