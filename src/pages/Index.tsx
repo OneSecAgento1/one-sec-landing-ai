@@ -12,7 +12,7 @@ const Index = () => {
   return (
     <div className="bg-onesec-dark min-h-screen">
       <Header />
-      <main className="space-y-8">
+      <main>
         <HeroSection />
         <ServicesSection />
         <CasesSection />

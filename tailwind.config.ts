@@ -131,11 +131,9 @@ export default {
 			},
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        heading: ['Poppins', 'sans-serif'],
-        display: ['Playfair Display', 'serif']
+        heading: ['Poppins', 'sans-serif']
       }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-

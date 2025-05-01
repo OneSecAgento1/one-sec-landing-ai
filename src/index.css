@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -109,10 +109,6 @@
   .delay-4 {
     animation-delay: 0.4s;
   }
-  
-  .font-display {
-    font-family: 'Playfair Display', serif;
-  }
 }
 
 /* Animation del pattern di sfondo */
@@ -153,67 +149,3 @@
 .animate-fade-in {
   animation: fade-in 0.4s ease-out forwards;
 }
-
-/* Parallax effect classes */
-.parallax-wrapper {
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: visible;
-  perspective: 10px;
-}
-
-.parallax-element {
-  transform-style: preserve-3d;
-  transform: translateZ(-5px) scale(1.5);
-}
-
-.parallax-element-fast {
-  transform-style: preserve-3d;
-  transform: translateZ(-8px) scale(1.8);
-}
-
-.parallax-element-slow {
-  transform-style: preserve-3d;
-  transform: translateZ(-2px) scale(1.2);
-}
-
-/* Card hover effects */
-.card-hover {
-  transition: all 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-5px) rotate(1deg);
-  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
-}
-
-.gradient-border {
-  position: relative;
-  border-radius: 0.75rem;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #54A9FF, #7E64E0, #06DCFF);
-  z-index: -1;
-  border-radius: 0.85rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.gradient-border:hover::before {
-  opacity: 1;
-}
-
-/* Mouse movement animation */
-.mouse-parallax {
-  transition: transform 0.2s ease-out;
-}
-
