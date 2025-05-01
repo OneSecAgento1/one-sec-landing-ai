@@ -95,13 +95,7 @@ const HeroSection = () => {
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent to-onesec-dark/95 z-0"></div>
       
       {/* Enhanced floating elements that extend into services section with improved animations */}
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden h-24 z-10">
-        <div className="absolute w-40 h-40 bg-onesec-primary/20 rounded-full -bottom-20 left-1/4 animate-float-enhanced"></div>
-        <div className="absolute w-64 h-64 bg-onesec-secondary/20 rounded-full -bottom-40 right-1/3 animate-float-enhanced-reverse" style={{
-        animationDelay: '1.5s'
-      }}></div>
-        <div className="absolute w-20 h-20 bg-onesec-accent/20 rounded-full -bottom-10 right-1/4 animate-pulse-opacity-enhanced"></div>
-      </div>
+      
 
       {/* Scrolling indicator */}
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20 animate-bounce-slow">
