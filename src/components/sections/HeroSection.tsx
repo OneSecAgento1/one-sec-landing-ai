@@ -39,32 +39,23 @@ const HeroSection = () => {
         </div>
       </div>
       
-      <div 
-        className="container mx-auto relative z-10 px-4 parallax-layer parallax-fore"
-        style={{ transform: `translateY(${window.scrollY * -0.2}px)` }}
-      >
+      <div className="container mx-auto relative z-10 px-4 parallax-layer parallax-fore">
         <div className="lg:max-w-4xl mx-auto text-center mb-12">
           {/* Hero text with parallax effect */}
-          <h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 opacity-0 animate-fade-in"
-            style={{ transform: `translateY(${window.scrollY * -0.1}px)` }}
-          >
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span className="text-white">Grow your B2B business </span>
             <span className="gradient-text">without growing your team.</span>
           </h1>
           
-          <p 
-            className="text-lg md:text-xl text-gray-300 mb-8 mx-auto opacity-0 animate-fade-in delay-1"
-            style={{ transform: `translateY(${window.scrollY * -0.05}px)` }}
-          >
+          <p className="text-lg md:text-xl text-gray-300 mb-8 mx-auto">
             We build AI + automation systems for agencies, SaaS, and consultancies that want to grow faster — by eliminating manual work and closing more deals.
           </p>
           
-          <p className="text-sm text-gray-400 mb-8 opacity-0 animate-fade-in delay-2">
+          <p className="text-sm text-gray-400 mb-8">
             Trusted by agencies, SaaS, and consultants automating smarter to grow faster.
           </p>
           
-          <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in delay-3">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button size="lg" className="bg-onesec-accent hover:bg-onesec-accent/90 text-white font-medium text-base px-8 py-6">
               Book Your Free Strategy Call
             </Button>

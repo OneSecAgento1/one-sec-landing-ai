@@ -11,7 +11,12 @@ import { useEffect } from "react";
 
 const Index = () => {
   useEffect(() => {
-    // Script per rendere visibili le card quando entrano nel viewport
+    // Renderizza immediatamente visibili tutte le card quando la pagina carica
+    document.querySelectorAll('.service-card, .case-card, .pillar-card, .edge-card').forEach((el) => {
+      el.classList.add('visible');
+    });
+    
+    // Aggiunge l'osservatore per future card caricate dinamicamente
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

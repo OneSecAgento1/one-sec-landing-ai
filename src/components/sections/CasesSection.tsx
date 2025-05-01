@@ -6,27 +6,6 @@ const CasesSection = () => {
   const [activeTab, setActiveTab] = useState('all');
   const casesRef = useRef<HTMLDivElement>(null);
   
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const cards = entry.target.querySelectorAll('.case-card');
-          cards.forEach((card, index) => {
-            setTimeout(() => {
-              card.classList.add('visible');
-            }, index * 100);
-          });
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    if (casesRef.current) {
-      observer.observe(casesRef.current);
-    }
-    
-    return () => observer.disconnect();
-  }, [activeTab]);
-  
   const cases = [
     {
       id: 1,
@@ -70,11 +49,11 @@ const CasesSection = () => {
     <section id="cases" className="py-24 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">CASE STUDIES</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
+          <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm">CASE STUDIES</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Results that speak for themselves
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto opacity-0 animate-fade-in delay-2">
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Explore how we've helped companies across industries transform 
             their operations with customized AI and automation solutions.
           </p>
@@ -115,14 +94,14 @@ const CasesSection = () => {
         </div>
         
         {/* Case studies grid */}
-        <div ref={casesRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredCases.map((caseStudy, index) => (
             <div 
               key={caseStudy.id}
-              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 gradient-border hover-card case-card"
+              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 gradient-border hover-card case-card visible"
               style={{
-                transform: 'translateY(20px)',
-                opacity: 0,
+                transform: 'translateY(0)',
+                opacity: 1,
                 transition: 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease-out'
               }}
             >
