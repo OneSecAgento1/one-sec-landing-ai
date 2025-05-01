@@ -32,8 +32,13 @@ const Index = () => {
       // Apply parallax effect to various decorative elements, but with reduced impact on mobile
       if (parallaxElements.current) {
         parallaxElements.current.forEach((el) => {
-          // Reduce parallax effect on mobile or disable it entirely
-          const speed = isMobileRef.current ? 0.01 : Number(el.getAttribute("data-speed") || 0.02);
+          // Disable parallax effect entirely on mobile to prevent layout issues
+          if (isMobileRef.current) {
+            el.setAttribute("style", "transform: none");
+            return;
+          }
+          
+          const speed = Number(el.getAttribute("data-speed") || 0.02);
           const yPos = -scrollPosition * speed;
           el.setAttribute("style", `transform: translateY(${yPos}px)`);
         });
@@ -95,9 +100,9 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="bg-onesec-dark min-h-screen">
+    <div className="bg-onesec-dark min-h-screen overflow-x-hidden">
       <Header />
-      <main>
+      <main className="overflow-x-hidden">
         <HeroSection />
         <ServicesSection />
         <CasesSection />
