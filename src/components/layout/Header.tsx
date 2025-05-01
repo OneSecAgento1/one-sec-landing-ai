@@ -51,13 +51,18 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center">
         <Link 
           to="/" 
-          className="flex items-center cursor-pointer select-none"
+          className="flex items-center gap-2 cursor-pointer select-none"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
         >
-          <span className="text-xl font-bold text-white">
+          <img 
+            src="/lovable-uploads/6acbd359-b91f-4f2f-a435-f335f1ea3ad8.png" 
+            alt="OneSecAgent Logo" 
+            className="h-10 w-auto"
+          />
+          <span className="text-xl font-bold text-white hidden sm:inline-block">
             OneSecAgent<span className="text-onesec-accent">.</span>
           </span>
         </Link>
