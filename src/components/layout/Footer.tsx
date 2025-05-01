@@ -7,15 +7,27 @@ const Footer = () => {
 
   return (
     <footer className="bg-onesec-dark text-white relative overflow-hidden">
-      {/* Decorative background */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="decorative-shape shape-circle bg-onesec-primary/20 w-96 h-96 -top-40 right-20 animate-rotate-slow"></div>
-        <div className="decorative-shape shape-square bg-onesec-secondary/20 w-60 h-60 bottom-0 left-20 rotate-45 animate-float"
+      {/* Decorative background with increased opacity */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="decorative-shape shape-circle bg-onesec-primary/40 w-96 h-96 -top-40 right-20 animate-rotate-slow"></div>
+        <div className="decorative-shape shape-square bg-onesec-secondary/40 w-60 h-60 bottom-0 left-20 rotate-45 animate-float"
           style={{ animationDuration: '8s' }}></div>
+        <div className="decorative-shape shape-blob bg-onesec-accent/30 w-72 h-72 top-1/3 right-1/4 animate-float"
+          style={{ animationDelay: '2s', animationDuration: '10s' }}></div>
       </div>
       
-      {/* Light texture */}
-      <div className="absolute inset-0 line-texture" style={{ opacity: '0.03' }}></div>
+      {/* Light texture with increased opacity */}
+      <div className="absolute inset-0 line-texture" style={{ opacity: '0.08' }}></div>
+      
+      {/* Background floating elements */}
+      <div className="absolute inset-0 opacity-10">
+        {[...Array(8)].map((_, i) => <div key={i} className="absolute w-24 h-24 rounded-full animate-pulse-light" style={{
+          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 70%, transparent 100%)',
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 5}s`
+        }}></div>)}
+      </div>
       
       <div className="container mx-auto py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

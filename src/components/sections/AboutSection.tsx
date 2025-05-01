@@ -54,8 +54,35 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="py-24 bg-gradient-to-b from-onesec-dark/90 to-onesec-dark relative">
-      {/* Decorative background elements with glassmorphism */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/5 via-transparent to-transparent pointer-events-none"></div>
+      {/* Decorative background elements with increased opacity */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/15 via-transparent to-transparent pointer-events-none"></div>
+      
+      {/* Dot and line textures */}
+      <div className="absolute inset-0 dot-texture" style={{ opacity: '0.1' }}></div>
+      
+      {/* Decorative shapes */}
+      <div className="decorative-shape shape-circle bg-onesec-primary/20 w-80 h-80 -top-20 -left-40 animate-rotate-slow"></div>
+      <div className="decorative-shape shape-blob bg-onesec-secondary/15 w-72 h-72 bottom-1/4 right-0 animate-float"
+        style={{ animationDelay: '1.5s' }}></div>
+      <div className="decorative-shape shape-triangle bg-onesec-accent/15 w-48 h-48 top-1/3 right-1/4 animate-float"
+        style={{ animationDelay: '3s', animationDuration: '7s' }}></div>
+      
+      {/* Background floating elements */}
+      <div className="absolute inset-0 opacity-15">
+        {[...Array(12)].map((_, i) => <div key={i} className="absolute w-24 h-24 lg:w-36 lg:h-36 rounded-full animate-pulse-light" style={{
+          background: 'radial-gradient(circle, rgba(84, 169, 255, 0.4) 0%, rgba(84, 169, 255, 0.1) 70%, transparent 100%)',
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 6}s`
+        }}></div>)}
+      </div>
+      
+      {/* Connecting line */}
+      <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+        <svg width="2" height="96" className="mx-auto">
+          <line x1="1" y1="0" x2="1" y2="96" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeDasharray="4,4" className="animate-draw" style={{ animationDelay: '1s' }} />
+        </svg>
+      </div>
       
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">

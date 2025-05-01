@@ -26,10 +26,28 @@ const TestimonialsSection = () => {
 
   return (
     <section className="py-20 bg-onesec-dark text-white overflow-hidden relative">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-onesec-primary blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-onesec-secondary blur-3xl"></div>
+      {/* Background pattern with increased opacity */}
+      <div className="absolute inset-0 opacity-15">
+        <div className="absolute top-10 left-10 w-60 h-60 rounded-full bg-onesec-primary blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-onesec-secondary blur-3xl"></div>
+      </div>
+      
+      {/* Decorative shapes */}
+      <div className="decorative-shape shape-circle bg-onesec-primary/20 w-64 h-64 -top-20 right-40 animate-rotate-slow"></div>
+      <div className="decorative-shape shape-blob bg-onesec-secondary/15 w-56 h-56 bottom-10 left-20 animate-float"
+        style={{ animationDelay: '2s' }}></div>
+      
+      {/* Dot texture */}
+      <div className="absolute inset-0 dot-texture" style={{ opacity: '0.08' }}></div>
+      
+      {/* Background floating elements */}
+      <div className="absolute inset-0 opacity-10">
+        {[...Array(6)].map((_, i) => <div key={i} className="absolute w-20 h-20 lg:w-32 lg:h-32 rounded-full animate-pulse-light" style={{
+          background: 'radial-gradient(circle, rgba(126, 100, 224, 0.4) 0%, rgba(126, 100, 224, 0.1) 70%, transparent 100%)',
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 4}s`
+        }}></div>)}
       </div>
       
       <div className="container mx-auto relative z-10">

@@ -26,20 +26,30 @@ const ServicesSection = () => {
 
   return <section id="services" className="py-24 bg-gradient-to-b from-onesec-dark to-onesec-dark/95 relative">
       {/* Decorative background elements with glassmorphism */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent pointer-events-none"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/15 via-transparent to-transparent pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-900/15 via-transparent to-transparent pointer-events-none"></div>
       
-      {/* Line texture */}
-      <div className="absolute inset-0 line-texture"></div>
+      {/* Line texture with increased opacity */}
+      <div className="absolute inset-0 line-texture" style={{ opacity: '0.1' }}></div>
       
-      {/* Decorative shapes */}
-      <div className="decorative-shape shape-square bg-onesec-primary/5 w-40 h-40 top-20 right-20 rotate-12 animate-float"></div>
-      <div className="decorative-shape shape-circle bg-onesec-secondary/8 w-64 h-64 bottom-10 left-10 animate-pulse-opacity"></div>
+      {/* Decorative shapes with increased opacity */}
+      <div className="decorative-shape shape-square bg-onesec-primary/15 w-60 h-60 top-20 right-20 rotate-12 animate-float"></div>
+      <div className="decorative-shape shape-circle bg-onesec-secondary/20 w-80 h-80 bottom-10 left-10 animate-pulse-opacity"></div>
+      
+      {/* Background pattern with pulses */}
+      <div className="absolute inset-0 opacity-15">
+        {[...Array(10)].map((_, i) => <div key={i} className="absolute w-32 h-32 lg:w-48 lg:h-48 rounded-full animate-pulse-light" style={{
+          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(99, 102, 241, 0.1) 70%, transparent 100%)',
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 5}s`
+        }}></div>)}
+      </div>
       
       {/* Connecting line to next section */}
       <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 z-10">
         <svg width="2" height="96" className="mx-auto">
-          <line x1="1" y1="0" x2="1" y2="96" stroke="rgba(255,255,255,0.15)" strokeWidth="2" strokeDasharray="4,4" className="animate-draw" style={{ animationDelay: '0.5s' }} />
+          <line x1="1" y1="0" x2="1" y2="96" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeDasharray="4,4" className="animate-draw" style={{ animationDelay: '0.5s' }} />
         </svg>
       </div>
       
