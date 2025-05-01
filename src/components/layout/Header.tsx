@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { CustomTooltip } from "@/components/ui/custom-tooltip";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,13 +37,23 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <NavLink href="#services">Services</NavLink>
-          <NavLink href="#cases">Case Studies</NavLink>
-          <NavLink href="#about">About Us</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
-          <Button className="bg-onesec-primary hover:bg-onesec-primary/90 text-white">
-            Get Started
-          </Button>
+          <CustomTooltip content="Our AI & automation solutions">
+            <NavLink href="#services">Services</NavLink>
+          </CustomTooltip>
+          <CustomTooltip content="See our success stories">
+            <NavLink href="#cases">Case Studies</NavLink>
+          </CustomTooltip>
+          <CustomTooltip content="Learn about our approach">
+            <NavLink href="#about">About Us</NavLink>
+          </CustomTooltip>
+          <CustomTooltip content="Get in touch with our team">
+            <NavLink href="#contact">Contact</NavLink>
+          </CustomTooltip>
+          <CustomTooltip content="Schedule your free consultation">
+            <Button className="bg-onesec-primary hover:bg-onesec-primary/90 text-white">
+              Get Started
+            </Button>
+          </CustomTooltip>
         </nav>
 
         {/* Mobile menu button */}

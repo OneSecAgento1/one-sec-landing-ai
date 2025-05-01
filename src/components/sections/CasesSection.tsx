@@ -1,44 +1,86 @@
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
+import { CustomTooltip } from "@/components/ui/custom-tooltip";
+import { ChartBarIcon, Zap, Bot, BarChart3 } from "lucide-react";
 
 const CasesSection = () => {
   const [activeTab, setActiveTab] = useState('all');
+  const [visibleIcons, setVisibleIcons] = useState<number[]>([]);
+  const iconsRef = useRef<(HTMLDivElement | null)[]>([]);
   
   const cases = [
     {
       id: 1,
       title: "Supply Chain Optimization",
       category: "ai",
+      icon: <BarChart3 className="w-6 h-6 text-white" />,
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60",
       client: "LogiTech Industries",
-      description: "Implementation of a predictive system to optimize the supply chain, reducing operational costs by 30%."
+      description: "Implementation of a predictive system to optimize the supply chain, reducing operational costs by 30%.",
+      tooltip: "AI-powered supply chain optimization"
     },
     {
       id: 2,
       title: "Customer Support Chatbot",
       category: "chatbot",
+      icon: <Bot className="w-6 h-6 text-white" />,
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60",
       client: "TelCare Services",
-      description: "Development of a virtual assistant capable of handling 70% of customer requests, improving satisfaction and reducing response times."
+      description: "Development of a virtual assistant capable of handling 70% of customer requests, improving satisfaction and reducing response times.",
+      tooltip: "24/7 customer support automation"
     },
     {
       id: 3,
       title: "Workflow Automation Platform",
       category: "automation",
+      icon: <Zap className="w-6 h-6 text-white" />,
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60",
       client: "FinBiz Solutions",
-      description: "Creation of a platform for automating business processes, with a 45% increase in productivity."
+      description: "Creation of a platform for automating business processes, with a 45% increase in productivity.",
+      tooltip: "End-to-end workflow automation"
     },
     {
       id: 4,
       title: "Predictive Sales Analysis",
       category: "data",
+      icon: <ChartBarIcon className="w-6 h-6 text-white" />,
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&auto=format&fit=crop&q=60",
       client: "RetailPro Corp",
-      description: "Implementation of predictive analytics models to optimize sales strategies, resulting in a 25% increase in revenue."
+      description: "Implementation of predictive analytics models to optimize sales strategies, resulting in a 25% increase in revenue.",
+      tooltip: "Data-driven sales forecasting"
     }
   ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = Number(entry.target.getAttribute('data-icon-id'));
+          if (entry.isIntersecting && !visibleIcons.includes(id)) {
+            setVisibleIcons(prev => [...prev, id]);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    iconsRef.current.forEach(el => {
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      iconsRef.current.forEach(el => {
+        if (el) observer.unobserve(el);
+      });
+    };
+  }, [visibleIcons]);
+
+  // Animation variants for icons
+  const getIconAnimation = (id: number) => {
+    const animations = ['animate-icon-bounce', 'animate-icon-pulse', 'animate-icon-spin'];
+    return animations[(id - 1) % animations.length];
+  };
   
   const filteredCases = activeTab === 'all' ? 
     cases : 
@@ -117,6 +159,18 @@ const CasesSection = () => {
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
                 </div>
+                <CustomTooltip content={caseStudy.tooltip} side="left">
+                  <div 
+                    ref={el => iconsRef.current[caseStudy.id] = el}
+                    data-icon-id={caseStudy.id}
+                    className={`absolute bottom-4 right-4 w-10 h-10 rounded-full 
+                      bg-gradient-to-r from-onesec-primary to-onesec-secondary 
+                      flex items-center justify-center z-20 shadow-lg
+                      ${visibleIcons.includes(caseStudy.id) ? getIconAnimation(caseStudy.id) : ''}`}
+                  >
+                    {caseStudy.icon}
+                  </div>
+                </CustomTooltip>
               </div>
               <div className="p-6">
                 <span className="text-xs font-semibold text-onesec-primary uppercase tracking-wider">
