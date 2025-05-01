@@ -6,8 +6,18 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-onesec-dark text-white">
-      <div className="container mx-auto py-12">
+    <footer className="bg-onesec-dark text-white relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="decorative-shape shape-circle bg-onesec-primary/20 w-96 h-96 -top-40 right-20 animate-rotate-slow"></div>
+        <div className="decorative-shape shape-square bg-onesec-secondary/20 w-60 h-60 bottom-0 left-20 rotate-45 animate-float"
+          style={{ animationDuration: '8s' }}></div>
+      </div>
+      
+      {/* Light texture */}
+      <div className="absolute inset-0 line-texture" style={{ opacity: '0.03' }}></div>
+      
+      <div className="container mx-auto py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and description */}
           <div>

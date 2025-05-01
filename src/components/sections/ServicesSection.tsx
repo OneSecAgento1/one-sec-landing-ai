@@ -29,6 +29,20 @@ const ServicesSection = () => {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent pointer-events-none"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent pointer-events-none"></div>
       
+      {/* Line texture */}
+      <div className="absolute inset-0 line-texture"></div>
+      
+      {/* Decorative shapes */}
+      <div className="decorative-shape shape-square bg-onesec-primary/5 w-40 h-40 top-20 right-20 rotate-12 animate-float"></div>
+      <div className="decorative-shape shape-circle bg-onesec-secondary/8 w-64 h-64 bottom-10 left-10 animate-pulse-opacity"></div>
+      
+      {/* Connecting line to next section */}
+      <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 z-10">
+        <svg width="2" height="96" className="mx-auto">
+          <line x1="1" y1="0" x2="1" y2="96" stroke="rgba(255,255,255,0.15)" strokeWidth="2" strokeDasharray="4,4" className="animate-draw" style={{ animationDelay: '0.5s' }} />
+        </svg>
+      </div>
+      
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">Services</p>

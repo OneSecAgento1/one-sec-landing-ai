@@ -7,6 +7,19 @@ const HeroSection = () => {
       {/* Animated background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-onesec-dark via-onesec-dark to-onesec-primary/20 bg-gradient-animation"></div>
+        
+        {/* Background pattern with dot texture */}
+        <div className="absolute inset-0 dot-texture"></div>
+        
+        {/* Decorative shapes */}
+        <div className="decorative-shape shape-circle bg-onesec-primary/10 w-64 h-64 -top-20 -left-20 animate-rotate-slow"></div>
+        <div className="decorative-shape shape-circle bg-onesec-secondary/10 w-96 h-96 -bottom-40 -right-40 animate-rotate-slow" 
+          style={{ animationDuration: '25s', animationDirection: 'reverse' }}></div>
+        <div className="decorative-shape shape-blob bg-onesec-accent/5 w-72 h-72 top-1/4 -right-20 animate-float"
+          style={{ animationDelay: '2s' }}></div>
+        <div className="decorative-shape shape-triangle bg-onesec-primary/5 w-48 h-48 bottom-1/4 left-10 animate-float"
+          style={{ animationDelay: '1s' }}></div>
+        
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-5">
           {[...Array(20)].map((_, i) => <div key={i} className="absolute w-40 h-40 lg:w-64 lg:h-64 rounded-full animate-pulse-light" style={{
@@ -44,7 +57,12 @@ const HeroSection = () => {
           </div>
         </div>
         
-        {/* Down arrow removed as requested */}
+        {/* Connecting line */}
+        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 w-1 h-24">
+          <svg width="2" height="96" className="mx-auto">
+            <line x1="1" y1="0" x2="1" y2="96" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeDasharray="4,4" className="animate-draw" style={{ animationDelay: '1s' }} />
+          </svg>
+        </div>
       </div>
     </section>
   );
