@@ -58,7 +58,7 @@ const Header = () => {
           }}
         >
           <img 
-            src="/lovable-uploads/6acbd359-b91f-4f2f-a435-f335f1ea3ad8.png" 
+            src="/lovable-uploads/ccada2de-dd07-40b0-818b-5f6b70f048b0.png" 
             alt="OneSecAgent Logo" 
             className="h-10 w-auto"
             onError={(e) => {
