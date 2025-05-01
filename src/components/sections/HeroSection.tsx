@@ -1,6 +1,7 @@
+
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef } from "react";
-import { ArrowRight } from "lucide-react";
+
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -49,7 +50,8 @@ const HeroSection = () => {
       });
     }
   };
-  return <section ref={sectionRef} className="relative min-h-screen pt-24 pb-48 flex items-center bg-onesec-dark overflow-hidden">
+  
+  return <section ref={sectionRef} className="relative min-h-[90vh] md:min-h-screen pt-16 pb-20 md:pt-24 md:pb-48 flex items-center bg-onesec-dark overflow-hidden">
       {/* Simplified background with reduced elements and lower opacity */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-onesec-dark via-onesec-dark to-transparent bg-gradient-animation"></div>
@@ -87,27 +89,27 @@ const HeroSection = () => {
       </div>
       
       <div className="container mx-auto relative z-10 px-4">
-        <div className="lg:max-w-4xl mx-auto text-center mb-12">
+        <div className="lg:max-w-4xl mx-auto text-center mb-8 md:mb-12">
           {/* Enhanced hero text with staggered animations and explicit pointer-events-auto */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-on-scroll opacity-0 animate-slide-up select-text">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 animate-on-scroll opacity-0 animate-slide-up select-text">
             <span className="text-white">Grow your B2B business </span>
             <span className="gradient-text-enhanced">without growing your team.</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-300 mb-8 mx-auto animate-on-scroll opacity-0 animate-slide-up-delay-1 select-text">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 md:mb-8 mx-auto animate-on-scroll opacity-0 animate-slide-up-delay-1 select-text">
             We build AI + automation systems for agencies, SaaS, and consultancies that want to grow faster — by eliminating manual work and closing more deals.
           </p>
           
-          <p className="text-sm text-gray-400 mb-8 animate-on-scroll opacity-0 animate-slide-up-delay-2 select-text">
+          <p className="text-xs sm:text-sm text-gray-400 mb-6 md:mb-8 animate-on-scroll opacity-0 animate-slide-up-delay-2 select-text">
             Trusted by agencies, SaaS, and consultants automating smarter to grow faster.
           </p>
           
           {/* Enhanced buttons with consistent handling and proper interactivity */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-on-scroll opacity-0 animate-slide-up-delay-3 relative z-30">
-            <Button size="lg" onClick={scrollToContact} type="button" className="text-white px-8 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer relative z-30 bg-[#4f8cff] font-semibold text-base">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 animate-on-scroll opacity-0 animate-slide-up-delay-3 relative z-30">
+            <Button size="lg" onClick={scrollToContact} type="button" className="text-white px-6 sm:px-8 py-3 sm:py-4 md:py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer relative z-30 bg-[#4f8cff] font-semibold text-sm sm:text-base">
               Book Your Free Strategy Call
             </Button>
-            <Button size="lg" onClick={scrollToServices} type="button" className="bg-[#2c2c3a] border border-[#4f8cff] text-white hover:bg-[#2c2c3a]/90 hover:border-[#4f8cff]/90 font-medium px-8 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue cursor-pointer relative z-30 rounded-md">
+            <Button size="lg" onClick={scrollToServices} type="button" className="bg-[#2c2c3a] border border-[#4f8cff] text-white hover:bg-[#2c2c3a]/90 hover:border-[#4f8cff]/90 font-medium px-6 sm:px-8 py-3 sm:py-4 md:py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue cursor-pointer relative z-30 rounded-md text-sm sm:text-base">
               See What We Automate
             </Button>
           </div>
@@ -123,4 +125,5 @@ const HeroSection = () => {
       </div>
     </section>;
 };
+
 export default HeroSection;

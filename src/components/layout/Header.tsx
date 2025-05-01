@@ -45,16 +45,16 @@ const Header = () => {
     }
   };
   
-  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-4 bg-onesec-dark/95 backdrop-blur-md shadow-md' : 'py-6 bg-onesec-dark'}`}>
+  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-3 md:py-4 bg-onesec-dark/95 backdrop-blur-md shadow-md' : 'py-3 md:py-6 bg-onesec-dark'}`}>
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2 cursor-pointer select-none">
-          <img src="/lovable-uploads/ccada2de-dd07-40b0-818b-5f6b70f048b0.png" alt="OneSecAgent Logo" className="h-20 w-auto" onError={e => {
+          <img src="/lovable-uploads/ccada2de-dd07-40b0-818b-5f6b70f048b0.png" alt="OneSecAgent Logo" className="h-14 md:h-18 w-auto" onError={e => {
           console.error("Logo failed to load");
           const target = e.target as HTMLImageElement;
           target.onerror = null;
           target.style.display = 'none';
         }} />
-          <span className="text-xl font-bold text-white hidden sm:inline-block">
+          <span className="text-lg md:text-xl font-bold text-white hidden sm:inline-block">
             OneSecAgent<span className="text-onesec-accent">.</span>
           </span>
         </Link>
@@ -65,7 +65,6 @@ const Header = () => {
             <NavLink onClick={() => scrollToSection('#services')}>Services</NavLink>
             <NavLink onClick={() => scrollToSection('#cases')}>Case Studies</NavLink>
             <NavLink onClick={() => scrollToSection('#about')}>About Us</NavLink>
-            <NavLink onClick={() => scrollToSection('#contact')}>Contact</NavLink>
             <Button onClick={() => scrollToSection('#contact')} type="button" className="text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue cursor-pointer bg-[#4f8cff]">
               Get Started
             </Button>
@@ -97,9 +96,6 @@ const Header = () => {
                 </MobileNavLink>
                 <MobileNavLink onClick={() => scrollToSection('#about')}>
                   About Us
-                </MobileNavLink>
-                <MobileNavLink onClick={() => scrollToSection('#contact')}>
-                  Contact
                 </MobileNavLink>
                 <Button className="bg-onesec-primary hover:bg-onesec-primary/90 text-white w-full transition-all duration-300 hover:shadow-glow-blue cursor-pointer" onClick={() => scrollToSection('#contact')} type="button">
                   Get Started
