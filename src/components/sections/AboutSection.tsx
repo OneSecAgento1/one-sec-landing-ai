@@ -1,4 +1,3 @@
-
 import { Zap, Settings, Clock, TrendingUp, Users, Award, Gauge } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -90,8 +89,7 @@ const AboutSection = () => {
 
   // Animation variants for icons
   const getIconAnimation = (id: number) => {
-    const animations = ['animate-icon-float', 'animate-icon-pulse'];
-    return animations[(id - 1) % animations.length];
+    return id % 2 === 0 ? 'animate-icon-float' : 'animate-icon-pulse';
   };
 
   return (
@@ -120,7 +118,7 @@ const AboutSection = () => {
                 <div 
                   ref={el => iconsRef.current[pillar.id] = el}
                   data-icon-id={pillar.id}
-                  className={`w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6 mx-auto ${
+                  className={`w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6 mx-auto transition-transform duration-700 ${
                     visibleIcons.includes(pillar.id) ? getIconAnimation(pillar.id) : ''
                   }`}
                 >
@@ -151,7 +149,7 @@ const AboutSection = () => {
                     <div 
                       ref={el => iconsRef.current[edge.id] = el}
                       data-icon-id={edge.id}
-                      className={`w-12 h-12 rounded-full bg-gray-800/80 flex items-center justify-center mb-4 mx-auto ${
+                      className={`w-12 h-12 rounded-full bg-gray-800/80 flex items-center justify-center mb-4 mx-auto transition-transform duration-700 ${
                         visibleIcons.includes(edge.id) ? getIconAnimation(edge.id) : ''
                       }`}
                     >

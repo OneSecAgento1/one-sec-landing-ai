@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -131,19 +132,25 @@ export default {
           }
         },
         'icon-float': {
-          '0%, 100%': {
+          '0%': {
             transform: 'translateY(0)'
           },
           '50%': {
-            transform: 'translateY(-4px)'
+            transform: 'translateY(-3px)'
+          },
+          '100%': {
+            transform: 'translateY(0)'
           }
         },
         'icon-pulse': {
-          '0%, 100%': {
+          '0%': {
             transform: 'scale(1)'
           },
           '50%': {
-            transform: 'scale(1.03)'
+            transform: 'scale(1.02)'
+          },
+          '100%': {
+            transform: 'scale(1)'
           }
         }
 			},
@@ -154,8 +161,8 @@ export default {
         'slide-in': 'slide-in 0.5s ease-out forwards',
         'pulse-light': 'pulse-light 2s infinite',
         'ripple': 'ripple 0.6s linear forwards',
-        'icon-float': 'icon-float 6s ease-in-out infinite',
-        'icon-pulse': 'icon-pulse 6s ease-in-out infinite'
+        'icon-float': 'icon-float 10s ease-in-out infinite',
+        'icon-pulse': 'icon-pulse 10s ease-in-out infinite'
 			},
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

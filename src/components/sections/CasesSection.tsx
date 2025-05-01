@@ -77,8 +77,7 @@ const CasesSection = () => {
 
   // Animation variants for icons
   const getIconAnimation = (id: number) => {
-    const animations = ['animate-icon-float', 'animate-icon-pulse'];
-    return animations[(id - 1) % animations.length];
+    return id % 2 === 0 ? 'animate-icon-float' : 'animate-icon-pulse';
   };
   
   const filteredCases = activeTab === 'all' ? 
@@ -164,7 +163,7 @@ const CasesSection = () => {
                     data-icon-id={caseStudy.id}
                     className={`absolute bottom-4 right-4 w-10 h-10 rounded-full 
                       bg-gradient-to-r from-onesec-primary to-onesec-secondary 
-                      flex items-center justify-center z-20 shadow-lg
+                      flex items-center justify-center z-20 shadow-lg transition-transform duration-700
                       ${visibleIcons.includes(caseStudy.id) ? getIconAnimation(caseStudy.id) : ''}`}
                   >
                     {caseStudy.icon}

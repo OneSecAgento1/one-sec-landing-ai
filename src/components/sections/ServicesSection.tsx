@@ -1,4 +1,3 @@
-
 import { Zap, ArrowRightLeft, TrendingUp, Users } from "lucide-react";
 import { CustomTooltip } from "@/components/ui/custom-tooltip";
 import { useEffect, useRef, useState } from 'react';
@@ -59,8 +58,7 @@ const ServicesSection = () => {
 
   // Animation variants for icons
   const getIconAnimation = (id: number) => {
-    const animations = ['animate-icon-float', 'animate-icon-pulse'];
-    return animations[(id - 1) % animations.length];
+    return id % 2 === 0 ? 'animate-icon-float' : 'animate-icon-pulse';
   };
 
   return <section id="services" className="py-24 bg-gradient-to-b from-onesec-dark to-onesec-dark/95">
@@ -94,7 +92,7 @@ const ServicesSection = () => {
                   ref={el => iconsRef.current[solution.id] = el} 
                   data-icon-id={solution.id}
                   className={`w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6
-                    transition-transform duration-300 group-hover:scale-110 ${
+                    transition-transform duration-700 ${
                     visibleIcons.includes(solution.id) ? getIconAnimation(solution.id) : ''
                   }`}
                 >
