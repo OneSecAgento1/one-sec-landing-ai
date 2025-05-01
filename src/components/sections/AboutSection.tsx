@@ -53,7 +53,10 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-onesec-dark/90 to-onesec-dark">
+    <section id="about" className="py-24 bg-gradient-to-b from-onesec-dark/90 to-onesec-dark relative">
+      {/* Decorative background elements with glassmorphism */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/5 via-transparent to-transparent pointer-events-none"></div>
+      
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">ABOUT US</p>
@@ -66,12 +69,13 @@ const AboutSection = () => {
           </p>
         </div>
         
-        {/* Three value cards */}
+        {/* Three value cards with glassmorphism */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {pillars.map((pillar, index) => (
             <div 
               key={pillar.id} 
-              className="bg-gray-800/50 p-8 rounded-xl border border-gray-700 hover:border-onesec-primary/50 transition-all text-center opacity-0 animate-fade-in"
+              className="glassmorphism bg-white/5 backdrop-blur-sm p-8 rounded-xl border border-white/10 
+                hover:border-onesec-primary/50 transition-all text-center opacity-0 animate-fade-in"
               style={{ animationDelay: `${0.3 + index * 0.1}s` }}
             >
               <div className="w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6 mx-auto">
@@ -83,7 +87,7 @@ const AboutSection = () => {
           ))}
         </div>
 
-        {/* Our Edge section */}
+        {/* Our Edge section with glassmorphism */}
         <div className="mt-24">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-6 opacity-0 animate-fade-in">Our Edge</h2>
@@ -93,7 +97,8 @@ const AboutSection = () => {
             {edges.map((edge, index) => (
               <Card 
                 key={edge.id} 
-                className="bg-gradient-to-br from-gray-800/70 to-gray-900/90 border-gray-700 hover:border-onesec-accent/50 transition-all duration-300 opacity-0 animate-fade-in"
+                className="glassmorphism bg-white/5 backdrop-blur-sm border-white/10 
+                  hover:border-onesec-accent/50 transition-all duration-300 opacity-0 animate-fade-in"
                 style={{ animationDelay: `${0.5 + index * 0.1}s` }}
               >
                 <CardContent className="p-6 text-center">
@@ -108,8 +113,8 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="mt-24 bg-gray-800/30 rounded-2xl p-10 max-w-4xl mx-auto text-center border border-gray-700 opacity-0 animate-fade-in" style={{ animationDelay: "0.7s" }}>
+        {/* CTA Section enhanced glassmorphism */}
+        <div className="mt-24 glassmorphism bg-white/5 backdrop-blur-xl rounded-2xl p-10 max-w-4xl mx-auto text-center border border-white/15 opacity-0 animate-fade-in" style={{ animationDelay: "0.7s" }}>
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Ready to fix what's slowing you down and scale with AI + Automations?
           </h2>

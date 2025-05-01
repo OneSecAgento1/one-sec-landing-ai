@@ -24,7 +24,11 @@ const ServicesSection = () => {
     description: "Keep customers longer with personalized CRM flows and onboarding experiences that scale."
   }];
 
-  return <section id="services" className="py-24 bg-gradient-to-b from-onesec-dark to-onesec-dark/95">
+  return <section id="services" className="py-24 bg-gradient-to-b from-onesec-dark to-onesec-dark/95 relative">
+      {/* Decorative background elements with glassmorphism */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent pointer-events-none"></div>
+      
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">Services</p>
@@ -39,8 +43,9 @@ const ServicesSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {solutions.map((solution, index) => <div key={solution.id} 
-            className={`service-card bg-gradient-to-br from-gray-900/70 to-gray-800/50 p-6 rounded-xl 
-            border border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:rotate-1
+            className={`service-card glassmorphism bg-white/5 backdrop-blur-sm 
+            border border-white/10 p-6 rounded-xl transition-all duration-300 
+            hover:-translate-y-2 hover:rotate-1 hover:bg-white/10
             hover:shadow-[0_20px_50px_rgba(84,169,255,0.15)] 
             hover:border-transparent hover:card-border-gradient opacity-0 animate-fade-in`}
             style={{
@@ -48,7 +53,7 @@ const ServicesSection = () => {
             }}
           >
               <div className="w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6
-                transition-transform duration-300 group-hover:scale-110">
+                backdrop-blur-md transition-transform duration-300 group-hover:scale-110">
                 {solution.icon}
               </div>
               <h3 className="text-xl font-bold text-white mb-4">{solution.title}</h3>
