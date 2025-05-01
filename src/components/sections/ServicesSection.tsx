@@ -25,7 +25,9 @@ const ServicesSection = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">Services</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 opacity-0 animate-fade-in delay-1">Your Problems are Our Solutions</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 opacity-0 animate-fade-in delay-1">Your Problems 
+are 
+Our Solutions</h2>
           <p className="text-gray-300 max-w-2xl mx-auto opacity-0 animate-fade-in delay-2">
             We address your specific challenges with cutting-edge AI and automation technologies,
             delivering measurable results for your business.
