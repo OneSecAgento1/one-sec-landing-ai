@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { TabButton } from './TabButton';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CaseCard } from './CaseCard';
 import { caseData } from './caseData';
 
@@ -11,6 +11,10 @@ const CasesSection = () => {
     caseData : 
     caseData.filter(c => c.category === activeTab);
   
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+  };
+  
   return (
     <section id="cases" className="py-24 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
       {/* Decorative background elements with increased opacity */}
@@ -18,18 +22,18 @@ const CasesSection = () => {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-100/30 via-transparent to-transparent dark:from-purple-900/15 pointer-events-none"></div>
       
       {/* Dot texture background with increased opacity */}
-      <div className="absolute inset-0 dot-texture" style={{ opacity: '0.1' }}></div>
+      <div className="absolute inset-0 dot-texture pointer-events-none" style={{ opacity: '0.1' }}></div>
       
       {/* Decorative shapes with increased opacity */}
-      <div className="decorative-shape shape-circle bg-onesec-primary/20 w-80 h-80 -top-20 -right-20 animate-float"
+      <div className="decorative-shape shape-circle bg-onesec-primary/20 w-80 h-80 -top-20 -right-20 animate-float pointer-events-none"
         style={{ animationDelay: '1.5s' }}></div>
-      <div className="decorative-shape shape-blob bg-onesec-secondary/15 w-96 h-96 -bottom-40 -left-20 animate-rotate-slow"></div>
-      <div className="decorative-shape shape-triangle bg-onesec-accent/15 w-48 h-48 top-1/4 left-1/4 animate-float"
+      <div className="decorative-shape shape-blob bg-onesec-secondary/15 w-96 h-96 -bottom-40 -left-20 animate-rotate-slow pointer-events-none"></div>
+      <div className="decorative-shape shape-triangle bg-onesec-accent/15 w-48 h-48 top-1/4 left-1/4 animate-float pointer-events-none"
         style={{ animationDelay: '2s' }}></div>
       
       {/* Background floating elements */}
-      <div className="absolute inset-0 opacity-15">
-        {[...Array(8)].map((_, i) => <div key={i} className="absolute w-24 h-24 lg:w-40 lg:h-40 rounded-full animate-pulse-light" style={{
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
+        {[...Array(8)].map((_, i) => <div key={i} className="absolute w-24 h-24 lg:w-40 lg:h-40 rounded-full animate-pulse-light pointer-events-none" style={{
           background: 'radial-gradient(circle, rgba(126, 100, 224, 0.4) 0%, rgba(126, 100, 224, 0.1) 70%, transparent 100%)',
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
@@ -38,14 +42,14 @@ const CasesSection = () => {
       </div>
       
       {/* Connecting line to next section with increased opacity */}
-      <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 z-10">
+      <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 z-10 pointer-events-none">
         <svg width="2" height="96" className="mx-auto">
           <line x1="1" y1="0" x2="1" y2="96" stroke="rgba(84,169,255,0.3)" strokeWidth="2" strokeDasharray="4,4" className="animate-draw" style={{ animationDelay: '0.8s' }} />
         </svg>
       </div>
       
       <div className="container mx-auto relative z-10">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 select-text">
           <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">CASE STUDIES</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
             Results that speak for themselves
@@ -56,38 +60,46 @@ const CasesSection = () => {
           </p>
         </div>
         
-        {/* Tabs with glassmorphism */}
-        <div className="glassmorphism rounded-2xl p-2 flex flex-wrap justify-center gap-2 mb-10 backdrop-blur-md max-w-3xl mx-auto">
-          <TabButton 
-            active={activeTab === 'all'} 
-            onClick={() => setActiveTab('all')}
-          >
-            All
-          </TabButton>
-          <TabButton 
-            active={activeTab === 'ai'} 
-            onClick={() => setActiveTab('ai')}
-          >
-            AI Solutions
-          </TabButton>
-          <TabButton 
-            active={activeTab === 'automation'} 
-            onClick={() => setActiveTab('automation')}
-          >
-            Automation
-          </TabButton>
-          <TabButton 
-            active={activeTab === 'chatbot'} 
-            onClick={() => setActiveTab('chatbot')}
-          >
-            Chatbot
-          </TabButton>
-          <TabButton 
-            active={activeTab === 'data'} 
-            onClick={() => setActiveTab('data')}
-          >
-            Data Analysis
-          </TabButton>
+        {/* Tabs with shadcn UI component */}
+        <div className="max-w-3xl mx-auto mb-10">
+          <Tabs defaultValue="all" value={activeTab} onValueChange={handleTabChange} className="w-full">
+            <div className="flex justify-center">
+              <TabsList className="glassmorphism backdrop-blur-md p-1.5 bg-white/50 dark:bg-gray-800/50">
+                <TabsTrigger 
+                  value="all" 
+                  className="rounded-full px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-onesec-primary data-[state=active]:to-onesec-secondary data-[state=active]:text-white"
+                >
+                  All
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="ai" 
+                  className="rounded-full px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-onesec-primary data-[state=active]:to-onesec-secondary data-[state=active]:text-white"
+                >
+                  AI Solutions
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="automation" 
+                  className="rounded-full px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-onesec-primary data-[state=active]:to-onesec-secondary data-[state=active]:text-white"
+                >
+                  Automation
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="chatbot" 
+                  className="rounded-full px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-onesec-primary data-[state=active]:to-onesec-secondary data-[state=active]:text-white"
+                >
+                  Chatbot
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="data" 
+                  className="rounded-full px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-onesec-primary data-[state=active]:to-onesec-secondary data-[state=active]:text-white"
+                >
+                  Data Analysis
+                </TabsTrigger>
+              </TabsList>
+            </div>
+            
+            {/* We don't actually need the TabsContent components since we're filtering based on the active tab value */}
+          </Tabs>
         </div>
         
         {/* Case studies grid */}
