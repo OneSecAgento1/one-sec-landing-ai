@@ -52,6 +52,21 @@ const AboutSection = () => {
     }
   ];
 
+  // Scroll to contact section for booking
+  const scrollToContact = () => {
+    const contactSection = document.querySelector("#contact");
+    if (contactSection) {
+      const headerOffset = 80;
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="about" className="py-24 bg-gradient-to-b from-onesec-dark/90 to-onesec-dark relative">
       {/* Decorative background elements with increased opacity */}
@@ -148,7 +163,11 @@ const AboutSection = () => {
           <p className="text-gray-300 mb-8">
             Let's talk. 15 minutes to see if we're a fit — no fluff, just value.
           </p>
-          <Button size="lg" className="bg-onesec-primary hover:bg-onesec-primary/90 text-white px-8 py-6 text-lg">
+          <Button 
+            size="lg" 
+            className="bg-onesec-primary hover:bg-onesec-primary/90 text-white px-8 py-6 text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue"
+            onClick={scrollToContact}
+          >
             Book Your Free Strategy Call
           </Button>
         </div>

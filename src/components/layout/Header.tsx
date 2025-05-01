@@ -21,6 +21,27 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scroll to section with proper offset handling
+  const scrollToSection = (sectionId: string) => {
+    const section = document.querySelector(sectionId);
+    if (section) {
+      // Add offset for the fixed header
+      const headerOffset = 80;
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    
+    // Close mobile menu if open
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -36,11 +57,14 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <NavLink href="#services">Services</NavLink>
-          <NavLink href="#cases">Case Studies</NavLink>
-          <NavLink href="#about">About Us</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
-          <Button className="bg-onesec-primary hover:bg-onesec-primary/90 text-white">
+          <NavLink onClick={() => scrollToSection('#services')}>Services</NavLink>
+          <NavLink onClick={() => scrollToSection('#cases')}>Case Studies</NavLink>
+          <NavLink onClick={() => scrollToSection('#about')}>About Us</NavLink>
+          <NavLink onClick={() => scrollToSection('#contact')}>Contact</NavLink>
+          <Button 
+            className="bg-onesec-primary hover:bg-onesec-primary/90 text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue"
+            onClick={() => scrollToSection('#contact')}
+          >
             Get Started
           </Button>
         </nav>
@@ -49,6 +73,7 @@ const Header = () => {
         <button 
           className="md:hidden text-white"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -58,19 +83,22 @@ const Header = () => {
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-onesec-dark/95 backdrop-blur-md p-4 shadow-lg">
           <nav className="flex flex-col space-y-4">
-            <MobileNavLink href="#services" onClick={() => setMobileMenuOpen(false)}>
+            <MobileNavLink onClick={() => scrollToSection('#services')}>
               Services
             </MobileNavLink>
-            <MobileNavLink href="#cases" onClick={() => setMobileMenuOpen(false)}>
+            <MobileNavLink onClick={() => scrollToSection('#cases')}>
               Case Studies
             </MobileNavLink>
-            <MobileNavLink href="#about" onClick={() => setMobileMenuOpen(false)}>
+            <MobileNavLink onClick={() => scrollToSection('#about')}>
               About Us
             </MobileNavLink>
-            <MobileNavLink href="#contact" onClick={() => setMobileMenuOpen(false)}>
+            <MobileNavLink onClick={() => scrollToSection('#contact')}>
               Contact
             </MobileNavLink>
-            <Button className="bg-onesec-primary hover:bg-onesec-primary/90 text-white w-full">
+            <Button 
+              className="bg-onesec-primary hover:bg-onesec-primary/90 text-white w-full transition-all duration-300 hover:shadow-glow-blue"
+              onClick={() => scrollToSection('#contact')}
+            >
               Get Started
             </Button>
           </nav>
@@ -80,23 +108,22 @@ const Header = () => {
   );
 };
 
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <a
-    href={href}
+const NavLink = ({ onClick, children }: { onClick: () => void; children: React.ReactNode }) => (
+  <button
+    onClick={onClick}
     className="text-white/80 hover:text-white transition-colors font-medium"
   >
     {children}
-  </a>
+  </button>
 );
 
-const MobileNavLink = ({ href, onClick, children }: { href: string; onClick: () => void; children: React.ReactNode }) => (
-  <a
-    href={href}
-    className="text-white/80 hover:text-white transition-colors font-medium block py-2"
+const MobileNavLink = ({ onClick, children }: { onClick: () => void; children: React.ReactNode }) => (
+  <button
     onClick={onClick}
+    className="text-white/80 hover:text-white transition-colors font-medium block py-2 w-full text-left"
   >
     {children}
-  </a>
+  </button>
 );
 
 export default Header;

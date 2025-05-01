@@ -9,7 +9,7 @@ import AboutSection from "@/components/sections/AboutSection";
 import ContactSection from "@/components/sections/ContactSection";
 
 const Index = () => {
-  // Set up scroll-based parallax effects
+  // Set up scroll-based parallax effects and smooth scrolling
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -33,30 +33,45 @@ const Index = () => {
       });
     };
 
-    // Set up smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const target = document.querySelector(this.getAttribute('href') || '');
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
+    // Set up improved smooth scroll for anchor links - moved inside useEffect
+    const setupSmoothScroll = () => {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+          
+          const target = document.querySelector(targetId);
+          if (target) {
+            // Add offset for the fixed header
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    };
+
+    // Initialize scroll handler and smooth scrolling
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    setupSmoothScroll();
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      // We don't need to remove the click listeners as they'll be garbage collected
+    };
   }, []);
 
   return (
     <div className="bg-onesec-dark min-h-screen">
       <Header />
       <main>
-        {/* The sections now have improved transitions between them */}
         <HeroSection />
         <ServicesSection />
         <CasesSection />

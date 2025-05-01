@@ -1,5 +1,8 @@
+
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef } from "react";
+import { ArrowRight } from "lucide-react";
+
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -20,6 +23,37 @@ const HeroSection = () => {
       animatedElements?.forEach(el => observer.unobserve(el));
     };
   }, []);
+
+  // Scroll to services section
+  const scrollToServices = () => {
+    const servicesSection = document.querySelector("#services");
+    if (servicesSection) {
+      const headerOffset = 80;
+      const elementPosition = servicesSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Scroll to contact section for booking
+  const scrollToContact = () => {
+    const contactSection = document.querySelector("#contact");
+    if (contactSection) {
+      const headerOffset = 80;
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+  
   return <section ref={sectionRef} className="relative min-h-screen pt-24 pb-48 flex items-center bg-onesec-dark overflow-hidden">
       {/* Enhanced animated background with more dynamic elements */}
       <div className="absolute inset-0 z-0">
@@ -79,12 +113,20 @@ const HeroSection = () => {
             Trusted by agencies, SaaS, and consultants automating smarter to grow faster.
           </p>
           
-          {/* Enhanced buttons with hover effects */}
+          {/* Enhanced buttons with hover effects and proper navigation */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-on-scroll opacity-0 animate-slide-up-delay-3">
-            <Button size="lg" className="bg-onesec-accent hover:bg-onesec-accent/90 text-white font-medium text-base px-8 py-6 button-glow transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+            <Button 
+              size="lg" 
+              className="bg-onesec-accent hover:bg-onesec-accent/90 text-white font-medium text-base px-8 py-6 button-glow transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              onClick={scrollToContact}
+            >
               Book Your Free Strategy Call
             </Button>
-            <Button size="lg" className="bg-[#2c2c3a] border border-[#4f8cff] text-white hover:bg-[#2c2c3a]/90 hover:border-[#4f8cff]/90 font-medium rounded-[6px] px-8 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue">
+            <Button 
+              size="lg" 
+              className="bg-[#2c2c3a] border border-[#4f8cff] text-white hover:bg-[#2c2c3a]/90 hover:border-[#4f8cff]/90 font-medium rounded-[6px] px-8 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue"
+              onClick={scrollToServices}
+            >
               See What We Automate
             </Button>
           </div>
@@ -94,12 +136,16 @@ const HeroSection = () => {
       {/* Enhanced visual transition to services section */}
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent to-onesec-dark/95 z-0"></div>
       
-      {/* Enhanced floating elements that extend into services section with improved animations */}
-      
-
-      {/* Scrolling indicator */}
+      {/* Scrolling indicator with enhanced visibility and interactivity */}
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20 animate-bounce-slow">
-        
+        <button 
+          onClick={scrollToServices} 
+          className="flex flex-col items-center text-white/70 hover:text-white transition-colors"
+          aria-label="Scroll to learn more"
+        >
+          <span className="text-sm mb-2">Scroll</span>
+          <ArrowRight className="w-5 h-5 transform rotate-90" />
+        </button>
       </div>
     </section>;
 };
