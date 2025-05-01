@@ -1,6 +1,10 @@
+
 import { Button } from "@/components/ui/button";
+import { ArrowDown, MousePointer } from "lucide-react";
+
 const HeroSection = () => {
-  return <section className="relative min-h-screen pt-24 flex items-center bg-onesec-dark overflow-hidden">
+  return (
+    <section className="relative min-h-screen pt-24 flex items-center bg-onesec-dark overflow-hidden">
       {/* Animated background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-onesec-dark via-onesec-dark to-onesec-primary/20 bg-gradient-animation"></div>
@@ -16,48 +20,43 @@ const HeroSection = () => {
       </div>
       
       <div className="container mx-auto relative z-10 px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
+        <div className="lg:max-w-4xl mx-auto text-center mb-12">
           {/* Hero text */}
-          <div className="lg:col-span-3 text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 opacity-0 animate-fade-in">
-              <span className="text-white">AI & Automation to </span>
-              <span className="gradient-text">accelerate your business</span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 opacity-0 animate-fade-in delay-1">
-              OneSecAgent transforms your business with intelligent solutions. 
-              From design to implementation, we accompany you on the journey towards 
-              digital innovation.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 opacity-0 animate-fade-in delay-2">
-              <Button size="lg" className="bg-onesec-primary hover:bg-onesec-primary/90 text-white">
-                Discover our services
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                Contact us
-              </Button>
-            </div>
-          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 opacity-0 animate-fade-in">
+            <span className="text-white">Scale your B2B business </span>
+            <span className="gradient-text">without scaling your team.</span>
+          </h1>
           
-          {/* Hero image/animation */}
-          <div className="lg:col-span-2 opacity-0 animate-fade-in delay-3">
-            <div className="glassmorphism rounded-2xl p-4 relative">
-              <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full gradient-bg"></div>
-              <div className="absolute -bottom-4 -right-4 w-8 h-8 rounded-full bg-onesec-accent"></div>
-              <img alt="AI & Automation" className="w-full h-auto rounded-xl" src="/lovable-uploads/ade17372-8b61-4c1d-a613-815b901ddf52.png" />
-            </div>
+          <p className="text-lg md:text-xl text-gray-300 mb-8 mx-auto opacity-0 animate-fade-in delay-1">
+            We build AI + automation systems for agencies, SaaS, and consultancies that want to grow faster — by eliminating manual work and closing more deals.
+          </p>
+          
+          <p className="text-sm text-gray-400 mb-8 opacity-0 animate-fade-in delay-2">
+            Trusted by forward-thinking B2B teams scaling smarter with automation
+          </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in delay-3">
+            <Button size="lg" className="bg-onesec-accent hover:bg-onesec-accent/90 text-white font-medium text-base px-8 py-6">
+              Book Your Free Strategy Call
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 font-medium">
+              See What We Automate
+            </Button>
           </div>
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+        <div className="absolute bottom-8 left-0 right-0 flex justify-center opacity-0 animate-fade-in delay-4">
           <a href="#services" className="flex flex-col items-center text-white/50 hover:text-white transition-colors mx-0 py-0">
-            <span className="mb-2">Scroll down</span>
-            <div className="w-6 h-10 rounded-full border-2 border-white/50 flex justify-center pt-2">
+            <span className="mb-2 text-sm">Scroll down</span>
+            <div className="w-6 h-10 rounded-full border-2 border-white/50 flex justify-center pt-2 hover:border-white transition-all">
               <div className="w-1 h-2 bg-white/50 rounded-full animate-bounce"></div>
             </div>
           </a>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
