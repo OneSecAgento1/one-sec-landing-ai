@@ -58,6 +58,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
           subject: formData.subject,
           company: formData.company || 'Non specificata',
           message: formData.message,
+          recipient_email: "mihai.onesecagent@gmail.com", // Email destinatario specificato
           submitted_at: new Date().toISOString()
         }),
         mode: 'no-cors' // Needed for cross-origin requests to webhook
