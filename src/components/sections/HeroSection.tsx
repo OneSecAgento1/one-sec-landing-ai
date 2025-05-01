@@ -1,26 +1,17 @@
-
 import { Button } from "@/components/ui/button";
-
 const HeroSection = () => {
-  return (
-    <section className="relative min-h-screen pt-24 flex items-center bg-onesec-dark overflow-hidden">
+  return <section className="relative min-h-screen pt-24 flex items-center bg-onesec-dark overflow-hidden">
       {/* Animated background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-onesec-dark via-onesec-dark to-onesec-primary/20 bg-gradient-animation"></div>
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-5">
-          {[...Array(20)].map((_, i) => (
-            <div 
-              key={i}
-              className="absolute w-40 h-40 lg:w-64 lg:h-64 rounded-full animate-pulse-light"
-              style={{
-                background: 'radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(99, 102, 241, 0.1) 70%, transparent 100%)',
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`
-              }}
-            ></div>
-          ))}
+          {[...Array(20)].map((_, i) => <div key={i} className="absolute w-40 h-40 lg:w-64 lg:h-64 rounded-full animate-pulse-light" style={{
+          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(99, 102, 241, 0.1) 70%, transparent 100%)',
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 5}s`
+        }}></div>)}
         </div>
       </div>
       
@@ -52,18 +43,14 @@ const HeroSection = () => {
             <div className="glassmorphism rounded-2xl p-4 relative">
               <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full gradient-bg"></div>
               <div className="absolute -bottom-4 -right-4 w-8 h-8 rounded-full bg-onesec-accent"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=1200"
-                alt="AI & Automation" 
-                className="w-full h-auto rounded-xl"
-              />
+              <img alt="AI & Automation" className="w-full h-auto rounded-xl" src="/lovable-uploads/ade17372-8b61-4c1d-a613-815b901ddf52.png" />
             </div>
           </div>
         </div>
         
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-          <a href="#services" className="flex flex-col items-center text-white/50 hover:text-white transition-colors">
+          <a href="#services" className="flex flex-col items-center text-white/50 hover:text-white transition-colors mx-0 py-0">
             <span className="mb-2">Scroll down</span>
             <div className="w-6 h-10 rounded-full border-2 border-white/50 flex justify-center pt-2">
               <div className="w-1 h-2 bg-white/50 rounded-full animate-bounce"></div>
@@ -71,8 +58,6 @@ const HeroSection = () => {
           </a>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
