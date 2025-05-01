@@ -1,8 +1,11 @@
 
 import { CaseCard } from './CaseCard';
 import { caseData } from './caseData';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const CasesSection = () => {
+  const isMobile = useIsMobile();
+  
   return (
     <section id="cases" className="py-24 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
       {/* Decorative background elements with increased opacity */}
@@ -12,21 +15,27 @@ const CasesSection = () => {
       {/* Dot texture background with increased opacity */}
       <div className="absolute inset-0 dot-texture pointer-events-none" style={{ opacity: '0.1' }}></div>
       
-      {/* Decorative shapes with increased opacity */}
-      <div className="decorative-shape shape-circle bg-onesec-primary/20 w-80 h-80 -top-20 -right-20 animate-float pointer-events-none"
+      {/* Decorative shapes with increased opacity - with responsive positioning */}
+      <div className={`decorative-shape shape-circle bg-onesec-primary/20 w-60 h-60 ${isMobile ? 'top-0 right-0' : '-top-20 -right-20'} animate-float pointer-events-none`}
         style={{ animationDelay: '1.5s' }}></div>
-      <div className="decorative-shape shape-blob bg-onesec-secondary/15 w-96 h-96 -bottom-40 -left-20 animate-rotate-slow pointer-events-none"></div>
+      <div className={`decorative-shape shape-blob bg-onesec-secondary/15 w-60 h-60 ${isMobile ? 'bottom-0 left-0' : '-bottom-40 -left-20'} animate-rotate-slow pointer-events-none`}></div>
       <div className="decorative-shape shape-triangle bg-onesec-accent/15 w-48 h-48 top-1/4 left-1/4 animate-float pointer-events-none"
         style={{ animationDelay: '2s' }}></div>
       
-      {/* Background floating elements */}
+      {/* Background floating elements - fewer on mobile */}
       <div className="absolute inset-0 opacity-15 pointer-events-none">
-        {[...Array(8)].map((_, i) => <div key={i} className="absolute w-24 h-24 lg:w-40 lg:h-40 rounded-full animate-pulse-light pointer-events-none" style={{
-          background: 'radial-gradient(circle, rgba(126, 100, 224, 0.4) 0%, rgba(126, 100, 224, 0.1) 70%, transparent 100%)',
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-          animationDelay: `${Math.random() * 5}s`
-        }}></div>)}
+        {[...Array(isMobile ? 4 : 8)].map((_, i) => (
+          <div key={i} className="absolute rounded-full animate-pulse-light pointer-events-none" 
+            style={{
+              width: isMobile ? `${Math.random() * 40 + 40}px` : `${Math.random() * 60 + 80}px`,
+              height: isMobile ? `${Math.random() * 40 + 40}px` : `${Math.random() * 60 + 80}px`,
+              background: 'radial-gradient(circle, rgba(126, 100, 224, 0.4) 0%, rgba(126, 100, 224, 0.1) 70%, transparent 100%)',
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          ></div>
+        ))}
       </div>
       
       {/* Connecting line to next section with increased opacity */}
@@ -36,7 +45,7 @@ const CasesSection = () => {
         </svg>
       </div>
       
-      <div className="container mx-auto relative z-10">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-screen-xl relative z-10">
         <div className="text-center mb-12 select-text">
           <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">CASE STUDIES</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">

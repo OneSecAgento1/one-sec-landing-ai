@@ -6,12 +6,14 @@ import HeroSection from "@/components/sections/HeroSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import CasesSection from "@/components/sections/CasesSection";
 import AboutSection from "@/components/sections/AboutSection";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
-  // Riferimento per memorizzare gli elementi da animare
+  // Reference for storing animation elements
   const parallaxElements = useRef<NodeListOf<Element> | null>(null);
   const fadeElements = useRef<NodeListOf<Element> | null>(null);
   const isMobileRef = useRef<boolean>(window.innerWidth < 768);
+  const isMobile = useIsMobile();
 
   // Set up scroll-based parallax effects and improved smooth scrolling
   useEffect(() => {
@@ -22,7 +24,7 @@ const Index = () => {
     window.addEventListener('resize', checkMobile);
     checkMobile();
 
-    // Ottieni gli elementi solo una volta all'avvio
+    // Get elements only once at startup
     parallaxElements.current = document.querySelectorAll(".parallax-bg-item");
     fadeElements.current = document.querySelectorAll(".fade-on-scroll");
 
@@ -30,10 +32,9 @@ const Index = () => {
       const scrollPosition = window.scrollY;
       
       // Apply parallax effect to various decorative elements, but with reduced impact on mobile
-      if (parallaxElements.current) {
+      if (parallaxElements.current && !isMobileRef.current) { // Disable parallax on mobile
         parallaxElements.current.forEach((el) => {
-          // Reduce parallax effect on mobile or disable it entirely
-          const speed = isMobileRef.current ? 0.01 : Number(el.getAttribute("data-speed") || 0.02);
+          const speed = Number(el.getAttribute("data-speed") || 0.02);
           const yPos = -scrollPosition * speed;
           el.setAttribute("style", `transform: translateY(${yPos}px)`);
         });
@@ -92,12 +93,12 @@ const Index = () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener('resize', checkMobile);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
-    <div className="bg-onesec-dark min-h-screen">
+    <div className="bg-onesec-dark min-h-screen overflow-x-hidden">
       <Header />
-      <main>
+      <main className="max-w-screen-xl mx-auto">
         <HeroSection />
         <ServicesSection />
         <CasesSection />
