@@ -104,7 +104,7 @@ const HeroSection = () => {
           
           {/* Enhanced buttons with consistent handling and proper interactivity */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-on-scroll opacity-0 animate-slide-up-delay-3 relative z-30">
-            <Button size="lg" className="bg-onesec-accent hover:bg-onesec-accent/90 text-white font-medium text-base px-8 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer relative z-30" onClick={scrollToContact} type="button">
+            <Button size="lg" onClick={scrollToContact} type="button" className="text-white px-8 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer relative z-30 bg-[#4f8cff] font-semibold text-base">
               Book Your Free Strategy Call
             </Button>
             <Button size="lg" className="bg-[#2c2c3a] border border-[#4f8cff] text-white hover:bg-[#2c2c3a]/90 hover:border-[#4f8cff]/90 font-medium rounded-[6px] px-8 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue cursor-pointer relative z-30" onClick={scrollToServices} type="button">
