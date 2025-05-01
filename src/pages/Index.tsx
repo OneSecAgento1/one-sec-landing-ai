@@ -9,7 +9,7 @@ import AboutSection from "@/components/sections/AboutSection";
 import ContactSection from "@/components/sections/ContactSection";
 
 const Index = () => {
-  // Riferimento per memorizzare gli elementi da animare
+  // Riferimenti per memorizzare gli elementi da animare
   const parallaxElements = useRef<NodeListOf<Element> | null>(null);
   const fadeElements = useRef<NodeListOf<Element> | null>(null);
 
@@ -22,11 +22,13 @@ const Index = () => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       
-      // Apply parallax effect to various decorative elements, but with reduced impact
+      // Apply parallax effect with limited movement to prevent overflow
       if (parallaxElements.current) {
         parallaxElements.current.forEach((el) => {
           const speed = Number(el.getAttribute("data-speed") || 0.02);
-          const yPos = -scrollPosition * speed;
+          // Limitiamo lo spostamento massimo per evitare overflow
+          const maxDisplacement = 50; 
+          const yPos = Math.min(Math.max(-scrollPosition * speed, -maxDisplacement), maxDisplacement);
           el.setAttribute("style", `transform: translateY(${yPos}px)`);
         });
       }
@@ -56,8 +58,8 @@ const Index = () => {
           
           const target = document.querySelector(targetId);
           if (target) {
-            // Add offset for the fixed header
-            const headerOffset = 80;
+            // Add offset for the fixed header with responsive adjustment
+            const headerOffset = window.innerWidth < 768 ? 60 : 80;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -83,9 +85,9 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="bg-onesec-dark min-h-screen">
+    <div className="bg-onesec-dark min-h-screen overflow-x-hidden">
       <Header />
-      <main>
+      <main className="overflow-x-hidden relative w-full">
         <HeroSection />
         <ServicesSection />
         <CasesSection />
