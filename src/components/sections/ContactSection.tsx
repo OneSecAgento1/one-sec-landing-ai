@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Send, Check } from "lucide-react";
 import { z } from "zod";
 import AnimatedElement from '@/components/animations/AnimatedElement';
+import { supabase } from "@/integrations/supabase/client";
 
 // Validation schema for the form
 const contactFormSchema = z.object({
@@ -23,10 +25,9 @@ const contactFormSchema = z.object({
     message: "Message must be at least 10 characters"
   })
 });
+
 const ContactSection = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -37,6 +38,7 @@ const ContactSection = () => {
     isSubmitted: false
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+
   const validateField = (name: string, value: string) => {
     try {
       // Validate only the specific field
@@ -58,24 +60,21 @@ const ContactSection = () => {
       return true;
     }
   };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
+    const { name, value } = e.target;
     setFormState(prev => ({
       ...prev,
       [name]: value
     }));
     validateField(name, value);
   };
+
   const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
+    const { name, value } = e.target;
     validateField(name, value);
   };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -96,9 +95,33 @@ const ContactSection = () => {
         isSubmitting: true
       }));
 
-      // With Netlify Forms, no need to handle submission via JS
-      // This is just to simulate submission and provide user feedback
-      setTimeout(() => {
+      // Submit to Supabase
+      try {
+        const { error } = await supabase
+          .from('contact_submissions')
+          .insert({
+            full_name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            company: formData.company || null,
+            message: formData.message
+          });
+
+        if (error) {
+          console.error("Error submitting form:", error);
+          toast({
+            title: "Submission error",
+            description: "There was a problem submitting your message. Please try again.",
+            variant: "destructive"
+          });
+          setFormState(prev => ({
+            ...prev,
+            isSubmitting: false
+          }));
+          return;
+        }
+
+        // Success
         setFormState(prev => ({
           ...prev,
           isSubmitting: false,
@@ -109,11 +132,23 @@ const ContactSection = () => {
           company: '',
           message: ''
         }));
+        
         toast({
           title: "Message sent",
           description: "We'll get back to you as soon as possible!"
         });
-      }, 1500);
+      } catch (submitError) {
+        console.error("Error in submission:", submitError);
+        toast({
+          title: "Submission error",
+          description: "There was a problem submitting your message. Please try again.",
+          variant: "destructive"
+        });
+        setFormState(prev => ({
+          ...prev,
+          isSubmitting: false
+        }));
+      }
     } catch (error) {
       if (error instanceof z.ZodError) {
         // Handle validation errors
@@ -132,6 +167,7 @@ const ContactSection = () => {
       }
     }
   };
+
   return <section id="contact" className="py-24 bg-gray-100 dark:bg-gray-800">
       <div className="container mx-auto">
         <AnimatedElement>
@@ -140,7 +176,7 @@ const ContactSection = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Grow your business without hiring — thanks to AI + automation
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Get a free 30-minute strategy call. We'll uncover what to automate first — and how to unlock revenue and time instantly. Clear steps, no fluff.</p>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Get a free 15-minute strategy call. We'll uncover what to automate first — and how to unlock revenue and time instantly. Clear steps, no fluff.</p>
           </div>
         </AnimatedElement>
         
@@ -151,7 +187,7 @@ const ContactSection = () => {
               <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <h3 className="text-2xl font-bold mb-4 text-left">Let's get started</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-8 text-left">
-                  We typically reply within a few minutes on business days.<br />
+                  We typically reply within a few hours on business days.<br />
                   You'll get next steps, clearly explained.
                 </p>
                 
@@ -170,16 +206,7 @@ const ContactSection = () => {
                 }))}>
                       Send another message
                     </Button>
-                  </div> : <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                    {/* Hidden field for Netlify Forms */}
-                    <input type="hidden" name="form-name" value="contact" />
-                    {/* Honeypot field to avoid spam */}
-                    <p className="hidden">
-                      <label>
-                        Don't fill this out if you're human: <input name="bot-field" />
-                      </label>
-                    </p>
-                    
+                  </div> : <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium mb-1 text-left">
@@ -234,4 +261,5 @@ const ContactSection = () => {
       </div>
     </section>;
 };
+
 export default ContactSection;
