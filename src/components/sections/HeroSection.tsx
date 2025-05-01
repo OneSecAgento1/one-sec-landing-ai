@@ -107,7 +107,7 @@ const HeroSection = () => {
             <Button size="lg" onClick={scrollToContact} type="button" className="text-white px-8 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer relative z-30 bg-[#4f8cff] font-semibold text-base">
               Book Your Free Strategy Call
             </Button>
-            <Button size="lg" className="bg-[#2c2c3a] border border-[#4f8cff] text-white hover:bg-[#2c2c3a]/90 hover:border-[#4f8cff]/90 font-medium rounded-[6px] px-8 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue cursor-pointer relative z-30" onClick={scrollToServices} type="button">
+            <Button size="lg" onClick={scrollToServices} type="button" className="bg-[#2c2c3a] border border-[#4f8cff] text-white hover:bg-[#2c2c3a]/90 hover:border-[#4f8cff]/90 font-medium px-8 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue cursor-pointer relative z-30 rounded-md">
               See What We Automate
             </Button>
           </div>
