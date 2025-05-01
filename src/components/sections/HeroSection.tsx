@@ -12,18 +12,18 @@ const HeroSection = () => {
         <div className="absolute inset-0 dot-texture"></div>
         
         {/* Decorative shapes */}
-        <div className="decorative-shape shape-circle bg-onesec-primary/10 w-64 h-64 -top-20 -left-20 animate-rotate-slow"></div>
-        <div className="decorative-shape shape-circle bg-onesec-secondary/10 w-96 h-96 -bottom-40 -right-40 animate-rotate-slow" 
+        <div className="decorative-shape shape-circle bg-onesec-primary/20 w-64 h-64 -top-20 -left-20 animate-rotate-slow"></div>
+        <div className="decorative-shape shape-circle bg-onesec-secondary/20 w-96 h-96 -bottom-40 -right-40 animate-rotate-slow" 
           style={{ animationDuration: '25s', animationDirection: 'reverse' }}></div>
-        <div className="decorative-shape shape-blob bg-onesec-accent/5 w-72 h-72 top-1/4 -right-20 animate-float"
+        <div className="decorative-shape shape-blob bg-onesec-accent/10 w-72 h-72 top-1/4 -right-20 animate-float"
           style={{ animationDelay: '2s' }}></div>
-        <div className="decorative-shape shape-triangle bg-onesec-primary/5 w-48 h-48 bottom-1/4 left-10 animate-float"
+        <div className="decorative-shape shape-triangle bg-onesec-primary/10 w-48 h-48 bottom-1/4 left-10 animate-float"
           style={{ animationDelay: '1s' }}></div>
         
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5">
+        {/* Background pattern - Aumentata opacità da 0.05 (5%) a 0.15 (15%) */}
+        <div className="absolute inset-0 opacity-15">
           {[...Array(20)].map((_, i) => <div key={i} className="absolute w-40 h-40 lg:w-64 lg:h-64 rounded-full animate-pulse-light" style={{
-          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(99, 102, 241, 0.1) 70%, transparent 100%)',
+          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.5) 0%, rgba(99, 102, 241, 0.2) 70%, transparent 100%)',
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
           animationDelay: `${Math.random() * 5}s`
