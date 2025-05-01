@@ -97,15 +97,26 @@ const CasesSection = () => {
           {filteredCases.map((caseStudy, index) => (
             <div 
               key={caseStudy.id}
-              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 opacity-0 animate-fade-in"
+              className="case-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden 
+                shadow-md transition-all duration-300 
+                hover:shadow-[0_15px_30px_rgba(84,169,255,0.2)] 
+                hover:rotate-1 hover:scale-105
+                hover:card-border-gradient opacity-0 animate-fade-in"
               style={{ animationDelay: `${0.1 + index * 0.1}s` }}
             >
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={caseStudy.image} 
-                  alt={caseStudy.title} 
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
+              <div className="h-48 overflow-hidden relative">
+                {/* Decorative mask overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-onesec-primary/40 to-transparent 
+                  mask-pattern opacity-0 transition-opacity duration-300 z-10"></div>
+                
+                {/* Image with hexagon clip path */}
+                <div className="case-image-container relative h-full w-full transition-transform duration-300">
+                  <img 
+                    src={caseStudy.image} 
+                    alt={caseStudy.title} 
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  />
+                </div>
               </div>
               <div className="p-6">
                 <span className="text-xs font-semibold text-onesec-primary uppercase tracking-wider">

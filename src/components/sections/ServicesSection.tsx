@@ -38,10 +38,17 @@ const ServicesSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {solutions.map((solution, index) => <div key={solution.id} className={`bg-gradient-to-br from-gray-900/70 to-gray-800/50 p-6 rounded-xl border border-gray-800 hover:border-onesec-primary/50 transition-all duration-300 hover:-translate-y-1 opacity-0 animate-fade-in`} style={{
-          animationDelay: `${0.1 + index * 0.1}s`
-        }}>
-              <div className="w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6">
+          {solutions.map((solution, index) => <div key={solution.id} 
+            className={`service-card bg-gradient-to-br from-gray-900/70 to-gray-800/50 p-6 rounded-xl 
+            border border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:rotate-1
+            hover:shadow-[0_20px_50px_rgba(84,169,255,0.15)] 
+            hover:border-transparent hover:card-border-gradient opacity-0 animate-fade-in`}
+            style={{
+              animationDelay: `${0.1 + index * 0.1}s`
+            }}
+          >
+              <div className="w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6
+                transition-transform duration-300 group-hover:scale-110">
                 {solution.icon}
               </div>
               <h3 className="text-xl font-bold text-white mb-4">{solution.title}</h3>
