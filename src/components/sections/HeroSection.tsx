@@ -119,10 +119,7 @@ const HeroSection = () => {
       
       {/* Scrolling indicator with better interactivity */}
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20 animate-bounce-slow pointer-events-none">
-        <button onClick={scrollToServices} aria-label="Scroll to learn more" type="button" className="flex flex-col items-center text-white/70 hover:text-white transition-colors cursor-pointer pointer-events-auto py-[45px]">
-          <span className="text-sm mb-2">See how it works</span>
-          <ArrowRight className="w-5 h-5 transform rotate-90" />
-        </button>
+        
       </div>
     </section>;
 };
