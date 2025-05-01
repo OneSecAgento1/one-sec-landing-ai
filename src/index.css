@@ -111,7 +111,7 @@
   }
 }
 
-/* Animazione del pattern di sfondo */
+/* Animation del pattern di sfondo */
 .bg-gradient-animation {
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
@@ -132,4 +132,20 @@
 /* Effetto glassmorphism */
 .glassmorphism {
   @apply backdrop-blur-lg bg-white/10 border border-white/20;
+}
+
+/* Enhanced fade-in animation */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
 }

@@ -39,7 +39,7 @@ const HeroSection = () => {
             <Button size="lg" className="bg-onesec-accent hover:bg-onesec-accent/90 text-white font-medium text-base px-8 py-6">
               Book Your Free Strategy Call
             </Button>
-            <Button size="lg" className="bg-[#2c2c3a] border border-onesec-primary text-white hover:bg-[#2c2c3a]/90 hover:border-onesec-primary/90 font-medium">
+            <Button size="lg" className="bg-[#2c2c3a] border border-[#4f8cff] text-white hover:bg-[#2c2c3a]/90 hover:border-[#4f8cff]/90 font-medium rounded-[6px] px-8 py-6">
               See What We Automate
             </Button>
           </div>

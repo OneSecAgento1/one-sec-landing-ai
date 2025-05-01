@@ -45,10 +45,10 @@ const CasesSection = () => {
     cases.filter(c => c.category === activeTab);
   
   return (
-    <section id="cases" className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="cases" className="py-24 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">CASE STUDIES</p>
+          <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">CASE STUDIES</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
             Results that speak for themselves
           </h2>

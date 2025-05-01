@@ -7,19 +7,19 @@ const AboutSection = () => {
   const pillars = [
     {
       id: 1,
-      icon: <Zap className="w-6 h-6 text-onesec-primary" />,
+      icon: <Zap className="w-6 h-6 text-white" />,
       title: "Real Systems, Real ROI",
       description: "We build AI and automation systems that drive revenue — not just look impressive."
     },
     {
       id: 2,
-      icon: <Settings className="w-6 h-6 text-onesec-primary" />,
+      icon: <Settings className="w-6 h-6 text-white" />,
       title: "Built for Your Bottlenecks",
       description: "We design around your data, your workflows, and your sales goals — not generic templates."
     },
     {
       id: 3,
-      icon: <Gauge className="w-6 h-6 text-onesec-primary" />,
+      icon: <Gauge className="w-6 h-6 text-white" />,
       title: "Fast Execution, High Impact",
       description: "We deliver results in days, not quarters — with a clear focus on what moves the needle."
     }
@@ -53,10 +53,10 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-onesec-dark/90 to-onesec-dark">
+    <section id="about" className="py-24 bg-gradient-to-b from-onesec-dark/90 to-onesec-dark">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">ABOUT US</p>
+          <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">ABOUT US</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 opacity-0 animate-fade-in delay-1">
             We use AI and automations to cut costs, close more deals, and eliminate manual work.
           </h2>
@@ -74,7 +74,7 @@ const AboutSection = () => {
               className="bg-gray-800/50 p-8 rounded-xl border border-gray-700 hover:border-onesec-primary/50 transition-all text-center opacity-0 animate-fade-in"
               style={{ animationDelay: `${0.3 + index * 0.1}s` }}
             >
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-onesec-primary to-onesec-secondary flex items-center justify-center mb-6 mx-auto">
+              <div className="w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6 mx-auto">
                 {pillar.icon}
               </div>
               <h3 className="text-xl font-bold text-white mb-4">{pillar.title}</h3>
@@ -97,7 +97,7 @@ const AboutSection = () => {
                 style={{ animationDelay: `${0.5 + index * 0.1}s` }}
               >
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 rounded-full bg-onesec-primary/20 flex items-center justify-center mb-4 mx-auto">
+                  <div className="w-12 h-12 rounded-full bg-gray-800/80 flex items-center justify-center mb-4 mx-auto">
                     {edge.icon}
                   </div>
                   <h3 className="text-lg font-bold text-white mb-3">{edge.title}</h3>

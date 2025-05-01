@@ -47,10 +47,10 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-100 dark:bg-gray-800">
+    <section id="contact" className="py-24 bg-gray-100 dark:bg-gray-800">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">CONTACT US</p>
+          <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">CONTACT US</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
             Let's uncover how AI + Automation can grow your business
           </h2>
@@ -67,7 +67,7 @@ const ContactSection = () => {
               
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-onesec-primary/10 flex items-center justify-center mr-4">
+                  <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mr-4">
                     <Mail size={20} className="text-onesec-primary" />
                   </div>
                   <div>
@@ -79,7 +79,7 @@ const ContactSection = () => {
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-onesec-primary/10 flex items-center justify-center mr-4">
+                  <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mr-4">
                     <Phone size={20} className="text-onesec-primary" />
                   </div>
                   <div>
@@ -93,7 +93,7 @@ const ContactSection = () => {
               
               <div className="mt-10">
                 <div className="flex items-start mb-6">
-                  <div className="w-10 h-10 rounded-full bg-onesec-primary/10 flex items-center justify-center mr-4">
+                  <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mr-4">
                     <MapPin size={20} className="text-onesec-primary" />
                   </div>
                   <div>
@@ -109,7 +109,7 @@ const ContactSection = () => {
               
               <div className="mt-6">
                 <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-onesec-primary/10 flex items-center justify-center mr-4">
+                  <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mr-4">
                     <Calendar size={20} className="text-onesec-primary" />
                   </div>
                   <div>
