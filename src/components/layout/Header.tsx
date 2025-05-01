@@ -59,7 +59,7 @@ const Header = () => {
           <img 
             src="/lovable-uploads/ccada2de-dd07-40b0-818b-5f6b70f048b0.png" 
             alt="OneSecAgent Logo" 
-            className="h-20 w-auto" 
+            className="h-24 w-auto" 
             onError={(e) => {
               console.error("Logo failed to load");
               const target = e.target as HTMLImageElement;
