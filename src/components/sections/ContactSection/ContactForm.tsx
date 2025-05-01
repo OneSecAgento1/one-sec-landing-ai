@@ -8,9 +8,6 @@ import { Send } from "lucide-react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 
-// Webhook URL for Make.com integration
-const MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/w9m2q7nvn8zcroq81w8q28nwfjl2m59j";
-
 // Validation schema for the form
 const contactFormSchema = z.object({
   name: z.string().min(2, {
@@ -43,34 +40,6 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
     isSubmitting: false
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
-
-  // Helper function to send data to Make webhook
-  const sendToMakeWebhook = async (formData: any) => {
-    try {
-      const response = await fetch(MAKE_WEBHOOK_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          full_name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          company: formData.company || 'Non specificata',
-          message: formData.message,
-          recipient_email: "mihai.onesecagent@gmail.com", // Email destinatario specificato
-          submitted_at: new Date().toISOString()
-        }),
-        mode: 'no-cors' // Needed for cross-origin requests to webhook
-      });
-      
-      console.log("Make webhook notification sent");
-      return true;
-    } catch (error) {
-      console.error("Error sending to Make webhook:", error);
-      return false;
-    }
-  };
 
   const validateField = (name: string, value: string) => {
     try {
@@ -153,9 +122,6 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
           }));
           return;
         }
-
-        // Send data to Make webhook
-        await sendToMakeWebhook(formData);
 
         // Success
         setFormState({
