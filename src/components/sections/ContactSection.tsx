@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, Check } from "lucide-react";
+import { Mail, Phone, Calendar, MapPin, Send, Check } from "lucide-react";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -52,11 +52,10 @@ const ContactSection = () => {
         <div className="text-center mb-12">
           <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">CONTACT US</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
-            Let's build together
+            Let's uncover how AI + Automation can grow your business
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto opacity-0 animate-fade-in delay-2">
-            Have a project in mind? Contact us for a free consultation and discover
-            how we can help you achieve your goals with AI and automation.
+            Book a free strategy call — we'll identify where AI can save you time, increase revenue, or remove bottlenecks in under 15 minutes.
           </p>
         </div>
         
@@ -93,20 +92,34 @@ const ContactSection = () => {
               </div>
               
               <div className="mt-10">
-                <h4 className="font-medium mb-4">Headquarters</h4>
-                <address className="not-italic text-gray-600 dark:text-gray-300">
-                  Innovation Street, 42<br />
-                  20100 Milan<br />
-                  Italy
-                </address>
+                <div className="flex items-start mb-6">
+                  <div className="w-10 h-10 rounded-full bg-onesec-primary/10 flex items-center justify-center mr-4">
+                    <MapPin size={20} className="text-onesec-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-medium mb-1">Headquarters</h4>
+                    <address className="not-italic text-gray-600 dark:text-gray-300">
+                      Innovation Street, 42<br />
+                      20100 Milan<br />
+                      Italy
+                    </address>
+                  </div>
+                </div>
               </div>
               
-              <div className="mt-10">
-                <h4 className="font-medium mb-4">Hours</h4>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Monday - Friday: 9:00 - 18:00<br />
-                  Saturday - Sunday: Closed
-                </p>
+              <div className="mt-6">
+                <div className="flex items-start">
+                  <div className="w-10 h-10 rounded-full bg-onesec-primary/10 flex items-center justify-center mr-4">
+                    <Calendar size={20} className="text-onesec-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-medium mb-1">Availability</h4>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      Available Mon–Fri, 9:00–18:00 CET<br />
+                      Send us a message anytime — we'll get back to you ASAP.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -114,7 +127,11 @@ const ContactSection = () => {
           {/* Contact form */}
           <div className="lg:col-span-3 opacity-0 animate-fade-in delay-3">
             <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg">
-              <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
+              <h3 className="text-2xl font-bold mb-4">Fill out the form</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-8">
+                We usually reply within a few hours on business days.<br />
+                You'll get clear next steps. No fluff.
+              </p>
               
               {formState.isSubmitted ? (
                 <div className="flex flex-col items-center justify-center py-12">
@@ -195,10 +212,15 @@ const ContactSection = () => {
                   
                   <Button 
                     type="submit" 
-                    className="w-full bg-onesec-primary hover:bg-onesec-primary/90"
+                    className="w-full bg-onesec-primary hover:bg-onesec-primary/90 flex items-center justify-center gap-2"
                     disabled={formState.isSubmitting}
                   >
-                    {formState.isSubmitting ? "Sending..." : "Send message"}
+                    {formState.isSubmitting ? "Sending..." : (
+                      <>
+                        <Send size={18} />
+                        <span>Send message</span>
+                      </>
+                    )}
                   </Button>
                 </form>
               )}
