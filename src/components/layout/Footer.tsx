@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
+import { Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -33,7 +33,7 @@ const Footer = () => {
       </div>
       
       <div className="container mx-auto py-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Logo and description */}
           <div>
             <Link to="/" className="text-2xl font-bold mb-4 block">
@@ -68,25 +68,6 @@ const Footer = () => {
               <FooterLink href="#process-automation">Process Automation</FooterLink>
               <FooterLink href="#data-analysis">Data Analysis</FooterLink>
               <FooterLink href="#chatbot">Intelligent Chatbots</FooterLink>
-            </ul>
-          </div>
-
-          {/* Contact info */}
-          <div>
-            <h3 className="font-bold text-lg mb-4">Contact Us</h3>
-            <ul className="space-y-2">
-              <li className="flex items-center gap-2">
-                <span className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-onesec-accent">
-                  <Mail size={16} />
-                </span>
-                <span className="text-gray-400">info@onesecagent.com</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-onesec-accent">
-                  <Phone size={16} />
-                </span>
-                <span className="text-gray-400">+1 (555) 123-4567</span>
-              </li>
             </ul>
           </div>
         </div>

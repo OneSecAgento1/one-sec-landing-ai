@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Terms = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-onesec-dark">
       <Header />
       <main className="flex-grow pt-32 pb-16">
         <div className="container mx-auto px-4">
@@ -102,13 +102,6 @@ const Terms = () => {
                 <h2 className="text-xl font-semibold mb-4 text-onesec-dark">9. Changes to Terms</h2>
                 <p className="text-gray-700">
                   We reserve the right to modify or replace these Terms at any time. Changes will be effective immediately upon posting to the Service. Your continued use of the Service after any such changes constitutes your acceptance of the new Terms.
-                </p>
-              </section>
-              
-              <section>
-                <h2 className="text-xl font-semibold mb-4 text-onesec-dark">10. Contact Us</h2>
-                <p className="text-gray-700">
-                  If you have any questions about these Terms, please contact us at <a href="mailto:legal@onesecagent.com" className="text-onesec-primary hover:underline">legal@onesecagent.com</a>.
                 </p>
               </section>
             </div>

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Privacy = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-onesec-dark">
       <Header />
       <main className="flex-grow pt-32 pb-16">
         <div className="container mx-auto px-4">
@@ -98,13 +98,6 @@ const Privacy = () => {
                 <h2 className="text-xl font-semibold mb-4 text-onesec-dark">Changes to This Policy</h2>
                 <p className="text-gray-700">
                   We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
-                </p>
-              </section>
-              
-              <section>
-                <h2 className="text-xl font-semibold mb-4 text-onesec-dark">Contact Us</h2>
-                <p className="text-gray-700">
-                  If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:privacy@onesecagent.com" className="text-onesec-primary hover:underline">privacy@onesecagent.com</a>.
                 </p>
               </section>
             </div>
