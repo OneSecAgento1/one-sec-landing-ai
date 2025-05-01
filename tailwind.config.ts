@@ -136,7 +136,7 @@ export default {
             transform: 'translateY(0)'
           },
           '50%': {
-            transform: 'translateY(-10px)'
+            transform: 'translateY(-6px)'
           }
         },
         'icon-spin': {
@@ -152,7 +152,7 @@ export default {
             transform: 'scale(1)'
           },
           '50%': {
-            transform: 'scale(1.1)'
+            transform: 'scale(1.05)'
           }
         }
 			},
@@ -163,9 +163,9 @@ export default {
         'slide-in': 'slide-in 0.5s ease-out forwards',
         'pulse-light': 'pulse-light 2s infinite',
         'ripple': 'ripple 0.6s linear forwards',
-        'icon-bounce': 'icon-bounce 2s ease-in-out infinite',
-        'icon-spin': 'icon-spin 5s linear infinite',
-        'icon-pulse': 'icon-pulse 2s ease-in-out infinite'
+        'icon-bounce': 'icon-bounce 4s ease-in-out infinite',
+        'icon-spin': 'icon-spin 8s linear infinite',
+        'icon-pulse': 'icon-pulse 4s ease-in-out infinite'
 			},
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
