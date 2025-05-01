@@ -69,37 +69,29 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="py-24 bg-gradient-to-b from-onesec-dark/90 to-onesec-dark relative">
-      {/* Decorative background elements with increased opacity */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/15 via-transparent to-transparent pointer-events-none"></div>
+      {/* Reduced number of decorative background elements and lowered opacity */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent pointer-events-none"></div>
       
-      {/* Dot and line textures */}
-      <div className="absolute inset-0 dot-texture" style={{ opacity: '0.1' }}></div>
+      {/* Dot textures with reduced opacity */}
+      <div className="absolute inset-0 dot-texture opacity-5 pointer-events-none"></div>
       
-      {/* Decorative shapes */}
-      <div className="decorative-shape shape-circle bg-onesec-primary/20 w-80 h-80 -top-20 -left-40 animate-rotate-slow"></div>
-      <div className="decorative-shape shape-blob bg-onesec-secondary/15 w-72 h-72 bottom-1/4 right-0 animate-float"
+      {/* Simplified decorative shapes with reduced size and moved away from interactive elements */}
+      <div className="decorative-shape shape-circle bg-onesec-primary/10 w-60 h-60 -top-40 -left-40 animate-rotate-slow pointer-events-none"></div>
+      <div className="decorative-shape shape-blob bg-onesec-secondary/10 w-52 h-52 bottom-1/4 -right-20 animate-float pointer-events-none"
         style={{ animationDelay: '1.5s' }}></div>
-      <div className="decorative-shape shape-triangle bg-onesec-accent/15 w-48 h-48 top-1/3 right-1/4 animate-float"
-        style={{ animationDelay: '3s', animationDuration: '7s' }}></div>
       
-      {/* Background floating elements */}
-      <div className="absolute inset-0 opacity-15">
-        {[...Array(12)].map((_, i) => <div key={i} className="absolute w-24 h-24 lg:w-36 lg:h-36 rounded-full animate-pulse-light" style={{
-          background: 'radial-gradient(circle, rgba(84, 169, 255, 0.4) 0%, rgba(84, 169, 255, 0.1) 70%, transparent 100%)',
+      {/* Background floating elements with reduced number and opacity */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        {[...Array(6)].map((_, i) => <div key={i} className="absolute w-24 h-24 lg:w-36 lg:h-36 rounded-full animate-pulse-light pointer-events-none" style={{
+          background: 'radial-gradient(circle, rgba(84, 169, 255, 0.2) 0%, rgba(84, 169, 255, 0.05) 70%, transparent 100%)',
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
           animationDelay: `${Math.random() * 6}s`
         }}></div>)}
       </div>
       
-      {/* Connecting line */}
-      <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
-        <svg width="2" height="96" className="mx-auto">
-          <line x1="1" y1="0" x2="1" y2="96" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeDasharray="4,4" className="animate-draw" style={{ animationDelay: '1s' }} />
-        </svg>
-      </div>
-      
-      <div className="container mx-auto px-4">
+      {/* Content container with increased z-index to ensure interactivity */}
+      <div className="container mx-auto px-4 relative z-20">
         <div className="text-center mb-16">
           <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">ABOUT US</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 opacity-0 animate-fade-in delay-1">
@@ -111,12 +103,12 @@ const AboutSection = () => {
           </p>
         </div>
         
-        {/* Three value cards with glassmorphism */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Three value cards with simplified glassmorphism */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 relative z-20">
           {pillars.map((pillar, index) => (
             <div 
               key={pillar.id} 
-              className="glassmorphism bg-white/5 backdrop-blur-sm p-8 rounded-xl border border-white/10 
+              className="bg-white/5 backdrop-blur-sm p-8 rounded-xl border border-white/10 
                 hover:border-onesec-primary/50 transition-all text-center opacity-0 animate-fade-in"
               style={{ animationDelay: `${0.3 + index * 0.1}s` }}
             >
@@ -129,8 +121,8 @@ const AboutSection = () => {
           ))}
         </div>
 
-        {/* Our Edge section with glassmorphism */}
-        <div className="mt-24">
+        {/* Our Edge section with simplified glassmorphism */}
+        <div className="mt-24 relative z-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-6 opacity-0 animate-fade-in">Our Edge</h2>
           </div>
@@ -139,8 +131,8 @@ const AboutSection = () => {
             {edges.map((edge, index) => (
               <Card 
                 key={edge.id} 
-                className="glassmorphism bg-white/5 backdrop-blur-sm border-white/10 
-                  hover:border-onesec-accent/50 transition-all duration-300 opacity-0 animate-fade-in"
+                className="bg-white/5 backdrop-blur-sm border-white/10 
+                  hover:border-onesec-accent/50 transition-all duration-300 opacity-0 animate-fade-in relative z-20"
                 style={{ animationDelay: `${0.5 + index * 0.1}s` }}
               >
                 <CardContent className="p-6 text-center">
@@ -155,22 +147,30 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* CTA Section enhanced glassmorphism */}
-        <div className="mt-24 glassmorphism bg-white/5 backdrop-blur-xl rounded-2xl p-10 max-w-4xl mx-auto text-center border border-white/15 opacity-0 animate-fade-in" style={{ animationDelay: "0.7s" }}>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+        {/* Simplified CTA Section with proper button handling */}
+        <div className="mt-24 bg-white/5 backdrop-blur-xl rounded-2xl p-10 max-w-4xl mx-auto text-center border border-white/15 opacity-0 animate-fade-in relative z-20" style={{ animationDelay: "0.7s" }}>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 select-text">
             Ready to fix what's slowing you down and scale with AI + Automations?
           </h2>
-          <p className="text-gray-300 mb-8">
+          <p className="text-gray-300 mb-8 select-text">
             Let's talk. 15 minutes to see if we're a fit — no fluff, just value.
           </p>
           <Button 
             size="lg" 
-            className="bg-onesec-primary hover:bg-onesec-primary/90 text-white px-8 py-6 text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue"
+            className="bg-onesec-primary hover:bg-onesec-primary/90 text-white px-8 py-6 text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue pointer-events-auto cursor-pointer select-none relative z-30"
             onClick={scrollToContact}
+            type="button"
           >
             Book Your Free Strategy Call
           </Button>
         </div>
+      </div>
+      
+      {/* Simplified connecting line that doesn't interfere with interactions */}
+      <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 pointer-events-none">
+        <svg width="2" height="96" className="mx-auto">
+          <line x1="1" y1="0" x2="1" y2="96" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeDasharray="4,4" className="animate-draw" style={{ animationDelay: '1s' }} />
+        </svg>
       </div>
     </section>
   );

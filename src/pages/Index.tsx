@@ -9,15 +9,15 @@ import AboutSection from "@/components/sections/AboutSection";
 import ContactSection from "@/components/sections/ContactSection";
 
 const Index = () => {
-  // Set up scroll-based parallax effects and smooth scrolling
+  // Set up scroll-based parallax effects and improved smooth scrolling
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       
-      // Apply parallax effect to various decorative elements
+      // Apply parallax effect to various decorative elements, but with reduced impact
       document.querySelectorAll(".parallax-bg-item").forEach((el) => {
-        const speed = el.getAttribute("data-speed") || 0.05;
-        const yPos = -scrollPosition * Number(speed);
+        const speed = Number(el.getAttribute("data-speed") || 0.02); // Reduced speed
+        const yPos = -scrollPosition * speed;
         el.setAttribute("style", `transform: translateY(${yPos}px)`);
       });
 
@@ -33,11 +33,12 @@ const Index = () => {
       });
     };
 
-    // Set up improved smooth scroll for anchor links - moved inside useEffect
+    // Set up improved smooth scroll for anchor links
     const setupSmoothScroll = () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
+          e.stopPropagation(); // Stop event propagation
           
           const targetId = this.getAttribute('href');
           if (!targetId || targetId === '#') return;
@@ -61,6 +62,9 @@ const Index = () => {
     // Initialize scroll handler and smooth scrolling
     window.addEventListener("scroll", handleScroll);
     setupSmoothScroll();
+    
+    // Initial scroll handler call to set up any initial animations
+    handleScroll();
     
     return () => {
       window.removeEventListener("scroll", handleScroll);
