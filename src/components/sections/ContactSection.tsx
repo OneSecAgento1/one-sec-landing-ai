@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,13 +8,13 @@ import { Send, Check } from "lucide-react";
 import { z } from "zod"; 
 import AnimatedElement from '@/components/animations/AnimatedElement';
 
-// Schema di validazione per il form
+// Validation schema for the form
 const contactFormSchema = z.object({
-  name: z.string().min(2, { message: "Il nome deve avere almeno 2 caratteri" }),
-  email: z.string().email({ message: "Indirizzo email non valido" }),
-  subject: z.string().min(3, { message: "L'oggetto deve avere almeno 3 caratteri" }),
+  name: z.string().min(2, { message: "Name must be at least 2 characters" }),
+  email: z.string().email({ message: "Invalid email address" }),
+  subject: z.string().min(3, { message: "Subject must be at least 3 characters" }),
   company: z.string().optional(),
-  message: z.string().min(10, { message: "Il messaggio deve avere almeno 10 caratteri" })
+  message: z.string().min(10, { message: "Message must be at least 10 characters" })
 });
 
 const ContactSection = () => {
@@ -31,13 +32,13 @@ const ContactSection = () => {
 
   const validateField = (name: string, value: string) => {
     try {
-      // Valida solo il campo specifico
+      // Validate only the specific field
       contactFormSchema.shape[name as keyof typeof contactFormSchema.shape].parse(value);
       setErrors(prev => ({ ...prev, [name]: '' }));
       return true;
     } catch (error) {
       if (error instanceof z.ZodError) {
-        const fieldError = error.errors[0]?.message || `Campo ${name} non valido`;
+        const fieldError = error.errors[0]?.message || `Invalid ${name} field`;
         setErrors(prev => ({ ...prev, [name]: fieldError }));
         return false;
       }
@@ -59,7 +60,7 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validazione completa del form
+    // Complete form validation
     try {
       const formData = {
         name: formState.name,
@@ -71,12 +72,11 @@ const ContactSection = () => {
       
       contactFormSchema.parse(formData);
       
-      // Procedi con l'invio se la validazione è passata
+      // Proceed with submission if validation passes
       setFormState(prev => ({ ...prev, isSubmitting: true }));
       
-      // Con Netlify Forms non è necessario gestire l'invio tramite JS
-      // Il form verrebbe inviato automaticamente e gestito da Netlify
-      // Questo è solo per simulare l'invio e mostrare feedback all'utente
+      // With Netlify Forms, no need to handle submission via JS
+      // This is just to simulate submission and provide user feedback
       setTimeout(() => {
         setFormState(prev => ({ 
           ...prev, 
@@ -90,14 +90,14 @@ const ContactSection = () => {
         }));
         
         toast({
-          title: "Messaggio inviato",
-          description: "Ti risponderemo il prima possibile!",
+          title: "Message sent",
+          description: "We'll get back to you as soon as possible!",
         });
       }, 1500);
       
     } catch (error) {
       if (error instanceof z.ZodError) {
-        // Gestisce gli errori di validazione
+        // Handle validation errors
         const fieldErrors: Record<string, string> = {};
         error.errors.forEach(err => {
           if (err.path[0]) {
@@ -107,8 +107,8 @@ const ContactSection = () => {
         setErrors(fieldErrors);
         
         toast({
-          title: "Errore nel form",
-          description: "Per favore controlla i campi evidenziati.",
+          title: "Form error",
+          description: "Please check the highlighted fields.",
           variant: "destructive"
         });
       }
@@ -120,12 +120,12 @@ const ContactSection = () => {
       <div className="container mx-auto">
         <AnimatedElement>
           <div className="text-center mb-12">
-            <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm">CONTATTACI</p>
+            <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm">CONTACT US</p>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Scopri come AI + Automazione possono far crescere la tua azienda
+              Grow your business without hiring — thanks to AI + automation
             </h2>
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Prenota una chiamata strategica gratuita — individueremo dove l'AI può farti risparmiare tempo, aumentare le entrate o rimuovere colli di bottiglia in meno di 15 minuti.
+              Get a free 15-minute strategy call. We'll uncover what to automate first — and how to unlock revenue and time instantly. Clear steps, no fluff.
             </p>
           </div>
         </AnimatedElement>
@@ -135,10 +135,10 @@ const ContactSection = () => {
             {/* Centered Contact form */}
             <div className="w-full max-w-2xl">
               <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <h3 className="text-2xl font-bold mb-4">Compila il modulo</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-8">
-                  Di solito rispondiamo entro poche ore nei giorni lavorativi.<br />
-                  Riceverai i prossimi passi chiari. Niente fronzoli.
+                <h3 className="text-2xl font-bold mb-4 text-left">Let's get started</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-8 text-left">
+                  We typically reply within a few hours on business days.<br />
+                  You'll get next steps, clearly explained.
                 </p>
                 
                 {formState.isSubmitted ? (
@@ -146,16 +146,16 @@ const ContactSection = () => {
                     <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-4">
                       <Check size={32} className="text-green-500" />
                     </div>
-                    <h4 className="text-xl font-bold mb-2">Messaggio inviato!</h4>
+                    <h4 className="text-xl font-bold mb-2">Message sent!</h4>
                     <p className="text-gray-600 dark:text-gray-300 text-center max-w-md">
-                      Grazie per averci contattato. Un membro del nostro team risponderà
-                      il prima possibile.
+                      Thank you for contacting us. A member of our team will respond
+                      as soon as possible.
                     </p>
                     <Button 
                       className="mt-6"
                       onClick={() => setFormState(prev => ({ ...prev, isSubmitted: false }))}
                     >
-                      Invia un altro messaggio
+                      Send another message
                     </Button>
                   </div>
                 ) : (
@@ -167,19 +167,19 @@ const ContactSection = () => {
                     data-netlify="true"
                     netlify-honeypot="bot-field"
                   >
-                    {/* Campo nascosto per Netlify Forms */}
+                    {/* Hidden field for Netlify Forms */}
                     <input type="hidden" name="form-name" value="contact" />
-                    {/* Campo honeypot per evitare spam */}
+                    {/* Honeypot field to avoid spam */}
                     <p className="hidden">
                       <label>
-                        Non compilare questo se sei umano: <input name="bot-field" />
+                        Don't fill this out if you're human: <input name="bot-field" />
                       </label>
                     </p>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-medium mb-1">
-                          Nome completo <span className="text-red-500">*</span>
+                        <label htmlFor="name" className="block text-sm font-medium mb-1 text-left">
+                          Full Name <span className="text-red-500">*</span>
                         </label>
                         <Input
                           id="name"
@@ -187,16 +187,16 @@ const ContactSection = () => {
                           value={formState.name}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          placeholder="Il tuo nome"
+                          placeholder="Your name"
                           required
                           className={errors.name ? "border-red-500" : ""}
                         />
                         {errors.name && (
-                          <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+                          <p className="text-red-500 text-xs mt-1 text-left">{errors.name}</p>
                         )}
                       </div>
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium mb-1">
+                        <label htmlFor="email" className="block text-sm font-medium mb-1 text-left">
                           Email <span className="text-red-500">*</span>
                         </label>
                         <Input
@@ -206,19 +206,19 @@ const ContactSection = () => {
                           value={formState.email}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          placeholder="La tua email"
+                          placeholder="Your email"
                           required
                           className={errors.email ? "border-red-500" : ""}
                         />
                         {errors.email && (
-                          <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                          <p className="text-red-500 text-xs mt-1 text-left">{errors.email}</p>
                         )}
                       </div>
                     </div>
                     
                     <div>
-                      <label htmlFor="subject" className="block text-sm font-medium mb-1">
-                        Oggetto <span className="text-red-500">*</span>
+                      <label htmlFor="subject" className="block text-sm font-medium mb-1 text-left">
+                        Subject <span className="text-red-500">*</span>
                       </label>
                       <Input
                         id="subject"
@@ -226,18 +226,18 @@ const ContactSection = () => {
                         value={formState.subject}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        placeholder="Descrivi brevemente l'argomento"
+                        placeholder="Briefly describe your request"
                         required
                         className={errors.subject ? "border-red-500" : ""}
                       />
                       {errors.subject && (
-                        <p className="text-red-500 text-xs mt-1">{errors.subject}</p>
+                        <p className="text-red-500 text-xs mt-1 text-left">{errors.subject}</p>
                       )}
                     </div>
                     
                     <div>
-                      <label htmlFor="company" className="block text-sm font-medium mb-1">
-                        Azienda
+                      <label htmlFor="company" className="block text-sm font-medium mb-1 text-left">
+                        Company
                       </label>
                       <Input
                         id="company"
@@ -245,13 +245,13 @@ const ContactSection = () => {
                         value={formState.company}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        placeholder="Nome azienda"
+                        placeholder="Company name"
                       />
                     </div>
                     
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium mb-1">
-                        Messaggio <span className="text-red-500">*</span>
+                      <label htmlFor="message" className="block text-sm font-medium mb-1 text-left">
+                        Message <span className="text-red-500">*</span>
                       </label>
                       <Textarea
                         id="message"
@@ -259,25 +259,25 @@ const ContactSection = () => {
                         value={formState.message}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        placeholder="Parlaci del tuo progetto..."
+                        placeholder="Tell us about your project or challenge..."
                         rows={5}
                         required
                         className={errors.message ? "border-red-500" : ""}
                       />
                       {errors.message && (
-                        <p className="text-red-500 text-xs mt-1">{errors.message}</p>
+                        <p className="text-red-500 text-xs mt-1 text-left">{errors.message}</p>
                       )}
                     </div>
                     
                     <Button 
                       type="submit" 
-                      className="w-full bg-onesec-primary hover:bg-onesec-primary/80 flex items-center justify-center gap-2 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+                      className="w-full bg-gradient-to-r from-onesec-primary to-onesec-secondary hover:from-onesec-primary/90 hover:to-onesec-secondary/90 flex items-center justify-center gap-2 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
                       disabled={formState.isSubmitting}
                     >
-                      {formState.isSubmitting ? "Invio in corso..." : (
+                      {formState.isSubmitting ? "Sending..." : (
                         <>
                           <Send size={18} />
-                          <span>Invia messaggio</span>
+                          <span>Book My Free Call</span>
                         </>
                       )}
                     </Button>
