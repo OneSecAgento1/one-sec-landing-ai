@@ -1,17 +1,41 @@
 
 import { Button } from "@/components/ui/button";
+import { useEffect, useRef } from "react";
 
 const HeroSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Set up intersection observer for scroll-triggered animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const animatedElements = sectionRef.current?.querySelectorAll(".animate-on-scroll");
+    animatedElements?.forEach((el) => observer.observe(el));
+
+    return () => {
+      animatedElements?.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   return (
-    <section className="relative min-h-screen pt-24 pb-48 flex items-center bg-onesec-dark overflow-hidden">
-      {/* Animated background */}
+    <section ref={sectionRef} className="relative min-h-screen pt-24 pb-48 flex items-center bg-onesec-dark overflow-hidden">
+      {/* Enhanced animated background with more dynamic elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-onesec-dark via-onesec-dark to-transparent bg-gradient-animation"></div>
         
-        {/* Background pattern with dot texture */}
+        {/* Enhanced background pattern with increased dynamism */}
         <div className="absolute inset-0 dot-texture"></div>
         
-        {/* Decorative shapes */}
+        {/* Enhanced decorative shapes with more sophisticated animations */}
         <div className="decorative-shape shape-circle bg-onesec-primary/20 w-64 h-64 -top-20 -left-20 animate-rotate-slow"></div>
         <div className="decorative-shape shape-circle bg-onesec-secondary/20 w-96 h-96 -bottom-40 -right-40 animate-rotate-slow" 
           style={{ animationDuration: '25s', animationDirection: 'reverse' }}></div>
@@ -20,52 +44,82 @@ const HeroSection = () => {
         <div className="decorative-shape shape-triangle bg-onesec-primary/10 w-48 h-48 bottom-1/4 left-10 animate-float"
           style={{ animationDelay: '1s' }}></div>
         
-        {/* Background pattern - Increased opacity */}
-        <div className="absolute inset-0 opacity-15">
-          {[...Array(20)].map((_, i) => <div key={i} className="absolute w-40 h-40 lg:w-64 lg:h-64 rounded-full animate-pulse-light" style={{
-          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.5) 0%, rgba(99, 102, 241, 0.2) 70%, transparent 100%)',
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-          animationDelay: `${Math.random() * 5}s`
-        }}></div>)}
+        {/* Enhanced background light effects with parallax */}
+        <div className="absolute inset-0 opacity-20">
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={i} 
+              className="absolute w-40 h-40 lg:w-64 lg:h-64 rounded-full animate-pulse-light parallax-bg-item" 
+              style={{
+                background: 'radial-gradient(circle, rgba(99, 102, 241, 0.7) 0%, rgba(99, 102, 241, 0.2) 70%, transparent 100%)',
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                transform: `translateZ(${Math.random() * 20 - 10}px)`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* New flowing wave elements that connect to services section */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 overflow-hidden">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="absolute bottom-0 left-0 w-full h-48">
+            <path 
+              d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" 
+              className="fill-onesec-dark/60 animate-wave"
+            ></path>
+            <path 
+              d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z" 
+              className="fill-onesec-dark/50 animate-wave-slow"
+              style={{ animationDelay: '0.5s' }}
+            ></path>
+          </svg>
         </div>
       </div>
       
       <div className="container mx-auto relative z-10 px-4">
         <div className="lg:max-w-4xl mx-auto text-center mb-12">
-          {/* Hero text */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 opacity-0 animate-fade-in">
+          {/* Enhanced hero text with staggered animations */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-on-scroll opacity-0 animate-slide-up">
             <span className="text-white">Grow your B2B business </span>
-            <span className="gradient-text">without growing your team.</span>
+            <span className="gradient-text-enhanced">without growing your team.</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-300 mb-8 mx-auto opacity-0 animate-fade-in delay-1">
+          <p className="text-lg md:text-xl text-gray-300 mb-8 mx-auto animate-on-scroll opacity-0 animate-slide-up-delay-1">
             We build AI + automation systems for agencies, SaaS, and consultancies that want to grow faster — by eliminating manual work and closing more deals.
           </p>
           
-          <p className="text-sm text-gray-400 mb-8 opacity-0 animate-fade-in delay-2">
+          <p className="text-sm text-gray-400 mb-8 animate-on-scroll opacity-0 animate-slide-up-delay-2">
             Trusted by agencies, SaaS, and consultants automating smarter to grow faster.
           </p>
           
-          <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in delay-3">
-            <Button size="lg" className="bg-onesec-accent hover:bg-onesec-accent/90 text-white font-medium text-base px-8 py-6">
+          {/* Enhanced buttons with hover effects */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-on-scroll opacity-0 animate-slide-up-delay-3">
+            <Button size="lg" className="bg-onesec-accent hover:bg-onesec-accent/90 text-white font-medium text-base px-8 py-6 button-glow transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
               Book Your Free Strategy Call
             </Button>
-            <Button size="lg" className="bg-[#2c2c3a] border border-[#4f8cff] text-white hover:bg-[#2c2c3a]/90 hover:border-[#4f8cff]/90 font-medium rounded-[6px] px-8 py-6">
+            <Button size="lg" className="bg-[#2c2c3a] border border-[#4f8cff] text-white hover:bg-[#2c2c3a]/90 hover:border-[#4f8cff]/90 font-medium rounded-[6px] px-8 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-blue">
               See What We Automate
             </Button>
           </div>
         </div>
       </div>
       
-      {/* Visual transition element connecting to services section */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-onesec-dark/95 z-0"></div>
+      {/* Enhanced visual transition to services section */}
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent to-onesec-dark/95 z-0"></div>
       
-      {/* Floating elements that extend into the services section */}
+      {/* Enhanced floating elements that extend into services section with improved animations */}
       <div className="absolute bottom-0 left-0 right-0 overflow-hidden h-24 z-10">
-        <div className="absolute w-40 h-40 bg-onesec-primary/10 rounded-full -bottom-20 left-1/4 animate-float"></div>
-        <div className="absolute w-64 h-64 bg-onesec-secondary/10 rounded-full -bottom-40 right-1/3 animate-float" style={{ animationDelay: '1.5s' }}></div>
-        <div className="absolute w-20 h-20 bg-onesec-accent/10 rounded-full -bottom-10 right-1/4 animate-pulse-opacity"></div>
+        <div className="absolute w-40 h-40 bg-onesec-primary/20 rounded-full -bottom-20 left-1/4 animate-float-enhanced"></div>
+        <div className="absolute w-64 h-64 bg-onesec-secondary/20 rounded-full -bottom-40 right-1/3 animate-float-enhanced-reverse" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute w-20 h-20 bg-onesec-accent/20 rounded-full -bottom-10 right-1/4 animate-pulse-opacity-enhanced"></div>
+      </div>
+
+      {/* Scrolling indicator */}
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20 animate-bounce-slow">
+        <div className="w-8 h-12 rounded-full border-2 border-white/30 flex justify-center pt-2">
+          <div className="w-1 h-3 bg-white/60 rounded-full animate-scroll-indicator"></div>
+        </div>
       </div>
     </section>
   );
