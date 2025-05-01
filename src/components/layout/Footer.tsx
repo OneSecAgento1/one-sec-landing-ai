@@ -1,32 +1,33 @@
-
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="bg-onesec-dark text-white relative overflow-hidden">
+  return <footer className="bg-onesec-dark text-white relative overflow-hidden">
       {/* Decorative background with increased opacity */}
       <div className="absolute inset-0 opacity-20">
         <div className="decorative-shape shape-circle bg-onesec-primary/40 w-96 h-96 -top-40 right-20 animate-rotate-slow"></div>
-        <div className="decorative-shape shape-square bg-onesec-secondary/40 w-60 h-60 bottom-0 left-20 rotate-45 animate-float"
-          style={{ animationDuration: '8s' }}></div>
-        <div className="decorative-shape shape-blob bg-onesec-accent/30 w-72 h-72 top-1/3 right-1/4 animate-float"
-          style={{ animationDelay: '2s', animationDuration: '10s' }}></div>
+        <div className="decorative-shape shape-square bg-onesec-secondary/40 w-60 h-60 bottom-0 left-20 rotate-45 animate-float" style={{
+        animationDuration: '8s'
+      }}></div>
+        <div className="decorative-shape shape-blob bg-onesec-accent/30 w-72 h-72 top-1/3 right-1/4 animate-float" style={{
+        animationDelay: '2s',
+        animationDuration: '10s'
+      }}></div>
       </div>
       
       {/* Light texture with increased opacity */}
-      <div className="absolute inset-0 line-texture" style={{ opacity: '0.08' }}></div>
+      <div className="absolute inset-0 line-texture" style={{
+      opacity: '0.08'
+    }}></div>
       
       {/* Background floating elements */}
       <div className="absolute inset-0 opacity-10">
         {[...Array(8)].map((_, i) => <div key={i} className="absolute w-24 h-24 rounded-full animate-pulse-light" style={{
-          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 70%, transparent 100%)',
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-          animationDelay: `${Math.random() * 5}s`
-        }}></div>)}
+        background: 'radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 70%, transparent 100%)',
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 5}s`
+      }}></div>)}
       </div>
       
       <div className="container mx-auto py-12 relative z-10">
@@ -69,22 +70,7 @@ const Footer = () => {
           </div>
 
           {/* Contact info */}
-          <div>
-            <h3 className="font-bold text-lg mb-4">Contact Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <Mail size={20} className="mr-2 text-onesec-accent shrink-0 mt-1" />
-                <span>info@onesecagent.com</span>
-              </li>
-              <li className="flex items-start">
-                <Phone size={20} className="mr-2 text-onesec-accent shrink-0 mt-1" />
-                <span>+39 123 456 7890</span>
-              </li>
-              <li>
-                Milan, Italy
-              </li>
-            </ul>
-          </div>
+          
         </div>
 
         <hr className="my-8 border-gray-800" />
@@ -99,25 +85,24 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
-const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <li>
+const FooterLink = ({
+  href,
+  children
+}: {
+  href: string;
+  children: React.ReactNode;
+}) => <li>
     <a href={href} className="text-gray-400 hover:text-white transition-colors">
       {children}
     </a>
-  </li>
-);
-
-const SocialIcon = ({ icon }: { icon: React.ReactNode }) => (
-  <a
-    href="#"
-    className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-onesec-primary transition-colors"
-  >
+  </li>;
+const SocialIcon = ({
+  icon
+}: {
+  icon: React.ReactNode;
+}) => <a href="#" className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-onesec-primary transition-colors">
     {icon}
-  </a>
-);
-
+  </a>;
 export default Footer;
