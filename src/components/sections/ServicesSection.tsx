@@ -1,7 +1,31 @@
 
 import { Zap, ArrowRightLeft, TrendingUp, Users } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const ServicesSection = () => {
+  const solutionsRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll('.service-card');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('visible');
+            }, index * 100);
+          });
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    if (solutionsRef.current) {
+      observer.observe(solutionsRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, []);
+
   const solutions = [{
     id: 1,
     icon: <Zap className="w-6 h-6 text-white" />,
@@ -37,18 +61,28 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {solutions.map((solution, index) => <div key={solution.id} className={`bg-gradient-to-br from-gray-900/70 to-gray-800/50 p-6 rounded-xl border border-gray-800 hover:border-onesec-primary/50 transition-all duration-300 hover:-translate-y-1 opacity-0 animate-fade-in`} style={{
-          animationDelay: `${0.1 + index * 0.1}s`
-        }}>
+        <div ref={solutionsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {solutions.map((solution, index) => (
+            <div 
+              key={solution.id}
+              className={`bg-gradient-to-br from-gray-900/70 to-gray-800/50 p-6 rounded-xl border border-gray-800 hover:border-onesec-primary/50 transition-all duration-300 opacity-0 gradient-border hover-card service-card`}
+              style={{
+                animationDelay: `${0.1 + index * 0.1}s`,
+                transform: 'translateY(20px)',
+                opacity: 0,
+                transition: 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease-out'
+              }}
+            >
               <div className="w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6">
                 {solution.icon}
               </div>
               <h3 className="text-xl font-bold text-white mb-4">{solution.title}</h3>
               <p className="text-gray-400">{solution.description}</p>
-            </div>)}
+            </div>
+          ))}
         </div>
       </div>
     </section>;
 };
+
 export default ServicesSection;

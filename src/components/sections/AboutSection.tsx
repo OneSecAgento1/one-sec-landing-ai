@@ -2,8 +2,80 @@
 import { Zap, Settings, Clock, TrendingUp, Users, Award, Gauge } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState, useRef } from "react";
 
 const AboutSection = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const sectionRef = useRef<HTMLElement>(null);
+  const pillarsRef = useRef<HTMLDivElement>(null);
+  const edgesRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        setMousePosition({ x, y });
+      }
+    };
+    
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      
+      if (sectionRef.current) {
+        const sectionTop = sectionRef.current.offsetTop;
+        const sectionHeight = sectionRef.current.offsetHeight;
+        const scrollRelative = (scrollPosition - sectionTop + window.innerHeight) / sectionHeight;
+        
+        if (scrollRelative > 0 && scrollRelative < 2) {
+          sectionRef.current.style.setProperty('--scroll-factor', scrollRelative.toString());
+        }
+      }
+    };
+    
+    const observeElements = () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target === pillarsRef.current) {
+              const cards = entry.target.querySelectorAll('.pillar-card');
+              cards.forEach((card, index) => {
+                setTimeout(() => {
+                  card.classList.add('visible');
+                }, index * 100);
+              });
+            }
+            
+            if (entry.target === edgesRef.current) {
+              const cards = entry.target.querySelectorAll('.edge-card');
+              cards.forEach((card, index) => {
+                setTimeout(() => {
+                  card.classList.add('visible');
+                }, index * 100);
+              });
+            }
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      if (pillarsRef.current) observer.observe(pillarsRef.current);
+      if (edgesRef.current) observer.observe(edgesRef.current);
+      
+      return () => observer.disconnect();
+    };
+    
+    document.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
+    
+    const observer = observeElements();
+    
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const pillars = [
     {
       id: 1,
@@ -53,9 +125,25 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-onesec-dark/90 to-onesec-dark">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+    <section 
+      id="about" 
+      ref={sectionRef}
+      className="py-24 bg-gradient-to-b from-onesec-dark/90 to-onesec-dark parallax-container"
+      style={{ overflow: 'hidden' }}
+    >
+      <div 
+        className="absolute inset-0 opacity-10 mouse-move parallax-layer parallax-bg"
+        style={{
+          transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`,
+          backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(84, 169, 255, 0.3) 0%, rgba(10, 15, 41, 0) 70%)',
+        }}
+      ></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div 
+          className="text-center mb-16 parallax-layer parallax-fore"
+          style={{ transform: `translateY(${window.scrollY * -0.1}px)` }}
+        >
           <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">ABOUT US</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 opacity-0 animate-fade-in delay-1">
             We use AI and automations to cut costs, close more deals, and eliminate manual work.
@@ -66,13 +154,21 @@ const AboutSection = () => {
           </p>
         </div>
         
-        {/* Three value cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Three value cards with parallax effect */}
+        <div 
+          ref={pillarsRef}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 parallax-layer parallax-mid"
+          style={{ transform: `translateY(${window.scrollY * -0.05}px)` }}
+        >
           {pillars.map((pillar, index) => (
             <div 
               key={pillar.id} 
-              className="bg-gray-800/50 p-8 rounded-xl border border-gray-700 hover:border-onesec-primary/50 transition-all text-center opacity-0 animate-fade-in"
-              style={{ animationDelay: `${0.3 + index * 0.1}s` }}
+              className="bg-gray-800/50 p-8 rounded-xl border border-gray-700 hover:border-onesec-primary/50 transition-all text-center gradient-border hover-card pillar-card"
+              style={{
+                transform: 'translateY(20px)',
+                opacity: 0,
+                transition: 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease-out'
+              }}
             >
               <div className="w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6 mx-auto">
                 {pillar.icon}
@@ -89,12 +185,19 @@ const AboutSection = () => {
             <h2 className="text-3xl font-bold text-white mb-6 opacity-0 animate-fade-in">Our Edge</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div 
+            ref={edgesRef}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {edges.map((edge, index) => (
               <Card 
                 key={edge.id} 
-                className="bg-gradient-to-br from-gray-800/70 to-gray-900/90 border-gray-700 hover:border-onesec-accent/50 transition-all duration-300 opacity-0 animate-fade-in"
-                style={{ animationDelay: `${0.5 + index * 0.1}s` }}
+                className="bg-gradient-to-br from-gray-800/70 to-gray-900/90 border-gray-700 hover:border-onesec-accent/50 transition-all duration-300 gradient-border hover-card edge-card"
+                style={{
+                  transform: 'translateY(20px)',
+                  opacity: 0,
+                  transition: 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease-out'
+                }}
               >
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 rounded-full bg-gray-800/80 flex items-center justify-center mb-4 mx-auto">

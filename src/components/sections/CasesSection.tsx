@@ -1,9 +1,31 @@
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 
 const CasesSection = () => {
   const [activeTab, setActiveTab] = useState('all');
+  const casesRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll('.case-card');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('visible');
+            }, index * 100);
+          });
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    if (casesRef.current) {
+      observer.observe(casesRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, [activeTab]);
   
   const cases = [
     {
@@ -93,14 +115,18 @@ const CasesSection = () => {
         </div>
         
         {/* Case studies grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div ref={casesRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredCases.map((caseStudy, index) => (
             <div 
               key={caseStudy.id}
-              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 opacity-0 animate-fade-in"
-              style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 gradient-border hover-card case-card"
+              style={{
+                transform: 'translateY(20px)',
+                opacity: 0,
+                transition: 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease-out'
+              }}
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-48 overflow-hidden image-mask">
                 <img 
                   src={caseStudy.image} 
                   alt={caseStudy.title} 
