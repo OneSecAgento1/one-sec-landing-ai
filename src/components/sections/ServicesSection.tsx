@@ -50,7 +50,7 @@ const ServicesSection = () => {
               className={`bg-gradient-to-br from-gray-900/70 to-gray-800/50 p-6 rounded-xl border border-gray-800 hover:border-onesec-primary/50 transition-all duration-300 hover:-translate-y-1 opacity-0 animate-fade-in`}
               style={{ animationDelay: `${0.1 + index * 0.1}s` }}
             >
-              <div className="w-12 h-12 rounded-lg gradient-bg flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-onesec-primary to-onesec-secondary flex items-center justify-center mb-6">
                 {service.icon}
               </div>
               <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>

@@ -64,11 +64,11 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
         onesec: {
-          dark: '#0F172A',
-          light: '#F8FAFC',
-          primary: '#6366F1',
-          secondary: '#A855F7',
-          accent: '#06B6D4'
+          dark: '#0A0F29',   // Colore di sfondo scuro dall'immagine
+          light: '#F8FAFC',  // Colore chiaro per il contrasto
+          primary: '#54A9FF', // Colore blu principale dall'immagine del logo
+          secondary: '#7E64E0', // Sfumatura violetta/blu dall'immagine
+          accent: '#06DCFF'  // Colore accent ciano dall'immagine
         }
 			},
 			borderRadius: {
