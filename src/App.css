@@ -1,11 +1,8 @@
-
-/* Rimosso max-width fisso e aggiunto controllo overflow */
 #root {
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0;
+  padding: 2rem;
   text-align: center;
-  width: 100%;
-  overflow-x: hidden;
 }
 
 .logo {
