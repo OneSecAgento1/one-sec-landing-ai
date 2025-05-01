@@ -75,8 +75,9 @@ const ContactSection = () => {
       // Procedi con l'invio se la validazione è passata
       setFormState(prev => ({ ...prev, isSubmitting: true }));
       
-      // Simula la chiamata API per l'invio della mail
-      // In un'implementazione reale, qui andrebbe la chiamata ad un servizio di email
+      // Con Netlify Forms non è necessario gestire l'invio tramite JS
+      // Il form verrebbe inviato automaticamente e gestito da Netlify
+      // Questo è solo per simulare l'invio e mostrare feedback all'utente
       setTimeout(() => {
         setFormState(prev => ({ 
           ...prev, 
@@ -159,7 +160,23 @@ const ContactSection = () => {
                     </Button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form 
+                    onSubmit={handleSubmit} 
+                    className="space-y-6"
+                    name="contact" 
+                    method="POST"
+                    data-netlify="true"
+                    netlify-honeypot="bot-field"
+                  >
+                    {/* Campo nascosto per Netlify Forms */}
+                    <input type="hidden" name="form-name" value="contact" />
+                    {/* Campo honeypot per evitare spam */}
+                    <p className="hidden">
+                      <label>
+                        Non compilare questo se sei umano: <input name="bot-field" />
+                      </label>
+                    </p>
+                    
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium mb-1">
