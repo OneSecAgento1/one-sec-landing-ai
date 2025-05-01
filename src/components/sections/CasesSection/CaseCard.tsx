@@ -72,10 +72,12 @@ export const CaseCard = ({ caseStudy, index }: CaseCardProps) => {
           </p>
         </div>
         
-        <Button variant="link" className="px-0 text-onesec-primary hover:text-onesec-secondary group flex items-center">
-          {caseStudy.cta}
-          <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </Button>
+        <a href="#contact" className="inline-block">
+          <Button variant="link" className="px-0 text-onesec-primary hover:text-onesec-secondary group flex items-center">
+            {caseStudy.cta}
+            <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </a>
       </div>
     </div>
   );

@@ -1,20 +1,8 @@
 
-import { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CaseCard } from './CaseCard';
 import { caseData } from './caseData';
 
 const CasesSection = () => {
-  const [activeTab, setActiveTab] = useState('all');
-  
-  const filteredCases = activeTab === 'all' ? 
-    caseData : 
-    caseData.filter(c => c.category === activeTab);
-  
-  const handleTabChange = (value: string) => {
-    setActiveTab(value);
-  };
-  
   return (
     <section id="cases" className="py-24 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
       {/* Decorative background elements with increased opacity */}
@@ -60,61 +48,9 @@ const CasesSection = () => {
           </p>
         </div>
         
-        {/* Tabs with shadcn UI component */}
-        <div className="max-w-3xl mx-auto mb-10 relative z-20">
-          <Tabs defaultValue="all" value={activeTab} onValueChange={handleTabChange} className="w-full" role="tablist" aria-label="Case Study Categories">
-            <div className="flex justify-center">
-              <TabsList className="glassmorphism backdrop-blur-md p-1.5 bg-white/50 dark:bg-gray-800/50 pointer-events-auto cursor-pointer z-20">
-                <TabsTrigger 
-                  value="all" 
-                  className="rounded-full px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-onesec-primary data-[state=active]:to-onesec-secondary data-[state=active]:text-white cursor-pointer pointer-events-auto"
-                  role="tab"
-                  aria-selected={activeTab === 'all'}
-                >
-                  All
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="ai" 
-                  className="rounded-full px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-onesec-primary data-[state=active]:to-onesec-secondary data-[state=active]:text-white cursor-pointer pointer-events-auto"
-                  role="tab"
-                  aria-selected={activeTab === 'ai'}
-                >
-                  AI Solutions
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="automation" 
-                  className="rounded-full px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-onesec-primary data-[state=active]:to-onesec-secondary data-[state=active]:text-white cursor-pointer pointer-events-auto"
-                  role="tab"
-                  aria-selected={activeTab === 'automation'}
-                >
-                  Automation
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="chatbot" 
-                  className="rounded-full px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-onesec-primary data-[state=active]:to-onesec-secondary data-[state=active]:text-white cursor-pointer pointer-events-auto"
-                  role="tab"
-                  aria-selected={activeTab === 'chatbot'}
-                >
-                  Chatbot
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="data" 
-                  className="rounded-full px-4 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-onesec-primary data-[state=active]:to-onesec-secondary data-[state=active]:text-white cursor-pointer pointer-events-auto"
-                  role="tab"
-                  aria-selected={activeTab === 'data'}
-                >
-                  Data Analysis
-                </TabsTrigger>
-              </TabsList>
-            </div>
-            
-            {/* We don't actually need the TabsContent components since we're filtering based on the active tab value */}
-          </Tabs>
-        </div>
-        
         {/* Case studies grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredCases.map((caseStudy, index) => (
+          {caseData.map((caseStudy, index) => (
             <CaseCard key={caseStudy.id} caseStudy={caseStudy} index={index} />
           ))}
         </div>
