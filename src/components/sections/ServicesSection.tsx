@@ -1,65 +1,28 @@
+
 import { Zap, ArrowRightLeft, TrendingUp, Users } from "lucide-react";
-import { CustomTooltip } from "@/components/ui/custom-tooltip";
-import { useEffect, useRef, useState } from 'react';
 
 const ServicesSection = () => {
-  const [visibleIcons, setVisibleIcons] = useState<number[]>([]);
-  const iconsRef = useRef<(HTMLDivElement | null)[]>([]);
-
   const solutions = [{
     id: 1,
     icon: <Zap className="w-6 h-6 text-white" />,
     title: "Lead Generation & Automation",
-    description: "Fill your calendar with qualified leads using AI-powered sales automations.",
-    tooltip: "Automate your lead acquisition process"
+    description: "Fill your calendar with qualified leads using AI-powered sales automations."
   }, {
     id: 2,
     icon: <ArrowRightLeft className="w-6 h-6 text-white" />,
     title: "Sales Pipeline Optimization",
-    description: "We build your sales pipeline so no lead ever slips through the cracks.",
-    tooltip: "Streamline your sales processes"
+    description: "We build your sales pipeline so no lead ever slips through the cracks."
   }, {
     id: 3,
     icon: <TrendingUp className="w-6 h-6 text-white" />,
     title: "Increase Margins & Profit",
-    description: "Cut costs and boost profits by removing bottlenecks with smart automation and AI systems.",
-    tooltip: "Increase your profit margins"
+    description: "Cut costs and boost profits by removing bottlenecks with smart automation and AI systems."
   }, {
     id: 4,
     icon: <Users className="w-6 h-6 text-white" />,
     title: "Retention & Scalable Onboarding",
-    description: "Keep customers longer with personalized CRM flows and onboarding experiences that scale.",
-    tooltip: "Improve customer retention"
+    description: "Keep customers longer with personalized CRM flows and onboarding experiences that scale."
   }];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = Number(entry.target.getAttribute('data-icon-id'));
-          if (entry.isIntersecting && !visibleIcons.includes(id)) {
-            setVisibleIcons(prev => [...prev, id]);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    iconsRef.current.forEach(el => {
-      if (el) observer.observe(el);
-    });
-
-    return () => {
-      iconsRef.current.forEach(el => {
-        if (el) observer.unobserve(el);
-      });
-    };
-  }, [visibleIcons]);
-
-  // Animation variants for icons
-  const getIconAnimation = (id: number) => {
-    return id % 2 === 0 ? 'animate-icon-float' : 'animate-icon-pulse';
-  };
 
   return <section id="services" className="py-24 bg-gradient-to-b from-onesec-dark to-onesec-dark/95">
       <div className="container mx-auto">
@@ -75,34 +38,15 @@ const ServicesSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {solutions.map((solution, index) => (
-            <div 
-              key={solution.id} 
-              className="service-card bg-gradient-to-br from-gray-900/70 to-gray-800/50 p-6 rounded-xl 
-                border border-gray-800 transition-all duration-300 
-                hover:-translate-y-2 hover:rotate-1
-                hover:shadow-[0_20px_50px_rgba(84,169,255,0.15)] 
-                hover:border-transparent hover:card-border-gradient opacity-0 animate-fade-in"
-              style={{
-                animationDelay: `${0.1 + index * 0.1}s`
-              }}
-            >
-              <CustomTooltip content={solution.tooltip}>
-                <div 
-                  ref={el => iconsRef.current[solution.id] = el} 
-                  data-icon-id={solution.id}
-                  className={`w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6
-                    transition-transform duration-700 ${
-                    visibleIcons.includes(solution.id) ? getIconAnimation(solution.id) : ''
-                  }`}
-                >
-                  {solution.icon}
-                </div>
-              </CustomTooltip>
+          {solutions.map((solution, index) => <div key={solution.id} className={`bg-gradient-to-br from-gray-900/70 to-gray-800/50 p-6 rounded-xl border border-gray-800 hover:border-onesec-primary/50 transition-all duration-300 hover:-translate-y-1 opacity-0 animate-fade-in`} style={{
+          animationDelay: `${0.1 + index * 0.1}s`
+        }}>
+              <div className="w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6">
+                {solution.icon}
+              </div>
               <h3 className="text-xl font-bold text-white mb-4">{solution.title}</h3>
               <p className="text-gray-400">{solution.description}</p>
-            </div>
-          ))}
+            </div>)}
         </div>
       </div>
     </section>;

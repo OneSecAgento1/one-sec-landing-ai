@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import { ArrowDown } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -44,7 +45,12 @@ const HeroSection = () => {
           </div>
         </div>
         
-        {/* Down arrow removed as requested */}
+        {/* Simple down arrow (minimalist) */}
+        <div className="absolute bottom-8 left-0 right-0 flex justify-center opacity-0 animate-fade-in delay-4">
+          <a href="#services" className="text-white/40 hover:text-white/70 transition-colors">
+            <ArrowDown className="animate-bounce" />
+          </a>
+        </div>
       </div>
     </section>
   );

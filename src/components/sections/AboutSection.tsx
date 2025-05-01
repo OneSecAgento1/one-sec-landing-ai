@@ -1,96 +1,56 @@
+
 import { Zap, Settings, Clock, TrendingUp, Users, Award, Gauge } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CustomTooltip } from "@/components/ui/custom-tooltip";
-import { useEffect, useRef, useState } from "react";
 
 const AboutSection = () => {
-  const [visibleIcons, setVisibleIcons] = useState<number[]>([]);
-  const iconsRef = useRef<(HTMLDivElement | null)[]>([]);
-
   const pillars = [
     {
       id: 1,
       icon: <Zap className="w-6 h-6 text-white" />,
       title: "Real Systems, Real ROI",
-      description: "We build AI and automation systems that drive revenue — not just look impressive.",
-      tooltip: "Focused on measurable business results"
+      description: "We build AI and automation systems that drive revenue — not just look impressive."
     },
     {
       id: 2,
       icon: <Settings className="w-6 h-6 text-white" />,
       title: "Built for Your Bottlenecks",
-      description: "We design around your data, your workflows, and your sales goals — not generic templates.",
-      tooltip: "Custom-tailored to your specific needs"
+      description: "We design around your data, your workflows, and your sales goals — not generic templates."
     },
     {
       id: 3,
       icon: <Gauge className="w-6 h-6 text-white" />,
       title: "Fast Execution, High Impact",
-      description: "We deliver results in days, not quarters — with a clear focus on what moves the needle.",
-      tooltip: "Rapid implementation and deployment"
+      description: "We deliver results in days, not quarters — with a clear focus on what moves the needle."
     }
   ];
 
   const edges = [
     {
-      id: 4,
+      id: 1,
       icon: <TrendingUp className="w-6 h-6 text-white" />,
       title: "Built Around Revenue, Not Code",
-      description: "We don't sell tech — we sell outcomes. Every system is tied to measurable business results.",
-      tooltip: "Business-first approach to technology"
+      description: "We don't sell tech — we sell outcomes. Every system is tied to measurable business results."
     },
     {
-      id: 5,
+      id: 2,
       icon: <Clock className="w-6 h-6 text-white" />,
       title: "Speed Over Process",
-      description: "No delays, no unnecessary meetings. You get fast execution where it matters.",
-      tooltip: "Streamlined workflow for faster results"
+      description: "No delays, no unnecessary meetings. You get fast execution where it matters."
     },
     {
-      id: 6,
+      id: 3,
       icon: <Users className="w-6 h-6 text-white" />,
       title: "Small, Focused, Brutally Effective",
-      description: "No big teams. Just operators who do the work and take responsibility for results.",
-      tooltip: "Expert team with proven track record"
+      description: "No big teams. Just operators who do the work and take responsibility for results."
     },
     {
-      id: 7,
+      id: 4,
       icon: <Award className="w-6 h-6 text-white" />,
       title: "Obsessed With Your ROI",
-      description: "You don't pay for effort. You pay for results — and that's what we deliver.",
-      tooltip: "Results-based partnership model"
+      description: "You don't pay for effort. You pay for results — and that's what we deliver."
     }
   ];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = Number(entry.target.getAttribute('data-icon-id'));
-          if (entry.isIntersecting && !visibleIcons.includes(id)) {
-            setVisibleIcons(prev => [...prev, id]);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    iconsRef.current.forEach(el => {
-      if (el) observer.observe(el);
-    });
-
-    return () => {
-      iconsRef.current.forEach(el => {
-        if (el) observer.unobserve(el);
-      });
-    };
-  }, [visibleIcons]);
-
-  // Animation variants for icons
-  const getIconAnimation = (id: number) => {
-    return id % 2 === 0 ? 'animate-icon-float' : 'animate-icon-pulse';
-  };
 
   return (
     <section id="about" className="py-24 bg-gradient-to-b from-onesec-dark/90 to-onesec-dark">
@@ -114,17 +74,9 @@ const AboutSection = () => {
               className="bg-gray-800/50 p-8 rounded-xl border border-gray-700 hover:border-onesec-primary/50 transition-all text-center opacity-0 animate-fade-in"
               style={{ animationDelay: `${0.3 + index * 0.1}s` }}
             >
-              <CustomTooltip content={pillar.tooltip}>
-                <div 
-                  ref={el => iconsRef.current[pillar.id] = el}
-                  data-icon-id={pillar.id}
-                  className={`w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6 mx-auto transition-transform duration-700 ${
-                    visibleIcons.includes(pillar.id) ? getIconAnimation(pillar.id) : ''
-                  }`}
-                >
-                  {pillar.icon}
-                </div>
-              </CustomTooltip>
+              <div className="w-12 h-12 rounded-lg bg-gray-800/80 flex items-center justify-center mb-6 mx-auto">
+                {pillar.icon}
+              </div>
               <h3 className="text-xl font-bold text-white mb-4">{pillar.title}</h3>
               <p className="text-gray-300">{pillar.description}</p>
             </div>
@@ -145,17 +97,9 @@ const AboutSection = () => {
                 style={{ animationDelay: `${0.5 + index * 0.1}s` }}
               >
                 <CardContent className="p-6 text-center">
-                  <CustomTooltip content={edge.tooltip}>
-                    <div 
-                      ref={el => iconsRef.current[edge.id] = el}
-                      data-icon-id={edge.id}
-                      className={`w-12 h-12 rounded-full bg-gray-800/80 flex items-center justify-center mb-4 mx-auto transition-transform duration-700 ${
-                        visibleIcons.includes(edge.id) ? getIconAnimation(edge.id) : ''
-                      }`}
-                    >
-                      {edge.icon}
-                    </div>
-                  </CustomTooltip>
+                  <div className="w-12 h-12 rounded-full bg-gray-800/80 flex items-center justify-center mb-4 mx-auto">
+                    {edge.icon}
+                  </div>
                   <h3 className="text-lg font-bold text-white mb-3">{edge.title}</h3>
                   <p className="text-gray-300 text-sm">{edge.description}</p>
                 </CardContent>
@@ -172,11 +116,9 @@ const AboutSection = () => {
           <p className="text-gray-300 mb-8">
             Let's talk. 15 minutes to see if we're a fit — no fluff, just value.
           </p>
-          <CustomTooltip content="Schedule your free consultation">
-            <Button size="lg" className="bg-onesec-primary hover:bg-onesec-primary/90 text-white px-8 py-6 text-lg">
-              Book Your Free Strategy Call
-            </Button>
-          </CustomTooltip>
+          <Button size="lg" className="bg-onesec-primary hover:bg-onesec-primary/90 text-white px-8 py-6 text-lg">
+            Book Your Free Strategy Call
+          </Button>
         </div>
       </div>
     </section>
