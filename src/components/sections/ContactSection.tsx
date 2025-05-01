@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,9 +24,10 @@ const contactFormSchema = z.object({
     message: "Message must be at least 10 characters"
   })
 });
-
 const ContactSection = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -38,7 +38,6 @@ const ContactSection = () => {
     isSubmitted: false
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
-
   const validateField = (name: string, value: string) => {
     try {
       // Validate only the specific field
@@ -60,21 +59,24 @@ const ContactSection = () => {
       return true;
     }
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+    const {
+      name,
+      value
+    } = e.target;
     setFormState(prev => ({
       ...prev,
       [name]: value
     }));
     validateField(name, value);
   };
-
   const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+    const {
+      name,
+      value
+    } = e.target;
     validateField(name, value);
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -97,16 +99,15 @@ const ContactSection = () => {
 
       // Submit to Supabase
       try {
-        const { error } = await supabase
-          .from('contact_submissions')
-          .insert({
-            full_name: formData.name,
-            email: formData.email,
-            subject: formData.subject,
-            company: formData.company || null,
-            message: formData.message
-          });
-
+        const {
+          error
+        } = await supabase.from('contact_submissions').insert({
+          full_name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          company: formData.company || null,
+          message: formData.message
+        });
         if (error) {
           console.error("Error submitting form:", error);
           toast({
@@ -132,7 +133,6 @@ const ContactSection = () => {
           company: '',
           message: ''
         }));
-        
         toast({
           title: "Message sent",
           description: "We'll get back to you as soon as possible!"
@@ -167,7 +167,6 @@ const ContactSection = () => {
       }
     }
   };
-
   return <section id="contact" className="py-24 bg-gray-100 dark:bg-gray-800">
       <div className="container mx-auto">
         <AnimatedElement>
@@ -176,7 +175,7 @@ const ContactSection = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Grow your business without hiring — thanks to AI + automation
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Get a free 15-minute strategy call. We'll uncover what to automate first — and how to unlock revenue and time instantly. Clear steps, no fluff.</p>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Get a free 30-minute strategy call. We'll uncover what to automate first — and how to unlock revenue and time instantly. Clear steps, no fluff.</p>
           </div>
         </AnimatedElement>
         
@@ -261,5 +260,4 @@ const ContactSection = () => {
       </div>
     </section>;
 };
-
 export default ContactSection;
