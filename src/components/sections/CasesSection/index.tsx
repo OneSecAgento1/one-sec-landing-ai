@@ -12,8 +12,12 @@ const CasesSection = () => {
     caseData.filter(c => c.category === activeTab);
   
   return (
-    <section id="cases" className="py-24 bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto">
+    <section id="cases" className="py-24 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100/20 via-transparent to-transparent dark:from-blue-900/10 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-100/20 via-transparent to-transparent dark:from-purple-900/10 pointer-events-none"></div>
+      
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-12">
           <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">CASE STUDIES</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
@@ -25,8 +29,8 @@ const CasesSection = () => {
           </p>
         </div>
         
-        {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        {/* Tabs with glassmorphism */}
+        <div className="glassmorphism rounded-2xl p-2 flex flex-wrap justify-center gap-2 mb-10 backdrop-blur-md max-w-3xl mx-auto">
           <TabButton 
             active={activeTab === 'all'} 
             onClick={() => setActiveTab('all')}

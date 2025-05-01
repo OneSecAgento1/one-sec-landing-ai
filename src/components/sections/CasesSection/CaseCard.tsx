@@ -1,6 +1,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export type CaseStudy = {
   id: number;
@@ -24,20 +25,19 @@ export const CaseCard = ({ caseStudy, index }: CaseCardProps) => {
     <div 
       key={caseStudy.id}
       className="case-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden 
-        shadow-md transition-all duration-300 
-        hover:shadow-[0_15px_30px_rgba(84,169,255,0.2)] 
-        hover:scale-105
+        shadow-md hover:shadow-[0_15px_30px_rgba(84,169,255,0.2)] 
+        hover:scale-105 transition-all duration-300
         hover:card-border-gradient opacity-0 animate-fade-in"
       style={{ animationDelay: `${0.1 + index * 0.1}s` }}
     >
       <div className="h-48 overflow-hidden relative">
-        {/* Decorative mask overlay */}
+        {/* Glassmorphic mask overlay */}
         <div className="absolute inset-0 bg-gradient-to-tr from-onesec-primary/40 to-transparent 
-          mask-pattern opacity-0 transition-opacity duration-300 z-10"></div>
+          mask-pattern opacity-0 transition-opacity duration-300 z-10 glassmorphism backdrop-blur-sm bg-opacity-10"></div>
         
         {/* Result badge */}
         <div className="absolute top-4 left-4 z-20">
-          <Badge className="bg-white/90 text-onesec-primary font-bold px-3 py-1.5 text-xs">
+          <Badge className="glassmorphism bg-white/80 dark:bg-black/50 backdrop-blur-md text-onesec-primary font-bold px-3 py-1.5 text-xs">
             {caseStudy.result}
           </Badge>
         </div>
@@ -61,7 +61,7 @@ export const CaseCard = ({ caseStudy, index }: CaseCardProps) => {
         </p>
         
         {/* Challenge and Result Summary */}
-        <div className="mb-4 text-sm">
+        <div className="mb-4 text-sm glassmorphism p-3 rounded-lg">
           <p className="mb-1">
             <span className="font-bold text-gray-800 dark:text-gray-200">Challenge: </span>
             <span className="text-gray-600 dark:text-gray-300">{caseStudy.challenge}</span>
@@ -72,8 +72,9 @@ export const CaseCard = ({ caseStudy, index }: CaseCardProps) => {
           </p>
         </div>
         
-        <Button variant="link" className="px-0 text-onesec-primary hover:text-onesec-secondary">
+        <Button variant="link" className="px-0 text-onesec-primary hover:text-onesec-secondary group flex items-center">
           {caseStudy.cta}
+          <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Button>
       </div>
     </div>
