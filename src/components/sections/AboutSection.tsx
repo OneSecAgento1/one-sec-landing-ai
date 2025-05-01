@@ -90,7 +90,7 @@ const AboutSection = () => {
 
   // Animation variants for icons
   const getIconAnimation = (id: number) => {
-    const animations = ['animate-icon-bounce', 'animate-icon-pulse', 'animate-icon-spin'];
+    const animations = ['animate-icon-float', 'animate-icon-pulse'];
     return animations[(id - 1) % animations.length];
   };
 

@@ -59,7 +59,7 @@ const ServicesSection = () => {
 
   // Animation variants for icons
   const getIconAnimation = (id: number) => {
-    const animations = ['animate-icon-bounce', 'animate-icon-spin', 'animate-icon-pulse'];
+    const animations = ['animate-icon-float', 'animate-icon-pulse'];
     return animations[(id - 1) % animations.length];
   };
 

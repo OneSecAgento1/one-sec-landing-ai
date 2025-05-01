@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { CustomTooltip } from "@/components/ui/custom-tooltip";
@@ -78,7 +77,7 @@ const CasesSection = () => {
 
   // Animation variants for icons
   const getIconAnimation = (id: number) => {
-    const animations = ['animate-icon-bounce', 'animate-icon-pulse', 'animate-icon-spin'];
+    const animations = ['animate-icon-float', 'animate-icon-pulse'];
     return animations[(id - 1) % animations.length];
   };
   
