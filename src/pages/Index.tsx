@@ -7,7 +7,6 @@ import ServicesSection from "@/components/sections/ServicesSection";
 import CasesSection from "@/components/sections/CasesSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ContactSection from "@/components/sections/ContactSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
 
 const Index = () => {
   // Set up scroll-based parallax effects
@@ -19,7 +18,7 @@ const Index = () => {
       document.querySelectorAll(".parallax-bg-item").forEach((el) => {
         const speed = el.getAttribute("data-speed") || 0.05;
         const yPos = -scrollPosition * Number(speed);
-        el.style.transform = `translateY(${yPos}px)`;
+        el.setAttribute("style", `transform: translateY(${yPos}px)`);
       });
 
       // Fade in elements as they come into view
@@ -60,7 +59,6 @@ const Index = () => {
         {/* The sections now have improved transitions between them */}
         <HeroSection />
         <ServicesSection />
-        <TestimonialsSection />
         <CasesSection />
         <AboutSection />
         <ContactSection />
