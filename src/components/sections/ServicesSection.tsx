@@ -24,7 +24,8 @@ const ServicesSection = () => {
     description: "Keep customers longer with personalized CRM flows and onboarding experiences that scale."
   }];
 
-  return <section id="services" className="py-24 bg-gradient-to-b from-onesec-dark to-onesec-dark/95 relative">
+  return (
+    <section id="services" className="py-24 pt-0 bg-gradient-to-b from-onesec-dark/95 to-onesec-dark/90 relative -mt-12">
       {/* Decorative background elements with glassmorphism */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/15 via-transparent to-transparent pointer-events-none"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-900/15 via-transparent to-transparent pointer-events-none"></div>
@@ -32,11 +33,11 @@ const ServicesSection = () => {
       {/* Line texture with increased opacity */}
       <div className="absolute inset-0 line-texture" style={{ opacity: '0.1' }}></div>
       
-      {/* Decorative shapes with increased opacity */}
-      <div className="decorative-shape shape-square bg-onesec-primary/15 w-60 h-60 top-20 right-20 rotate-12 animate-float"></div>
+      {/* Decorative shapes with increased opacity - positioned to overlap with hero section */}
+      <div className="decorative-shape shape-square bg-onesec-primary/15 w-60 h-60 -top-40 right-20 rotate-12 animate-float"></div>
       <div className="decorative-shape shape-circle bg-onesec-secondary/20 w-80 h-80 bottom-10 left-10 animate-pulse-opacity"></div>
       
-      {/* Background pattern with pulses */}
+      {/* Background pattern with pulses - continued from hero section */}
       <div className="absolute inset-0 opacity-15">
         {[...Array(10)].map((_, i) => <div key={i} className="absolute w-32 h-32 lg:w-48 lg:h-48 rounded-full animate-pulse-light" style={{
           background: 'radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(99, 102, 241, 0.1) 70%, transparent 100%)',
@@ -53,7 +54,7 @@ const ServicesSection = () => {
         </svg>
       </div>
       
-      <div className="container mx-auto">
+      <div className="container mx-auto pt-16">
         <div className="text-center mb-16">
           <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">Services</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 opacity-0 animate-fade-in delay-1">
@@ -85,6 +86,8 @@ const ServicesSection = () => {
             </div>)}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default ServicesSection;

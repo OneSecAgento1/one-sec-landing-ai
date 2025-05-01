@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen pt-24 flex items-center bg-onesec-dark overflow-hidden">
+    <section className="relative min-h-screen pt-24 pb-48 flex items-center bg-onesec-dark overflow-hidden">
       {/* Animated background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-onesec-dark via-onesec-dark to-onesec-primary/20 bg-gradient-animation"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-onesec-dark via-onesec-dark to-transparent bg-gradient-animation"></div>
         
         {/* Background pattern with dot texture */}
         <div className="absolute inset-0 dot-texture"></div>
@@ -20,7 +20,7 @@ const HeroSection = () => {
         <div className="decorative-shape shape-triangle bg-onesec-primary/10 w-48 h-48 bottom-1/4 left-10 animate-float"
           style={{ animationDelay: '1s' }}></div>
         
-        {/* Background pattern - Aumentata opacità da 0.05 (5%) a 0.15 (15%) */}
+        {/* Background pattern - Increased opacity */}
         <div className="absolute inset-0 opacity-15">
           {[...Array(20)].map((_, i) => <div key={i} className="absolute w-40 h-40 lg:w-64 lg:h-64 rounded-full animate-pulse-light" style={{
           background: 'radial-gradient(circle, rgba(99, 102, 241, 0.5) 0%, rgba(99, 102, 241, 0.2) 70%, transparent 100%)',
@@ -58,11 +58,14 @@ const HeroSection = () => {
         </div>
       </div>
       
-      {/* Moved the connecting line outside the container div and positioned it at the bottom of the section */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-1 h-24">
-        <svg width="2" height="96" className="mx-auto">
-          <line x1="1" y1="0" x2="1" y2="96" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeDasharray="4,4" className="animate-draw" style={{ animationDelay: '1s' }} />
-        </svg>
+      {/* Visual transition element connecting to services section */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-onesec-dark/95 z-0"></div>
+      
+      {/* Floating elements that extend into the services section */}
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden h-24 z-10">
+        <div className="absolute w-40 h-40 bg-onesec-primary/10 rounded-full -bottom-20 left-1/4 animate-float"></div>
+        <div className="absolute w-64 h-64 bg-onesec-secondary/10 rounded-full -bottom-40 right-1/3 animate-float" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute w-20 h-20 bg-onesec-accent/10 rounded-full -bottom-10 right-1/4 animate-pulse-opacity"></div>
       </div>
     </section>
   );
