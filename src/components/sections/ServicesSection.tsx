@@ -1,33 +1,36 @@
-import { TrendingUp, UserRound, ArrowRight, Zap } from "lucide-react";
+
+import { Zap, ArrowRightLeft, TrendingUp, Users } from "lucide-react";
+
 const ServicesSection = () => {
   const solutions = [{
     id: 1,
-    icon: <TrendingUp className="w-6 h-6 text-onesec-accent" />,
-    title: "Margins & Sales",
-    description: "We increase margins and sales with artificial intelligence systems and automations."
+    icon: <Zap className="w-6 h-6 text-onesec-accent" />,
+    title: "Lead Generation & Automation",
+    description: "Fill your calendar with qualified leads using AI-powered sales automations."
   }, {
     id: 2,
-    icon: <UserRound className="w-6 h-6 text-onesec-accent" />,
-    title: "Retention & CRM",
-    description: "We improve retention with custom CRM and personalized onboarding processes."
+    icon: <ArrowRightLeft className="w-6 h-6 text-onesec-accent" />,
+    title: "Sales Pipeline Optimization",
+    description: "We build your sales pipeline so no lead ever slips through the cracks."
   }, {
     id: 3,
-    icon: <ArrowRight className="w-6 h-6 text-onesec-accent" />,
-    title: "Sales Pipeline",
-    description: "We structure your sales pipeline to never miss an opportunity."
+    icon: <TrendingUp className="w-6 h-6 text-onesec-accent" />,
+    title: "Increase Margins & Profit",
+    description: "Cut costs and boost profits by removing bottlenecks with smart automation and AI systems."
   }, {
     id: 4,
-    icon: <Zap className="w-6 h-6 text-onesec-accent" />,
-    title: "Leads & Automation",
-    description: "We generate leads and automate sales processes."
+    icon: <Users className="w-6 h-6 text-onesec-accent" />,
+    title: "Retention & Scalable Onboarding",
+    description: "Keep customers longer with personalized CRM flows and onboarding experiences that scale."
   }];
+
   return <section id="services" className="py-20 bg-gradient-to-b from-onesec-dark to-onesec-dark/95">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <p className="text-onesec-accent font-medium mb-3 opacity-0 animate-fade-in">Services</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 opacity-0 animate-fade-in delay-1">Your Problems 
-are 
-Our Solutions</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 opacity-0 animate-fade-in delay-1">
+            What We Fix To Grow Your Business
+          </h2>
           <p className="text-gray-300 max-w-2xl mx-auto opacity-0 animate-fade-in delay-2">
             We address your specific challenges with cutting-edge AI and automation technologies,
             delivering measurable results for your business.
