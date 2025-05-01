@@ -1,10 +1,9 @@
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 
 const CasesSection = () => {
   const [activeTab, setActiveTab] = useState('all');
-  const casesRef = useRef<HTMLDivElement>(null);
   
   const cases = [
     {
@@ -49,11 +48,11 @@ const CasesSection = () => {
     <section id="cases" className="py-24 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm">CASE STUDIES</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <p className="text-[#94a3b8] font-medium mb-3 uppercase tracking-wider text-sm opacity-0 animate-fade-in">CASE STUDIES</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in delay-1">
             Results that speak for themselves
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto opacity-0 animate-fade-in delay-2">
             Explore how we've helped companies across industries transform 
             their operations with customized AI and automation solutions.
           </p>
@@ -98,14 +97,10 @@ const CasesSection = () => {
           {filteredCases.map((caseStudy, index) => (
             <div 
               key={caseStudy.id}
-              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 gradient-border hover-card case-card visible"
-              style={{
-                transform: 'translateY(0)',
-                opacity: 1,
-                transition: 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease-out'
-              }}
+              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 opacity-0 animate-fade-in"
+              style={{ animationDelay: `${0.1 + index * 0.1}s` }}
             >
-              <div className="h-48 overflow-hidden image-mask">
+              <div className="h-48 overflow-hidden">
                 <img 
                   src={caseStudy.image} 
                   alt={caseStudy.title} 
